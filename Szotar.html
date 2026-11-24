@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fogalomtár (Szótár) | No-Life Gamerek</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f3ea; /* Halványzöld letisztult háttér */
+            color: #111111; /* Fekete felirat a szövegnek */
+            line-height: 1.65;
+            padding: 25px 15px 45px 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Felső navigációs sáv */
+        .navbar {
+            background-color: #ffffff;
+            border: 1px solid #c5dec9;
+            border-radius: 10px;
+            padding: 14px 20px;
+            margin-bottom: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(20, 61, 36, 0.06);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #164a2a;
+            background-color: #f2f9f3;
+            border: 1px solid #c5dec9;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #1b5e36;
+            color: #ffffff;
+            border-color: #1b5e36;
+        }
+
+        .nav-btn.primary {
+            background-color: #164a2a;
+            color: #ffffff;
+            border-color: #164a2a;
+        }
+
+        .nav-btn.primary:hover {
+            background-color: #0f361e;
+        }
+
+        .nav-btn.active {
+            background-color: #d4ebd8;
+            color: #123b22;
+            border-color: #1b5e36;
+            font-weight: 700;
+        }
+
+        /* Fehér kártyák */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #c5dec9;
+            border-radius: 10px;
+            padding: 28px 34px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(20, 61, 36, 0.07);
+        }
+
+        /* Címsorok: félkövér, sötétzöld, enyhén árnyalt felirat */
+        h1 {
+            color: #123b22;
+            font-size: 1.9rem;
+            font-weight: 800;
+            text-shadow: 1px 1px 2px rgba(18, 59, 34, 0.15);
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: #123b22;
+            font-size: 1.45rem;
+            font-weight: 800;
+            text-shadow: 0 1px 2px rgba(18, 59, 34, 0.12);
+            border-bottom: 2px solid #cbe3cf;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        .subtitle {
+            color: #1f6339;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        p strong {
+            color: #164a2a;
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #e3efe5;
+        }
+
+        .meta-badge {
+            background-color: #f3f9f4;
+            border: 1px solid #cce2d0;
+            padding: 5px 13px;
+            border-radius: 6px;
+            font-size: 0.92rem;
+        }
+
+        .meta-badge strong {
+            color: #164a2a;
+        }
+
+        /* Szótár táblázat */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        th, td {
+            border: 1px solid #cce2d0;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f8f2;
+            color: #123b22;
+            font-weight: 700;
+            font-size: 0.98rem;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #fafdfb;
+        }
+
+        tr:hover td {
+            background-color: #f2faf3;
+        }
+
+        .term-name {
+            width: 28%;
+            color: #123b22;
+            font-weight: 700;
+        }
+
+        .term-tag {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #1f6339;
+            background-color: #e6f4e9;
+            border: 1px solid #c5dec9;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="top">
+
+    <!-- Felső navigációs sáv -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
+        <div class="nav-links">
+            <a href="Adatbazis_h2.html" class="nav-btn">H2 – Projekt terv &amp; Vízió</a>
+            <a href="Adatbazis_h3.html" class="nav-btn">H3 – SRS</a>
+            <a href="Adatbazis_h4.html" class="nav-btn">H4 – Analízis &amp; Tervezés</a>
+            <a href="Szotar.html" class="nav-btn active">Szótár</a>
+            <a href="Munkanaplo.html" class="nav-btn">Munkanapló</a>
+        </div>
+    </nav>
+
+    <!-- Címlap / Fejléc (Tartalomjegyzék nélkül a kiírásnak megfelelően) -->
+    <header class="card">
+        <p class="subtitle">Miskolci Egyetem GÉIK &bull; Szoftvertechnológia / Adatbázis</p>
+        <h1>Fogalomtár (Szótár)</h1>
+        <p>
+            <strong>Projekt címe:</strong> Automatizált vendégház-menedzsment és kommunikációs rendszer<br>
+            Jelen dokumentum a projekt tervezési, specifikációs és rendszertervezési fázisai során alkalmazott informatikai, módszertani, jogszabályi és szálláshely-üzemeltetési szakkifejezések egységes értelmezését tartalmazza.
+        </p>
+        <div class="meta-row">
+            <div class="meta-badge"><strong>Csapat neve:</strong> No-Life Gamerek</div>
+            <div class="meta-badge"><strong>Gyakorlatvezető:</strong> Sátán Ádám</div>
+            <div class="meta-badge"><strong>Verziószám:</strong> v1.2 (H4 mérföldkőhöz bővítve)</div>
+        </div>
+    </header>
+
+    <!-- Szójegyzék -->
+    <section class="card">
+        <h2>Szakmai fogalmak és rövidítések (A–Z)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fogalom / Rövidítés</th>
+                    <th>Meghatározás és szerepe a rendszerben</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="term-name">ACID tulajdonságok<br><span class="term-tag">Adatbázis</span></td>
+                    <td>Az adatbázis-tranzakciók négy alapvető megbízhatósági követelménye: atomiság (Atomicity), konzisztencia (Consistency), elkülönítés (Isolation) és tartósság (Durability). A PostgreSQL adatbázisunk ezek révén akadályozza meg a párhuzamos foglalások ütközését.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Aktor (Szereplő)<br><span class="term-tag">UML / Analízis</span></td>
+                    <td>A rendszerrel közvetlen interakcióba lépő külső felhasználó vagy időzített folyamat a használati esetekben (Vendég, Tulajdonos, Takarító személyzet, Rendszer háttérfolyamat).</td>
+                </tr>
+                <tr>
+                    <td class="term-name">API (Application Programming Interface)<br><span class="term-tag">Architektúra</span></td>
+                    <td>Alkalmazásprogramozási interfész, amely szabványos adatcserét biztosít különböző szoftverkomponensek vagy külső szolgáltatások (pl. online fizetési kapuk, számlázórendszerek) között.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">ASP.NET Core<br><span class="term-tag">Technológia</span></td>
+                    <td>A Microsoft nyílt forráskódú, platformfüggetlen C# alapú keretrendszere, amely a vendégház-menedzsment rendszer szerveroldali üzleti logikájának és REST végpontjainak megvalósítására szolgál.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Clean Code<br><span class="term-tag">Fejlesztés</span></td>
+                    <td>Szoftverfejlesztési irányelvek összessége, amely az átlátható elnevezésekre, a rövid és jól strukturált metódusokra, valamint a könnyű karbantarthatóságra helyezi a hangsúlyt.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Entity Framework Core (EF Core)<br><span class="term-tag">Adatbázis</span></td>
+                    <td>Objektum-relációs leképező (ORM) keretrendszer .NET környezethez, amely lehetővé teszi a C# osztályok és a PostgreSQL adatbázistáblák közötti típusbiztos kommunikációt és migrációkat.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">ER-diagram (Entity-Relationship)<br><span class="term-tag">Adatmodell</span></td>
+                    <td>Egyed-kapcsolat diagram, amely vizuálisan ábrázolja a rendszer adatbázisában tárolt egyedeket (táblákat), azok attribútumait, valamint a közöttük lévő kapcsolatokat és számosságokat.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Fizetési kapu (Payment Gateway)<br><span class="term-tag">Integráció</span></td>
+                    <td>Külső pénzügyi szolgáltató (pl. Stripe, Barion) biztonságos felülete, amely lebonyolítja a bankkártyás tranzakciókat anélkül, hogy a vendégház rendszere érzékeny kártyaadatokat tárolna.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Foglalási zárolás<br><span class="term-tag">Üzleti logika</span></td>
+                    <td>Adatbázisszintű mechanizmus, amely a fizetés idejére (lejárati idővel ellátva) vagy sikeres fizetés után véglegesen blokkolja a kiválasztott szoba érintett dátumintervallumát a túlfoglalás megelőzésére.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">GDPR<br><span class="term-tag">Jogszabály</span></td>
+                    <td>Az Európai Unió Általános Adatvédelmi Rendelete (General Data Protection Regulation), amely szigorúan szabályozza a vendégek személyes adatainak tárolását, védelmét és törölhetőségét.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Git / GitHub<br><span class="term-tag">Eszköz</span></td>
+                    <td>Elosztott verziókövető rendszer és felhőalapú fejlesztői platform, amelyet a csapat a forráskódok, dokumentációk és a GitHub Pages weboldalak közös kezelésére használ.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">HTTPS<br><span class="term-tag">Biztonság</span></td>
+                    <td>Titkosított kommunikációs protokoll (TLS/SSL alapú HTTP), amely megakadályozza a kliens és a szerver között továbbított személyes és foglalási adatok lehallgatását vagy módosítását.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">iCal (iCalendar)<br><span class="term-tag">Szabvány</span></td>
+                    <td>Szabványos digitális naptár-adatcsere formátum (<code>.ics</code>), amelyen keresztül a rendszer 5 percenként szinkronizálja a foglaltsági időszakokat a külső szállásportálokkal (Booking.com, Airbnb).</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Idempotencia<br><span class="term-tag">Architektúra</span></td>
+                    <td>Olyan műveleti tulajdonság, amely garantálja, hogy egy kérés többszöri végrehajtása (pl. offline takarítói adatok újraküldése vagy ismételt fizetési webhook esetén) ugyanazt az állapotot eredményezi, duplikáció nélkül.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">MIS (Management Information System)<br><span class="term-tag">Rendszertípus</span></td>
+                    <td>Vezetői információs rendszer, amely összegyűjti, rendszerezi és átlátható formában jeleníti meg a vállalkozás (vendégház) napi működéséhez és döntéseihez szükséges adatokat.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">MoSCoW módszer<br><span class="term-tag">Módszertan</span></td>
+                    <td>Követelmény-priorizálási technika, amely négy kategóriába sorolja a funkciókat: kötelező (Must have), elvárható (Should have), opcionális (Could have) és kizárt (Won't have).</td>
+                </tr>
+                <tr>
+                    <td class="term-name">NTAK<br><span class="term-tag">Jogszabály</span></td>
+                    <td>Nemzeti Turisztikai Adatszolgáltató Központ; a magyarországi szálláshely-szolgáltatók számára kötelező digitális adatszolgáltatási rendszer, amelynek előírásait a szoftver adatmodellje figyelembe veszi.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">OTA (Online Travel Agency)<br><span class="term-tag">Szálláshely</span></td>
+                    <td>Online utazási és szállásközvetítő portálok (pl. Booking.com, Airbnb), amelyeken keresztül a vendégházak a saját weboldaluk mellett értékesítik szobáikat.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Overbooking (Túlfoglalás)<br><span class="term-tag">Szálláshely</span></td>
+                    <td>Olyan kritikus működési hiba, amikor ugyanazt a szobát ugyanarra az időszakra egynél több vendégnek adják ki; a rendszer központi naptárral és adatbázis-zárolással előzi meg.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">PMS (Property Management System)<br><span class="term-tag">Rendszertípus</span></td>
+                    <td>Szálláshely-menedzsment szoftver, amely a foglalások, szobastátuszok, vendégadatok, számlázás és takarítási feladatok központi irányítását látja el.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">PostgreSQL<br><span class="term-tag">Adatbázis</span></td>
+                    <td>Nyílt forráskódú, objektum-relációs adatbázis-kezelő rendszer (RDBMS), amely a projekt összes üzleti és technikai adatának tartós tárolását végzi.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">RBAC (Role-Based Access Control)<br><span class="term-tag">Biztonság</span></td>
+                    <td>Szerepkör alapú hozzáférés-vezérlés, amely meghatározza, hogy az egyes felhasználói csoportok (vendég, takarító, tulajdonos) milyen felületeket és műveleteket érhetnek el.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Repository tervezési minta<br><span class="term-tag">Architektúra</span></td>
+                    <td>Szoftvertervezési minta, amely elkülöníti az üzleti logikát az adatbázis-elérési műveletektől, egységes interfészt biztosítva az entitások lekérdezéséhez és mentéséhez.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Reszponzív webdizájn<br><span class="term-tag">Felület</span></td>
+                    <td>Olyan felhasználói felületi kialakítás, amely automatikusan igazodik a megjelenítő eszköz képernyőméretéhez (asztali monitor, tablet, okostelefon).</td>
+                </tr>
+                <tr>
+                    <td class="term-name">RUP (Rational Unified Process)<br><span class="term-tag">Módszertan</span></td>
+                    <td>Iteratív, modellvezérelt szoftverfejlesztési módszertan, amely a projektet egymásra épülő fázisokra és mérföldkövekre (H1–H5) bontja.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">SMTP<br><span class="term-tag">Kommunikáció</span></td>
+                    <td>Simple Mail Transfer Protocol; szabványos internetes protokoll, amelyen keresztül a rendszer kommunikációs motorja kiküldi az automatikus visszaigazoló és értesítő e-maileket.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">SRS (Software Requirements Specification)<br><span class="term-tag">Dokumentáció</span></td>
+                    <td>Szoftver Követelmény Specifikáció; a H3 mérföldkőben készülő dokumentum, amely részletesen rögzíti a rendszer funkcionális és nem-funkcionális elvárásait.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">UML (Unified Modeling Language)<br><span class="term-tag">Modellezés</span></td>
+                    <td>Egységes modellező nyelv, amely szabványos vizuális diagramokkal (Use Case, osztály-, állapot-, szekvencia- és csomagdiagramok) írja le a szoftver szerkezetét és működését.</td>
+                </tr>
+                <tr>
+                    <td class="term-name">Webhook<br><span class="term-tag">Integráció</span></td>
+                    <td>Eseményvezérelt HTTP-visszahívás, amelyen keresztül a külső fizetési szolgáltató azonnal értesíti a rendszer szerverét a bankkártyás tranzakció sikerességéről vagy sikertelenségéről.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Alsó navigáció -->
+    <div class="footer-nav">
+        <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
+        <a href="#top" class="nav-btn">Ugrás az oldal tetejére &uarr;</a>
+    </div>
+
+</div>
+
+</body>
+</html>

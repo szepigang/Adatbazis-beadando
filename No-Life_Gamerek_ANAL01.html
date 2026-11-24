@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No-Life_Gamerek_ANAL01 – Analízis modell | No-Life Gamerek</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f3ea; /* Halványzöld letisztult háttér */
+            color: #111111; /* Fekete felirat a szövegnek */
+            line-height: 1.65;
+            padding: 25px 15px 45px 15px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        /* Felső navigációs sáv */
+        .navbar {
+            background-color: #ffffff;
+            border: 1px solid #c5dec9;
+            border-radius: 10px;
+            padding: 14px 20px;
+            margin-bottom: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(20, 61, 36, 0.06);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #164a2a;
+            background-color: #f2f9f3;
+            border: 1px solid #c5dec9;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #1b5e36;
+            color: #ffffff;
+            border-color: #1b5e36;
+        }
+
+        .nav-btn.primary {
+            background-color: #164a2a;
+            color: #ffffff;
+            border-color: #164a2a;
+        }
+
+        .nav-btn.primary:hover {
+            background-color: #0f361e;
+        }
+
+        .nav-btn.active {
+            background-color: #d4ebd8;
+            color: #123b22;
+            border-color: #1b5e36;
+            font-weight: 700;
+        }
+
+        /* Fehér kártyák */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #c5dec9;
+            border-radius: 10px;
+            padding: 28px 34px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(20, 61, 36, 0.07);
+        }
+
+        h1 {
+            color: #123b22;
+            font-size: 1.9rem;
+            font-weight: 800;
+            text-shadow: 1px 1px 2px rgba(18, 59, 34, 0.15);
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: #123b22;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-shadow: 0 1px 2px rgba(18, 59, 34, 0.12);
+            border-bottom: 2px solid #cbe3cf;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        h3 {
+            color: #164a2a;
+            font-size: 1.22rem;
+            font-weight: 700;
+            text-shadow: 0 1px 1px rgba(22, 74, 42, 0.1);
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            color: #1f6339;
+            font-size: 1.06rem;
+            font-weight: 700;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        h5 {
+            color: #164a2a;
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #1f6339;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        ul {
+            margin: 8px 0 16px 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        li strong, p strong {
+            color: #164a2a;
+        }
+
+        /* Tartalomjegyzék */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 16px;
+        }
+
+        .toc-box {
+            background-color: #f7fbf8;
+            border: 1px solid #d5e8d8;
+            border-radius: 8px;
+            padding: 14px 18px;
+        }
+
+        .toc-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 5px;
+        }
+
+        .toc-list li.sub {
+            padding-left: 16px;
+            font-size: 0.92rem;
+        }
+
+        .toc-list a {
+            color: #164a2a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .toc-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Táblázatok */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 18px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            border: 1px solid #cce2d0;
+            padding: 9px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f8f2;
+            color: #123b22;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #fafdfb;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+            background-color: #eef7f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #123b22;
+            font-size: 0.92em;
+        }
+
+        /* Osztály leíró kártya */
+        .class-box {
+            background-color: #fbfdfb;
+            border: 1px solid #cde3d1;
+            border-left: 5px solid #1b5e36;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .class-box h4 {
+            margin-top: 0;
+            font-size: 1.12rem;
+            color: #123b22;
+        }
+
+        /* Diagram dobozok */
+        .diagram-box {
+            background-color: #f8fcf9;
+            border: 1px solid #cbe3cf;
+            border-radius: 8px;
+            padding: 18px;
+            margin: 18px 0;
+            text-align: center;
+        }
+
+        .diagram-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #dcebdd;
+        }
+
+        .diagram-fallback {
+            display: none;
+            padding: 18px;
+            background: #eef7f0;
+            border-radius: 6px;
+            color: #164a2a;
+            font-size: 0.93rem;
+        }
+
+        .diagram-caption {
+            margin-top: 10px;
+            margin-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+            color: #164a2a;
+            font-size: 0.95rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="top">
+
+    <!-- Felső navigációs sáv -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="Adatbazis_h4.html" class="nav-btn primary">&larr; Vissza a H4 főoldalra</a>
+            <a href="index.html" class="nav-btn">Főoldal</a>
+        </div>
+        <div class="nav-links">
+            <a href="No-Life_Gamerek_ANAL01.html" class="nav-btn active">ANAL01 – Analízis modell</a>
+            <a href="No-Life_Gamerek_RTERV01.html" class="nav-btn">RTERV01 – Rendszertervezés</a>
+            <a href="Szotar.html" class="nav-btn">Szótár</a>
+            <a href="Munkanaplo.html" class="nav-btn">Munkanapló</a>
+        </div>
+    </nav>
+
+    <!-- Fejléc -->
+    <header class="card">
+        <p class="subtitle">H4 Mérföldkő &bull; Fájlnév: No-Life_Gamerek_ANAL01.html &bull; Verzió: 1.0</p>
+        <h1>Analízis modell</h1>
+        <p>
+            <strong>Projekt címe:</strong> Automatizált vendégház-menedzsment és kommunikációs rendszer<br>
+            <strong>Csapat neve:</strong> No-Life Gamerek &bull; <strong>Gyakorlatvezető:</strong> Sátán Ádám
+        </p>
+    </header>
+
+    <!-- Tartalomjegyzék -->
+    <section class="card" id="tartalomjegyzek">
+        <h2>Tartalomjegyzék</h2>
+        <div class="toc-grid">
+            <div class="toc-box">
+                <ul class="toc-list">
+                    <li><a href="#anal-1">1. Bevezetés</a></li>
+                    <li><a href="#anal-2">2. Kezdeti osztálydiagram és alrendszerek</a></li>
+                    <li class="sub"><a href="#anal-2-1">2.1. Kezdeti osztálydiagram</a></li>
+                    <li class="sub"><a href="#anal-2-2">2.2. Osztályok felsorolása</a></li>
+                    <li class="sub"><a href="#anal-2-3">2.3. Alrendszerek és együttműködésük</a></li>
+                    <li><a href="#anal-3">3. Foglaláskezelés alrendszer modellje</a></li>
+                    <li class="sub"><a href="#anal-3-1">3.1. Statikus modell</a></li>
+                    <li class="sub"><a href="#anal-3-2">3.2. Dinamikus modell</a></li>
+                    <li class="sub"><a href="#anal-3-3">3.3. Funkcionális modell</a></li>
+                    <li class="sub"><a href="#anal-3-4">3.4. Operációk azonosítása</a></li>
+                    <li class="sub"><a href="#anal-3-5">3.5. Analízis osztálydiagram</a></li>
+                    <li class="sub"><a href="#anal-3-6">3.6. Osztályok részletes listája</a></li>
+                </ul>
+            </div>
+            <div class="toc-box">
+                <ul class="toc-list">
+                    <li><a href="#anal-4">4. Fizetés és kommunikáció alrendszer modellje</a></li>
+                    <li class="sub"><a href="#anal-4-1">4.1. Statikus modell</a></li>
+                    <li class="sub"><a href="#anal-4-2">4.2. Dinamikus modell</a></li>
+                    <li class="sub"><a href="#anal-4-3">4.3. Funkcionális modell</a></li>
+                    <li class="sub"><a href="#anal-4-4">4.4. Operációk azonosítása</a></li>
+                    <li class="sub"><a href="#anal-4-5">4.5. Analízis osztálydiagram</a></li>
+                    <li class="sub"><a href="#anal-4-6">4.6. Osztályok részletes listája</a></li>
+                    <li><a href="#anal-5">5. Naptár és szinkronizáció alrendszer modellje</a></li>
+                    <li class="sub"><a href="#anal-5-1">5.1. Statikus modell</a></li>
+                    <li class="sub"><a href="#anal-5-2">5.2. Dinamikus modell</a></li>
+                    <li class="sub"><a href="#anal-5-3">5.3. Funkcionális modell</a></li>
+                    <li class="sub"><a href="#anal-5-4">5.4. Operációk azonosítása</a></li>
+                    <li class="sub"><a href="#anal-5-5">5.5. Analízis osztálydiagram</a></li>
+                    <li class="sub"><a href="#anal-5-6">5.6. Osztályok részletes listája</a></li>
+                </ul>
+            </div>
+            <div class="toc-box">
+                <ul class="toc-list">
+                    <li><a href="#anal-6">6. Üzemeltetés és takarítás alrendszer modellje</a></li>
+                    <li class="sub"><a href="#anal-6-1">6.1. Statikus modell</a></li>
+                    <li class="sub"><a href="#anal-6-2">6.2. Dinamikus modell</a></li>
+                    <li class="sub"><a href="#anal-6-3">6.3. Funkcionális modell</a></li>
+                    <li class="sub"><a href="#anal-6-4">6.4. Operációk azonosítása</a></li>
+                    <li class="sub"><a href="#anal-6-5">6.5. Analízis osztálydiagram</a></li>
+                    <li class="sub"><a href="#anal-6-6">6.6. Osztályok részletes listája</a></li>
+                    <li><a href="#mellekletek">7. Mellékletek (Szekvencia- és részletes osztálydiagramok)</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. BEVEZETÉS -->
+    <section class="card" id="anal-1">
+        <h2>1. Bevezetés</h2>
+        <p>
+            Jelen analízis dokumentum célja, hogy bemutassa az <strong>Automatizált vendégház-menedzsment és kommunikációs rendszer</strong> objektumorientált elemzésének eredményeit. Az elemzés alapját a H2 Vízió dokumentum és a H3 Szoftver Követelmény Specifikáció (SRS) használati esetei képezik.
+        </p>
+        <p>
+            A dokumentum első részében felépítjük a teljes rendszer kezdeti (elemzési szintű) osztálydiagramját, definiáljuk az osztályok alapvető szerepét, és a jobb átláthatóság érdekében négy funkcionális alrendszerre bontjuk a rendszert. Ezt követően alrendszerenként kidolgozzuk a statikus, dinamikus és funkcionális modelleket, azonosítjuk az osztályok attribútumait és operációit, majd részletes osztályleírásokkal és UML szekvenciadiagramokkal zárjuk a modellt.
+        </p>
+    </section>
+
+    <!-- 2. KEZDETI OSZTÁLYDIAGRAM -->
+    <section class="card" id="anal-2">
+        <h2>2. Kezdeti osztálydiagram és alrendszerek</h2>
+
+        <h3 id="anal-2-1">2.1. Kezdeti osztálydiagram</h3>
+        <div class="diagram-box">
+            <img src="kepek/kezdeti_osztalydiagram.png" alt="Kezdeti osztálydiagram" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/kezdeti_osztalydiagram.png]</strong><br>
+                <em>Helyezd el a Word 31. oldalán található kezdeti osztálydiagram képét ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">1. ábra: A rendszer kezdeti (elemzési szintű) osztálydiagramja alrendszerekre bontva</p>
+        </div>
+
+        <h3 id="anal-2-2">2.2. Osztályok felsorolása</h3>
+        <ul>
+            <li><strong>Vendégház:</strong> A rendszerben kezelt szálláshelyet reprezentálja, amelyhez a különböző szobák és foglalások tartoznak. Tárolja a vendégház alapvető adatait (név, cím).</li>
+            <li><strong>Szoba:</strong> A vendégházhoz tartozó szobákat reprezentálja. Tartalmazza a szobaszámot, az éjszakánkénti árat és a szoba aktuális tisztasági/foglaltsági állapotát.</li>
+            <li><strong>Vendég:</strong> A szálláshely szolgáltatásait igénybe vevő személyeket reprezentálja. Tárolja a foglaláshoz szükséges személyes adatokat (név, e-mail-cím, telefonszám, lakcím).</li>
+            <li><strong>Foglalás:</strong> A vendégek által leadott szobafoglalásokat kezeli. Tartalmazza az érkezés és távozás időpontját, a vendégek számát, valamint a foglalás státuszát.</li>
+            <li><strong>Fizetés:</strong> A foglalásokhoz kapcsolódó pénzügyi tranzakciókat reprezentálja. Nyilvántartja a fizetendő összeget és a tranzakció státuszát.</li>
+            <li><strong>Kupon:</strong> A foglalások során felhasználható kedvezménykódokat kezeli, amelyekkel a rendszer újraszámolja a fizetendő összeget.</li>
+            <li><strong>Értesítés:</strong> A rendszer által automatikusan kiküldött üzeneteket (visszaigazolások, fizetési emlékeztetők, figyelmeztetések) reprezentálja.</li>
+            <li><strong>Számla (tervezett):</strong> A foglalásokhoz és sikeres fizetésekhez kapcsolódó számlázási adatokat reprezentálja a későbbi számlázórendszer-integrációhoz.</li>
+            <li><strong>Foglalási naptár:</strong> A vendégház szobáinak foglaltságát és szabad időszakait tartja nyilván központilag, megakadályozva a párhuzamos foglalásokat.</li>
+            <li><strong>Külső naptár:</strong> A külső szállásfoglaló platformokhoz (Booking.com, Airbnb) kapcsolódó iCal-naptárakat reprezentálja.</li>
+            <li><strong>Foglalási ütközés:</strong> A különböző foglalási felületeken egyszerre létrejövő, egymással ütköző foglalásokat tartja nyilván a tulajdonos értesítéséhez.</li>
+            <li><strong>Tulajdonos:</strong> A vendégház üzemeltetéséért felelős felhasználót reprezentálja, aki kezeli a foglalásokat, a naptárakat és ellenőrzi a szobaállapotokat.</li>
+            <li><strong>Takarító:</strong> A szobák tisztán tartásáért felelős személyzetet reprezentálja, aki mobilról frissíti a feladatokat és hibát jelenthet be.</li>
+            <li><strong>Takarítási feladat:</strong> A szobák takarításához kapcsolódó napi teendőket reprezentálja azok dátumával és állapotával együtt.</li>
+            <li><strong>Takarítási fotó:</strong> A takarítás befejezése után készített igazoló fényképeket reprezentálja.</li>
+            <li><strong>Hibabejelentés:</strong> A vendégház szobáiban észlelt meghibásodások és javítási igények nyilvántartására szolgál.</li>
+        </ul>
+
+        <h3 id="anal-2-3">2.3. Alrendszerek és együttműködésük</h3>
+        <p>A könnyebb átláthatóság és fejleszthetőség érdekében a rendszert négy fő alrendszerre bontottuk:</p>
+        <ul>
+            <li><strong>2.3.1. Foglaláskezelés alrendszer:</strong> A szálláshely szobáinak és a foglalásoknak a kezeléséért felelős. Osztályai: <em>Vendégház, Szoba, Vendég, Foglalás</em>.</li>
+            <li><strong>2.3.2. Fizetés és kommunikáció alrendszer:</strong> A bankkártyás tranzakciók, kuponkedvezmények, automatikus e-mailek és tervezett számlázási adatok kezelését végzi. Osztályai: <em>Fizetés, Kupon, Értesítés, Számla (tervezett)</em>.</li>
+            <li><strong>2.3.3. Naptár és szinkronizáció alrendszer:</strong> A központi foglaltsági nyilvántartást, az időszakok zárolását, a külső iCal-naptárak 5 percenkénti lekérdezését és az ütközések felismerését látja el. Osztályai: <em>Foglalási naptár, Külső naptár, Foglalási ütközés</em>.</li>
+            <li><strong>2.3.4. Üzemeltetés és takarítás alrendszer:</strong> A napi takarítási feladatok végrehajtását, a fotós dokumentálást, a szobastátuszok frissítését és a hibabejelentéseket kezeli. Osztályai: <em>Tulajdonos, Takarító, Takarítási feladat, Takarítási fotó, Hibabejelentés</em>.</li>
+        </ul>
+
+        <div class="diagram-box">
+            <img src="kepek/alrendszerek_csomagdiagram.png" alt="Alrendszerek kapcsolatai csomagdiagram" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/alrendszerek_csomagdiagram.png]</strong><br>
+                <em>Helyezd el a Word 35. oldalán található csomagdiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">2. ábra: Az alrendszerek kapcsolatai és információáramlása (UML csomagdiagram)</p>
+        </div>
+    </section>
+
+    <!-- 3. FOGLALÁSKEZELÉS ALRENDSZER -->
+    <section class="card" id="anal-3">
+        <h2>3. Foglaláskezelés alrendszer modellje</h2>
+
+        <h3 id="anal-3-1">3.1. Statikus modell</h3>
+        <h4>3.1.1. Kapcsolatok pontosítása</h4>
+        <ul>
+            <li><strong>Vendégház – Szoba (<code>tartalmaz</code>):</strong> Egy vendégházhoz legalább egy, de több szoba is tartozhat, míg minden szoba egy adott vendégházhoz tartozik. Számosság: Vendégház <code>1</code> &ndash; Szoba <code>1..*</code>.</li>
+            <li><strong>Vendég – Foglalás (<code>leadja</code>):</strong> Egy vendég több foglalást is kezdeményezhet, de minden foglaláshoz egy megrendelő vendég tartozik. Számosság: Vendég <code>1</code> &ndash; Foglalás <code>0..*</code>.</li>
+            <li><strong>Szoba – Foglalás (<code>lefoglalja</code>):</strong> Egy szobához különböző időszakokban több foglalás kapcsolódhat, egy foglalás pedig egy kiválasztott szobára szól. Számosság: Szoba <code>1</code> &ndash; Foglalás <code>0..*</code>. Üzleti korlátozás: ugyanaz a szoba nem foglalható le egymást átfedő aktív időszakokra.</li>
+            <li><strong>Kapcsolatok más alrendszerekkel:</strong> A <em>Foglalás</em> együttműködik a <em>Fizetés</em>, az <em>Értesítés</em> és a <em>Foglalási naptár</em> osztályokkal, míg a <em>Szoba</em> a <em>Takarítási feladat</em> nyilvántartásához kapcsolódik.</li>
+        </ul>
+
+        <h4>3.1.2. Attribútumok azonosítása</h4>
+        <ul>
+            <li><strong>Vendégház:</strong> <code>vendégházAzonosító</code>, <code>név</code>, <code>cím</code></li>
+            <li><strong>Szoba:</strong> <code>szobaAzonosító</code>, <code>szobaszám</code>, <code>ár</code>, <code>befogadóképesség</code>, <code>állapot</code></li>
+            <li><strong>Vendég:</strong> <code>vendégAzonosító</code>, <code>név</code>, <code>e-mail</code>, <code>telefonszám</code>, <code>lakcím</code></li>
+            <li><strong>Foglalás:</strong> <code>foglalásAzonosító</code>, <code>érkezés</code>, <code>távozás</code>, <code>vendégekSzáma</code>, <code>státusz</code></li>
+        </ul>
+
+        <h4>3.1.3. Bázisosztályok keresése</h4>
+        <p>
+            A <em>Vendégház</em>, <em>Szoba</em>, <em>Vendég</em> és <em>Foglalás</em> osztályok eltérő üzleti szerepet töltenek be, így az alrendszeren belül nem indokolt közös bázisosztály bevezetése. Egy általános <em>Felhasználó</em> bázisosztály kialakítását (amely a vendégeket és a belső dolgozókat fogná össze) elemzési szinten mellőzzük, mivel a vendégek regisztráció nélkül is adhatnak le foglalást.
+        </p>
+
+        <h3 id="anal-3-2">3.2. Dinamikus modell</h3>
+        <h4>3.2.1. Szobafoglalás leadása és automatikus visszaigazolás</h4>
+        <p>
+            A folyamat a vendég által megadott érkezési/távozási dátumok és létszám ellenőrzésével indul. A rendszer listázza a megfelelő szabad szobákat, a vendég kiválaszt egyet, megadja személyes adatait és opcionálisan kuponkódot alkalmaz. Fizetés előtt a rendszer ismételten ellenőrzi a szoba elérhetőségét és ideiglenesen zárolja az időszakot. Sikeres fizetés esetén a foglalás <strong>„Kifizetve”</strong> státusszal rögzül, a naptár frissül, és kimegy a visszaigazoló e-mail. Sikertelen tranzakció esetén az ideiglenes zárolás feloldódik. (A részletes szekvenciadiagram a <a href="#mellekletek">Mellékletekben</a> található.)
+        </p>
+
+        <h4>3.2.2. A Foglalás osztály állapotdiagramja</h4>
+        <p>
+            A foglalás kezdeményezésekor egy átmeneti <strong>„Fizetésre vár”</strong> állapot jön létre. Sikeres fizetés után <strong>„Kifizetve”</strong> állapotba lép (amelyen belül adatmódosítás lehetséges), sikertelen fizetés esetén a folyamat lezárul és a zárolás törlődik. A tulajdonos szükség esetén törölheti a foglalást, ekkor <strong>„Törölt”</strong> állapotba kerül, felszabadítva a naptári időszakot.
+        </p>
+        <div class="diagram-box">
+            <img src="kepek/allapot_foglalas.png" alt="Foglalás osztály állapotdiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/allapot_foglalas.png]</strong><br>
+                <em>Helyezd el a Word 41. oldalán található Foglalás állapotdiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">3. ábra: A Foglalás osztály állapotdiagramja</p>
+        </div>
+
+        <h3 id="anal-3-3">3.3. Funkcionális modell</h3>
+        <ul>
+            <li><strong>3.3.1. Szabad szobák keresése:</strong> Bemenet: érkezés, távozás, vendégek száma. Feldolgozás: befogadóképesség és foglalási naptár összevetése. Kimenet: elérhető szobák listája és árai.</li>
+            <li><strong>3.3.2. Foglalási adatok feldolgozása:</strong> Bemenet: kiválasztott szoba, vendégadatok, időszak, kuponkód. Feldolgozás: adatok validálása, árkalkuláció (kuponnal csökkentve), ismételt elérhetőség-ellenőrzés. Kimenet: ellenőrzött foglalási adatok és végösszeg.</li>
+            <li><strong>3.3.3. Foglalás rögzítése és visszaigazolása:</strong> Bemenet: ellenőrzött adatok, fizetési eredmény. Feldolgozás: időszak zárolása, fizetés után foglalás mentése „Kifizetve” státusszal, naptár frissítése és e-mail kérés továbbítása. Kimenet: rögzített foglalás, frissített naptár, visszaigazolás.</li>
+            <li><strong>3.3.4. Sikertelen foglalások kezelése:</strong> Bemenet: elérhetőségi vagy fizetési hibaeredmény. Feldolgozás: kérelem elutasítása vagy ideiglenes zárolás feloldása. Kimenet: hibaüzenet a vendégnek, felszabadított időszak.</li>
+        </ul>
+
+        <h3 id="anal-3-4">3.4. Operációk azonosítása</h3>
+        <ul>
+            <li><strong>Vendégház:</strong> <code>szobákLekérdezése()</code>, <code>szobaKeresése(szobaszám)</code>, <code>szobákSzűrése(vendégekSzáma)</code></li>
+            <li><strong>Szoba:</strong> <code>befogadóképességEllenőrzése(vendégekSzáma)</code>, <code>elérhetőségEllenőrzése(érkezés, távozás)</code>, <code>foglalásiÁrSzámítása(érkezés, távozás)</code></li>
+            <li><strong>Vendég:</strong> <code>adatokEllenőrzése()</code>, <code>foglalásKezdeményezése(szoba, érkezés, távozás)</code>, <code>foglalásokLekérdezése()</code></li>
+            <li><strong>Foglalás:</strong> <code>foglalásiAdatokEllenőrzése()</code>, <code>végösszegKiszámítása()</code>, <code>foglalásRögzítése()</code>, <code>státuszMódosítása(újStátusz)</code>, <code>foglalásMódosítása(újAdatok)</code>, <code>foglalásTörlése()</code></li>
+        </ul>
+
+        <h3 id="anal-3-5">3.5. Az analízis modell osztálydiagramja</h3>
+        <div class="diagram-box">
+            <img src="kepek/analizis_foglalaskezeles.png" alt="Foglaláskezelés alrendszer analízis osztálydiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/analizis_foglalaskezeles.png]</strong><br>
+                <em>Helyezd el a Word 46. oldalán található Foglaláskezelés osztálydiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">4. ábra: Foglaláskezelés alrendszer – Analízis osztálydiagram</p>
+        </div>
+
+        <h3 id="anal-3-6">3.6. Az analízis modell osztályainak listája</h3>
+
+        <div class="class-box">
+            <h4>3.6.1. Vendégház</h4>
+            <p><strong>Felelőssége:</strong> A szálláshely alapvető adatainak nyilvántartása, a hozzá tartozó szobák összefogása és szűrése. <strong>Együttműködők:</strong> Szoba.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>vendégházAzonosító</code></td><td>Egész szám</td><td>A vendégház egyedi azonosítója.</td></tr>
+                    <tr><td><code>név</code></td><td>Szöveg</td><td>A vendégház megnevezése.</td></tr>
+                    <tr><td><code>cím</code></td><td>Szöveg</td><td>A vendégház pontos címe.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>szobákLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a vendégházhoz tartozó összes szobát.</td></tr>
+                    <tr><td><code>szobaKeresése()</code></td><td><code>szobaszám</code></td><td>Megkeresi a megadott szobaszámú szobát.</td></tr>
+                    <tr><td><code>szobákSzűrése()</code></td><td><code>vendégekSzáma</code></td><td>Kiválasztja a megadott létszám befogadására alkalmas szobákat.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>3.6.2. Szoba</h4>
+            <p><strong>Felelőssége:</strong> A szobák tulajdonságainak, befogadóképességének, foglalhatóságának és alapárának kezelése. <strong>Együttműködők:</strong> Vendégház, Foglalás, Foglalási naptár, Takarítási feladat.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>szobaAzonosító</code></td><td>Egész szám</td><td>A szoba egyedi azonosítója.</td></tr>
+                    <tr><td><code>szobaszám</code></td><td>Szöveg</td><td>A szoba megkülönböztetésére szolgáló szám vagy jelölés.</td></tr>
+                    <tr><td><code>ár</code></td><td>Decimális szám</td><td>A szoba egy éjszakára vonatkozó alapára.</td></tr>
+                    <tr><td><code>befogadóképesség</code></td><td>Egész szám</td><td>A szobában maximálisan elszállásolható vendégek száma.</td></tr>
+                    <tr><td><code>állapot</code></td><td>Felsorolás</td><td>A szoba aktuális tisztasági állapota (pl. Takarításra vár, Takarítás alatt, Tiszta).</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>befogadóképességEllenőrzése()</code></td><td><code>vendégekSzáma</code></td><td>Ellenőrzi, hogy a szoba megfelelő-e a megadott létszám számára.</td></tr>
+                    <tr><td><code>elérhetőségEllenőrzése()</code></td><td><code>érkezés, távozás</code></td><td>Megvizsgálja a foglalási naptár alapján, hogy a szoba szabad-e a kiválasztott időszakban.</td></tr>
+                    <tr><td><code>foglalásiÁrSzámítása()</code></td><td><code>érkezés, távozás</code></td><td>Kiszámítja a szoba árát a tartózkodás időtartama alapján.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>3.6.3. Vendég</h4>
+            <p><strong>Felelőssége:</strong> A foglalást kezdeményező vendégek személyes adatainak nyilvántartása és validálása. <strong>Együttműködők:</strong> Foglalás.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>vendégAzonosító</code></td><td>Egész szám</td><td>A vendég egyedi azonosítója.</td></tr>
+                    <tr><td><code>név</code></td><td>Szöveg</td><td>A vendég teljes neve.</td></tr>
+                    <tr><td><code>e-mail</code></td><td>Szöveg</td><td>A vendég e-mail-címe, amelyre a visszaigazolás érkezik.</td></tr>
+                    <tr><td><code>telefonszám</code></td><td>Szöveg</td><td>A vendég kapcsolattartási telefonszáma.</td></tr>
+                    <tr><td><code>lakcím</code></td><td>Szöveg</td><td>A vendég által a foglalás során megadott lakcím.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>adatokEllenőrzése()</code></td><td>Nincs</td><td>Ellenőrzi a személyes adatok meglétét és formátumát.</td></tr>
+                    <tr><td><code>foglalásKezdeményezése()</code></td><td><code>szoba, érkezés, távozás</code></td><td>Elindítja a kiválasztott szobára és időszakra vonatkozó foglalási folyamatot.</td></tr>
+                    <tr><td><code>foglalásokLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a vendéghez tartozó korábbi és aktuális foglalásokat.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>3.6.4. Foglalás</h4>
+            <p><strong>Felelőssége:</strong> A szobafoglalási adatok, dátumok, létszám és státuszok kezelése, valamint a foglalások rögzítése, módosítása és törlése. <strong>Együttműködők:</strong> Vendég, Szoba, Fizetés, Értesítés, Foglalási naptár.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>foglalásAzonosító</code></td><td>Egész szám</td><td>A foglalás egyedi azonosítója.</td></tr>
+                    <tr><td><code>érkezés</code></td><td>Dátum</td><td>A vendég érkezésének dátuma.</td></tr>
+                    <tr><td><code>távozás</code></td><td>Dátum</td><td>A vendég távozásának dátuma.</td></tr>
+                    <tr><td><code>vendégekSzáma</code></td><td>Egész szám</td><td>A foglalásban részt vevő vendégek száma.</td></tr>
+                    <tr><td><code>státusz</code></td><td>Felsorolás</td><td>A foglalás aktuális állapota (Fizetésre vár, Kifizetve, Törölt).</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>foglalásiAdatokEllenőrzése()</code></td><td>Nincs</td><td>Ellenőrzi a foglaláshoz szükséges adatok megfelelőségét.</td></tr>
+                    <tr><td><code>végösszegKiszámítása()</code></td><td>Nincs</td><td>Meghatározza a foglalás teljes árát az esetleges kuponkedvezménnyel.</td></tr>
+                    <tr><td><code>foglalásRögzítése()</code></td><td>Nincs</td><td>Sikeres fizetést követően véglegesíti és rögzíti a foglalást.</td></tr>
+                    <tr><td><code>státuszMódosítása()</code></td><td><code>újStátusz</code></td><td>Módosítja a foglalás aktuális állapotát.</td></tr>
+                    <tr><td><code>foglalásMódosítása()</code></td><td><code>újAdatok</code></td><td>Lehetővé teszi a korábban rögzített foglalási adatok módosítását.</td></tr>
+                    <tr><td><code>foglalásTörlése()</code></td><td>Nincs</td><td>Törölt állapotba helyezi a foglalást, és felszabadítja a naptári időszakot.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 4. FIZETÉS ÉS KOMMUNIKÁCIÓ ALRENDSZER -->
+    <section class="card" id="anal-4">
+        <h2>4. Fizetés és kommunikáció alrendszer modellje</h2>
+
+        <h3 id="anal-4-1">4.1. Statikus modell</h3>
+        <h4>4.1.1. Kapcsolatok pontosítása</h4>
+        <ul>
+            <li><strong>Foglalás – Fizetés (<code>fizetés tartozik hozzá</code>):</strong> Egy foglaláshoz legfeljebb egy véglegesített sikeres fizetés tartozik. Számosság: Foglalás <code>1</code> &ndash; Fizetés <code>0..1</code>.</li>
+            <li><strong>Foglalás – Kupon (<code>kupont használ fel</code>):</strong> Egy foglaláshoz legfeljebb egy kupon kapcsolható, míg egy kupon több foglalásnál is felhasználható. Számosság: Foglalás <code>0..*</code> &ndash; Kupon <code>0..1</code>.</li>
+            <li><strong>Foglalás – Értesítés (<code>értesítést generál</code>):</strong> Egy foglaláshoz több automatikus üzenet (visszaigazolás, emlékeztető) kapcsolódhat. Számosság: Foglalás <code>1</code> &ndash; Értesítés <code>0..*</code>.</li>
+            <li><strong>Fizetés – Számla (<code>számla készül róla</code> – tervezett):</strong> Egy sikeres fizetéshez legfeljebb egy elektronikus számla kapcsolódhat. Számosság: Fizetés <code>1</code> &ndash; Számla <code>0..1</code>.</li>
+        </ul>
+
+        <h4>4.1.2. Attribútumok azonosítása</h4>
+        <ul>
+            <li><strong>Fizetés:</strong> <code>fizetésAzonosító</code>, <code>összeg</code>, <code>fizetésiStátusz</code>, <code>tranzakcióAzonosító</code>, <code>fizetésIdőpontja</code></li>
+            <li><strong>Kupon:</strong> <code>kuponkód</code>, <code>kedvezményMértéke</code>, <code>érvényességVége</code>, <code>aktív</code></li>
+            <li><strong>Értesítés:</strong> <code>értesítésAzonosító</code>, <code>típus</code>, <code>címzett</code>, <code>küldésIdőpontja</code>, <code>küldésiStátusz</code></li>
+            <li><strong>Számla (tervezett):</strong> <code>számlaAzonosító</code>, <code>számlaszám</code>, <code>kiállításDátuma</code>, <code>összeg</code>, <code>bizonylatAdatok</code></li>
+        </ul>
+
+        <h4>4.1.3. Bázisosztályok keresése</h4>
+        <p>
+            A négy osztály eltérő üzleti felelősségi körrel rendelkezik (tranzakciókezelés, kedvezménykalkuláció, üzenetküldés, bizonylatolás), így közös bázisosztály kialakítása nem szükséges.
+        </p>
+
+        <h3 id="anal-4-2">4.2. Dinamikus modell</h3>
+        <h4>4.2.1. Bankkártyás fizetés és automatikus visszaigazolás</h4>
+        <p>
+            A rendszer átveszi a foglalási adatokat és az összeget (érvényes kupon esetén levonja a kedvezményt), majd átirányítja a vendéget a külső fizetési szolgáltató felületére. Pozitív visszaigazolás esetén a <em>Fizetés</em> sikeres állapotba lép, a foglalás véglegesül, és az <em>Értesítés</em> modul kiküldi a visszaigazoló e-mailt. Sikertelen tranzakció esetén az ideiglenes zárolás feloldódik.
+        </p>
+
+        <h4>4.2.2. A Fizetés osztály állapotdiagramja</h4>
+        <div class="diagram-box">
+            <img src="kepek/allapot_fizetes.png" alt="Fizetés osztály állapotdiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/allapot_fizetes.png]</strong><br>
+                <em>Helyezd el a Word 57. oldalán található Fizetés állapotdiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">5. ábra: A Fizetés osztály állapotdiagramja</p>
+        </div>
+
+        <h3 id="anal-4-3">4.3. Funkcionális modell</h3>
+        <ul>
+            <li><strong>4.3.1. Kuponok ellenőrzése és kedvezmények alkalmazása:</strong> Bemenet: kuponkód, eredeti összeg. Feldolgozás: létezés, aktivitás és lejárati dátum ellenőrzése, új ár számítása. Kimenet: érvényesség, kedvezmény, módosított végösszeg.</li>
+            <li><strong>4.3.2. Bankkártyás fizetés feldolgozása:</strong> Bemenet: foglalási adatok, fizetendő összeg, szolgáltatói válasz. Feldolgozás: külső tranzakció indítása (kártyaadatok tárolása nélkül), státusz rögzítése. Kimenet: fizetési státusz, tranzakcióazonosító.</li>
+            <li><strong>4.3.3. Automatikus értesítések kiküldése:</strong> Bemenet: foglalási adatok, értesítés típusa, címzett e-mail-címe. Feldolgozás: sablon összeállítása és továbbítása SMTP/e-mail szolgáltatón keresztül. Kimenet: elküldött értesítés, küldési státusz és időpont.</li>
+            <li><strong>4.3.4. Sikertelen fizetések és értesítések kezelése:</strong> Sikertelen fizetésnél a foglalási zárolás felszabadul; sikertelen e-mail-küldésnél a hiba naplózásra kerül, de a már kifizetett foglalás érvényes marad.</li>
+            <li><strong>4.3.5. Számlázási folyamat (tervezett):</strong> A későbbi továbbfejlesztés során a sikeres tranzakció adatai alapján külső számlázó API-val készül bizonylat, amelyet a <em>Számla</em> osztály tárol.</li>
+        </ul>
+
+        <h3 id="anal-4-4">4.4. Operációk azonosítása</h3>
+        <ul>
+            <li><strong>Fizetés:</strong> <code>fizetésIndítása(összeg)</code>, <code>fizetésiEredményFeldolgozása(eredmény)</code>, <code>státuszMódosítása(újStátusz)</code>, <code>fizetésiAdatokLekérdezése()</code></li>
+            <li><strong>Kupon:</strong> <code>érvényességEllenőrzése()</code>, <code>kedvezménySzámítása(eredetiÖsszeg)</code>, <code>kedvezményAlkalmazása(eredetiÖsszeg)</code></li>
+            <li><strong>Értesítés:</strong> <code>értesítésLétrehozása(típus, címzett)</code>, <code>üzenetÖsszeállítása(foglalásiAdatok)</code>, <code>értesítésKüldése()</code>, <code>küldésiStátuszMódosítása(újStátusz)</code></li>
+            <li><strong>Számla (tervezett):</strong> <code>számlaLétrehozása(fizetésiAdatok, számlázásiAdatok)</code>, <code>számlaAdatokLekérdezése()</code>, <code>bizonylatMentése(bizonylatAdatok)</code></li>
+        </ul>
+
+        <h3 id="anal-4-5">4.5. Az analízis modell osztálydiagramja</h3>
+        <div class="diagram-box">
+            <img src="kepek/analizis_fizetes.png" alt="Fizetés és kommunikáció alrendszer analízis osztálydiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/analizis_fizetes.png]</strong><br>
+                <em>Helyezd el a Word 102. oldalán található Fizetés és kommunikáció részletes osztálydiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">6. ábra: Fizetés és kommunikáció alrendszer – Analízis osztálydiagram</p>
+        </div>
+
+        <h3 id="anal-4-6">4.6. Az analízis modell osztályainak listája</h3>
+
+        <div class="class-box">
+            <h4>4.6.1. Fizetés</h4>
+            <p><strong>Felelőssége:</strong> A pénzügyi tranzakciók indítása, a fizetési szolgáltatótól érkező eredmények feldolgozása és tárolása. <strong>Együttműködők:</strong> Foglalás, Számla (tervezett).</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>fizetésAzonosító</code></td><td>Egész szám</td><td>A fizetés egyedi azonosítója.</td></tr>
+                    <tr><td><code>összeg</code></td><td>Decimális szám</td><td>A fizetendő összeg.</td></tr>
+                    <tr><td><code>fizetésiStátusz</code></td><td>Felsorolás</td><td>A fizetés aktuális állapota (Fizetés indítva, Feldolgozás alatt, Sikeres, Sikertelen).</td></tr>
+                    <tr><td><code>tranzakcióAzonosító</code></td><td>Szöveg</td><td>A külső fizetési szolgáltató által adott tranzakcióazonosító.</td></tr>
+                    <tr><td><code>fizetésIdőpontja</code></td><td>Dátum és idő</td><td>A tranzakció lezárásának időpontja.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>fizetésIndítása()</code></td><td><code>összeg</code></td><td>Kezdeményezi a bankkártyás fizetést a külső szolgáltatónál.</td></tr>
+                    <tr><td><code>fizetésiEredményFeldolgozása()</code></td><td><code>eredmény</code></td><td>Feldolgozza a fizetési kaputól érkező választ.</td></tr>
+                    <tr><td><code>státuszMódosítása()</code></td><td><code>újStátusz</code></td><td>Módosítja a fizetés aktuális állapotát.</td></tr>
+                    <tr><td><code>fizetésiAdatokLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a fizetés összegét, státuszát és tranzakcióazonosítóját.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>4.6.2. Kupon</h4>
+            <p><strong>Felelőssége:</strong> Kedvezménykódok érvényességének ellenőrzése és a kedvezmény összegének kiszámítása. <strong>Együttműködők:</strong> Foglalás.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>kuponkód</code></td><td>Szöveg</td><td>A kupon egyedi kódja.</td></tr>
+                    <tr><td><code>kedvezményMértéke</code></td><td>Decimális szám</td><td>A kedvezmény százalékos vagy fix értéke.</td></tr>
+                    <tr><td><code>érvényességVége</code></td><td>Dátum</td><td>A kupon felhasználhatóságának utolsó napja.</td></tr>
+                    <tr><td><code>aktív</code></td><td>Logikai</td><td>Jelzi, hogy a kupon jelenleg aktív-e.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>érvényességEllenőrzése()</code></td><td>Nincs</td><td>Ellenőrzi, hogy a kupon aktív-e és nem járt-e le.</td></tr>
+                    <tr><td><code>kedvezménySzámítása()</code></td><td><code>eredetiÖsszeg</code></td><td>Kiszámítja az alkalmazható kedvezmény összegét.</td></tr>
+                    <tr><td><code>kedvezményAlkalmazása()</code></td><td><code>eredetiÖsszeg</code></td><td>Meghatározza a kedvezménnyel csökkentett végösszeget.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>4.6.3. Értesítés</h4>
+            <p><strong>Felelőssége:</strong> Automatikus visszaigazoló és figyelmeztető e-mailek előállítása, továbbítása és státuszuk naplózása. <strong>Együttműködők:</strong> Foglalás, Foglalási ütközés.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>értesítésAzonosító</code></td><td>Egész szám</td><td>Az értesítés egyedi azonosítója.</td></tr>
+                    <tr><td><code>típus</code></td><td>Felsorolás</td><td>Az üzenet típusa (pl. visszaigazolás, emlékeztető, ütközésjelzés).</td></tr>
+                    <tr><td><code>címzett</code></td><td>Szöveg</td><td>A címzett e-mail-címe.</td></tr>
+                    <tr><td><code>küldésIdőpontja</code></td><td>Dátum és idő</td><td>A továbbítás időpontja.</td></tr>
+                    <tr><td><code>küldésiStátusz</code></td><td>Felsorolás</td><td>A küldés eredménye (Elküldve, Sikertelen).</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>értesítésLétrehozása()</code></td><td><code>típus, címzett</code></td><td>Létrehozza az értesítési objektumot.</td></tr>
+                    <tr><td><code>üzenetÖsszeállítása()</code></td><td><code>foglalásiAdatok</code></td><td>Kitölti az üzenetsablont a foglalás adataival.</td></tr>
+                    <tr><td><code>értesítésKüldése()</code></td><td>Nincs</td><td>Továbbítja az üzenetet az e-mail szolgáltatón keresztül.</td></tr>
+                    <tr><td><code>küldésiStátuszMódosítása()</code></td><td><code>újStátusz</code></td><td>Rögzíti a küldés sikerességét vagy hibáját.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>4.6.4. Számla (tervezett)</h4>
+            <p><strong>Felelőssége:</strong> A későbbi számlázási modul során kiállított bizonylatok adatainak nyilvántartása. <strong>Együttműködők:</strong> Fizetés.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>számlaAzonosító</code></td><td>Egész szám</td><td>A számla belső azonosítója.</td></tr>
+                    <tr><td><code>számlaszám</code></td><td>Szöveg</td><td>A kiállított bizonylat sorszáma.</td></tr>
+                    <tr><td><code>kiállításDátuma</code></td><td>Dátum</td><td>A számla kiállításának napja.</td></tr>
+                    <tr><td><code>összeg</code></td><td>Decimális szám</td><td>A számlán szereplő végösszeg.</td></tr>
+                    <tr><td><code>bizonylatAdatok</code></td><td>Összetett adat</td><td>A számlázórendszertől visszakapott metaadatok.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>számlaLétrehozása()</code></td><td><code>fizetésiAdatok, számlázásiAdatok</code></td><td>Kezdeményezi a számla kiállítását a külső számlázónál.</td></tr>
+                    <tr><td><code>számlaAdatokLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a kiállított számla adatait.</td></tr>
+                    <tr><td><code>bizonylatMentése()</code></td><td><code>bizonylatAdatok</code></td><td>Eltárolja a visszaigazolt bizonylatadatokat.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 5. NAPTÁR ÉS SZINKRONIZÁCIÓ ALRENDSZER -->
+    <section class="card" id="anal-5">
+        <h2>5. Naptár és szinkronizáció alrendszer modellje</h2>
+
+        <h3 id="anal-5-1">5.1. Statikus modell</h3>
+        <h4>5.1.1. Kapcsolatok pontosítása</h4>
+        <ul>
+            <li><strong>Vendégház – Foglalási naptár (<code>naptárral rendelkezik</code>):</strong> Minden vendégházhoz egy központi naptár tartozik. Számosság: <code>1</code> &ndash; <code>1</code>.</li>
+            <li><strong>Foglalási naptár – Foglalás (<code>nyilvántartja</code>):</strong> A központi naptár tartja nyilván a vendégház összes foglalását. Számosság: Foglalási naptár <code>1</code> &ndash; Foglalás <code>0..*</code>.</li>
+            <li><strong>Foglalási naptár – Külső naptár (<code>szinkronizálja</code>):</strong> Egy központi naptárhoz több külső platform (Booking, Airbnb) iCal-kapcsolata is tartozhat. Számosság: Foglalási naptár <code>1</code> &ndash; Külső naptár <code>0..*</code>.</li>
+            <li><strong>Foglalás – Foglalási ütközés (<code>ütközésben érintett</code>):</strong> Egy ütközési esemény legalább két átfedő foglalást érint. Számosság: Foglalás <code>2..*</code> &ndash; Foglalási ütközés <code>0..*</code>.</li>
+            <li><strong>Tulajdonos – Foglalási ütközés (<code>kezeli az ütközést</code>):</strong> Az észlelt ütközéseket a tulajdonos felügyeli és rendezi. Számosság: Tulajdonos <code>1</code> &ndash; Foglalási ütközés <code>0..*</code>.</li>
+        </ul>
+
+        <h4>5.1.2. Attribútumok azonosítása</h4>
+        <ul>
+            <li><strong>Foglalási naptár:</strong> <code>naptárAzonosító</code>, <code>foglaltIdőszakok</code>, <code>utolsóFrissítés</code></li>
+            <li><strong>Külső naptár:</strong> <code>külsőNaptárAzonosító</code>, <code>platform</code>, <code>iCalHivatkozás</code>, <code>utolsóSzinkronizáció</code>, <code>szinkronizációsStátusz</code></li>
+            <li><strong>Foglalási ütközés:</strong> <code>ütközésAzonosító</code>, <code>érintettIdőszak</code>, <code>észlelésIdőpontja</code>, <code>státusz</code></li>
+        </ul>
+
+        <h4>5.1.3. Bázisosztályok keresése</h4>
+        <p>
+            A <em>Foglalási naptár</em> a belső központi nyilvántartást, míg a <em>Külső naptár</em> az iCal-alapú külső csatornák metaadatait kezeli; eltérő feladatkörük miatt nem vezetünk be közös <em>Naptár</em> bázisosztályt.
+        </p>
+
+        <h3 id="anal-5-2">5.2. Dinamikus modell</h3>
+        <h4>5.2.1. Naptár-szinkronizáció és túlfoglalás blokkolása</h4>
+        <p>
+            Az időzített háttérfolyamat 5 percenként lekérdezi a beállított külső iCal-linkeket, és összeveti a talált foglalásokat a központi naptárral. Ha nincs átfedés, rögzíti az új foglalást és frissíti a foglaltsági adatokat. Átfedés esetén létrehoz egy <em>Foglalási ütközés</em> rekordot (<strong>„Észlelt”</strong> státusszal), zárolja az időszakot, és értesítő e-mailt küld a tulajdonosnak, aki manuálisan rendezi a konfliktust (<strong>„Rendezett”</strong> státusz).
+        </p>
+
+        <h3 id="anal-5-3">5.3. Funkcionális modell</h3>
+        <ul>
+            <li><strong>5.3.1. Szobák elérhetőségének ellenőrzése:</strong> Adott szoba és dátumintervallum ütközésvizsgálata a központi foglalt és zárolt időszakok alapján.</li>
+            <li><strong>5.3.2. Foglalási időszakok zárolása és felszabadítása:</strong> Az elérhetőség-ellenőrzés és az ideiglenes zárolás atomi műveletként fut; sikeres fizetéskor véglegessé válik, sikertelen fizetéskor felszabadul.</li>
+            <li><strong>5.3.3. Külső naptárak szinkronizációja:</strong> 5 percenkénti iCal-lekérdezés, eltérések azonosítása, központi naptár és szinkronizációs időbélyeg frissítése.</li>
+            <li><strong>5.3.4. Foglalási ütközések felismerése:</strong> Átfedés esetén <em>Foglalási ütközés</em> objektum létrehozása („Észlelt” &rarr; „Jelzett” státusz) és értesítés indítása.</li>
+            <li><strong>5.3.5. Foglalási ütközések rendezése:</strong> Tulajdonosi felülvizsgálat („Ellenőrzés alatt”), a problémás foglalás módosítása/törlése után az ütközés lezárása („Rendezett”).</li>
+            <li><strong>5.3.6. Sikertelen szinkronizáció kezelése:</strong> Külső hálózati hiba esetén az utolsó sikeres állapot megmarad, a státusz hibára vált, és a következő ciklus újra próbálkozik.</li>
+        </ul>
+
+        <h3 id="anal-5-4">5.4. Operációk azonosítása</h3>
+        <ul>
+            <li><strong>Foglalási naptár:</strong> <code>elérhetőségEllenőrzése(szoba, érkezés, távozás)</code>, <code>időszakZárolása(szoba, érkezés, távozás)</code>, <code>zárolásFeloldása(szoba, érkezés, távozás)</code>, <code>foglalásRögzítése(foglalás)</code>, <code>foglaltságiAdatokLekérdezése()</code>, <code>foglaltságiAdatokFrissítése(foglalásiAdatok)</code>, <code>ütközésEllenőrzése(foglalás)</code></li>
+            <li><strong>Külső naptár:</strong> <code>szinkronizációIndítása()</code>, <code>külsőAdatokLekérdezése()</code>, <code>foglalásokÖsszehasonlítása(központiAdatok)</code>, <code>foglaltságiAdatokTovábbítása(foglaltságiAdatok)</code>, <code>szinkronizációsStátuszMódosítása(újStátusz)</code>, <code>utolsóSzinkronizációRögzítése(időpont)</code></li>
+            <li><strong>Foglalási ütközés:</strong> <code>ütközésLétrehozása(érintettFoglalások, érintettIdőszak)</code>, <code>érintettFoglalásokLekérdezése()</code>, <code>értesítésKezdeményezése()</code>, <code>státuszMódosítása(újStátusz)</code>, <code>ütközésRendezése()</code></li>
+        </ul>
+
+        <h3 id="anal-5-5">5.5. Az analízis modell osztálydiagramja</h3>
+        <div class="diagram-box">
+            <img src="kepek/analizis_naptar.png" alt="Naptár és szinkronizáció alrendszer analízis osztálydiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/analizis_naptar.png]</strong><br>
+                <em>Helyezd el a Word 104. oldalán található Naptár és szinkronizáció részletes osztálydiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">7. ábra: Naptár és szinkronizáció alrendszer – Analízis osztálydiagram</p>
+        </div>
+
+        <h3 id="anal-5-6">5.6. Az analízis modell osztályainak listája</h3>
+
+        <div class="class-box">
+            <h4>5.6.1. Foglalási naptár</h4>
+            <p><strong>Felelőssége:</strong> A szobák foglaltsági adatainak központi nyilvántartása, elérhetőség-ellenőrzés és időszakos zárolások kezelése. <strong>Együttműködők:</strong> Vendégház, Foglalás, Külső naptár, Foglalási ütközés.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>naptárAzonosító</code></td><td>Egész szám</td><td>A központi naptár egyedi azonosítója.</td></tr>
+                    <tr><td><code>foglaltIdőszakok</code></td><td>Lista</td><td>A szobákhoz tartozó foglalt és ideiglenesen zárolt intervallumok.</td></tr>
+                    <tr><td><code>utolsóFrissítés</code></td><td>Dátum és idő</td><td>A naptáradatok utolsó módosításának időpontja.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>elérhetőségEllenőrzése()</code></td><td><code>szoba, érkezés, távozás</code></td><td>Ellenőrzi, hogy a szoba szabad-e a megadott időszakban.</td></tr>
+                    <tr><td><code>időszakZárolása()</code></td><td><code>szoba, érkezés, távozás</code></td><td>Ellenőrzi az elérhetőséget és ideiglenesen zárolja az időszakot.</td></tr>
+                    <tr><td><code>zárolásFeloldása()</code></td><td><code>szoba, érkezés, távozás</code></td><td>Sikertelen fizetés esetén feloldja az ideiglenes zárolást.</td></tr>
+                    <tr><td><code>foglalásRögzítése()</code></td><td><code>foglalás</code></td><td>Rögzíti a véglegesített vagy külső platformról átvett foglalást.</td></tr>
+                    <tr><td><code>foglaltságiAdatokLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi az aktuális foglaltsági adatokat.</td></tr>
+                    <tr><td><code>foglaltságiAdatokFrissítése()</code></td><td><code>foglalásiAdatok</code></td><td>Frissíti a központi nyilvántartást.</td></tr>
+                    <tr><td><code>ütközésEllenőrzése()</code></td><td><code>foglalás</code></td><td>Megvizsgálja, van-e átfedés ugyanazon szoba másik foglalásával.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>5.6.2. Külső naptár</h4>
+            <p><strong>Felelőssége:</strong> Külső foglalási portálok (Booking.com, Airbnb) iCal-kapcsolatainak kezelése és szinkronizálása. <strong>Együttműködők:</strong> Foglalási naptár.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>külsőNaptárAzonosító</code></td><td>Egész szám</td><td>A külső naptárkapcsolat egyedi azonosítója.</td></tr>
+                    <tr><td><code>platform</code></td><td>Szöveg</td><td>A külső szállásfoglaló oldal neve (pl. Booking, Airbnb).</td></tr>
+                    <tr><td><code>iCalHivatkozás</code></td><td>Szöveg</td><td>A szinkronizációhoz használt iCal URL-cím.</td></tr>
+                    <tr><td><code>utolsóSzinkronizáció</code></td><td>Dátum és idő</td><td>A legutóbbi sikeres adatlekérdezés időpontja.</td></tr>
+                    <tr><td><code>szinkronizációsStátusz</code></td><td>Felsorolás</td><td>A szinkronizáció állapota (Sikeres, Sikertelen).</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>szinkronizációIndítása()</code></td><td>Nincs</td><td>Elindítja a külső naptár lekérdezését.</td></tr>
+                    <tr><td><code>külsőAdatokLekérdezése()</code></td><td>Nincs</td><td>Letölti a foglalási időszakokat az iCal-hivatkozásról.</td></tr>
+                    <tr><td><code>foglalásokÖsszehasonlítása()</code></td><td><code>központiAdatok</code></td><td>Összeveti a külső adatokat a központi naptárral.</td></tr>
+                    <tr><td><code>foglaltságiAdatokTovábbítása()</code></td><td><code>foglaltságiAdatok</code></td><td>Exportálja a frissített foglaltsági adatokat a külső platformok felé.</td></tr>
+                    <tr><td><code>szinkronizációsStátuszMódosítása()</code></td><td><code>újStátusz</code></td><td>Frissíti a szinkronizáció eredményének státuszát.</td></tr>
+                    <tr><td><code>utolsóSzinkronizációRögzítése()</code></td><td><code>időpont</code></td><td>Eltárolja a sikeres szinkronizáció időbélyegét.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>5.6.3. Foglalási ütközés</h4>
+            <p><strong>Felelőssége:</strong> Párhuzamos foglalásokból eredő konfliktusok rögzítése és tulajdonosi rendezésének követése. <strong>Együttműködők:</strong> Foglalási naptár, Foglalás, Tulajdonos, Értesítés.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>ütközésAzonosító</code></td><td>Egész szám</td><td>Az ütközési esemény egyedi azonosítója.</td></tr>
+                    <tr><td><code>érintettIdőszak</code></td><td>Dátumintervallum</td><td>Az átfedő foglalások által érintett dátumtartomány.</td></tr>
+                    <tr><td><code>észlelésIdőpontja</code></td><td>Dátum és idő</td><td>A konfliktus felismerésének időpontja.</td></tr>
+                    <tr><td><code>státusz</code></td><td>Felsorolás</td><td>Az ütközés állapota (Észlelt, Jelzett, Ellenőrzés alatt, Rendezett).</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>ütközésLétrehozása()</code></td><td><code>érintettFoglalások, érintettIdőszak</code></td><td>Rögzíti a felismert foglalási konfliktust.</td></tr>
+                    <tr><td><code>érintettFoglalásokLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi az ütközésben szereplő foglalások adatait.</td></tr>
+                    <tr><td><code>értesítésKezdeményezése()</code></td><td>Nincs</td><td>Figyelmeztető értesítést kér a tulajdonos számára.</td></tr>
+                    <tr><td><code>státuszMódosítása()</code></td><td><code>újStátusz</code></td><td>Módosítja az ütközés feldolgozási állapotát.</td></tr>
+                    <tr><td><code>ütközésRendezése()</code></td><td>Nincs</td><td>Ellenőrzi a konfliktus megszűnését és lezárja az ütközést.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 6. ÜZEMELTETÉS ÉS TAKARÍTÁS ALRENDSZER -->
+    <section class="card" id="anal-6">
+        <h2>6. Üzemeltetés és takarítás alrendszer modellje</h2>
+
+        <h3 id="anal-6-1">6.1. Statikus modell</h3>
+        <h4>6.1.1. Kapcsolatok pontosítása</h4>
+        <ul>
+            <li><strong>Tulajdonos – Vendégház (<code>üzemelteti</code>):</strong> Számosság: <code>1</code> &ndash; <code>1</code>.</li>
+            <li><strong>Takarító – Takarítási feladat (<code>elvégzi</code>):</strong> Egy takarító több napi feladatot is elvégezhet. Számosság: Takarító <code>1</code> &ndash; Takarítási feladat <code>0..*</code>.</li>
+            <li><strong>Szoba – Takarítási feladat (<code>takarítást igényel</code>):</strong> Számosság: Szoba <code>1</code> &ndash; Takarítási feladat <code>0..*</code>.</li>
+            <li><strong>Takarítási feladat – Takarítási fotó (<code>fotóval igazolja</code>):</strong> A befejezett feladathoz legfeljebb egy igazoló fénykép tartozik. Számosság: Takarítási feladat <code>1</code> &ndash; Takarítási fotó <code>0..1</code>.</li>
+            <li><strong>Szoba – Hibabejelentés (<code>hibabejelentés tartozik hozzá</code>):</strong> Számosság: Szoba <code>1</code> &ndash; Hibabejelentés <code>0..*</code>.</li>
+            <li><strong>Takarító – Hibabejelentés (<code>hibát jelent be</code>):</strong> Számosság: Takarító <code>1</code> &ndash; Hibabejelentés <code>0..*</code>.</li>
+        </ul>
+
+        <h4>6.1.2. Attribútumok azonosítása</h4>
+        <ul>
+            <li><strong>Tulajdonos:</strong> <code>tulajdonosAzonosító</code>, <code>név</code>, <code>e-mail</code>, <code>telefonszám</code></li>
+            <li><strong>Takarító:</strong> <code>takarítóAzonosító</code>, <code>név</code>, <code>felhasználónév</code>, <code>e-mail</code></li>
+            <li><strong>Takarítási feladat:</strong> <code>feladatAzonosító</code>, <code>dátum</code>, <code>állapot</code>, <code>kezdésIdőpontja</code>, <code>befejezésIdőpontja</code></li>
+            <li><strong>Takarítási fotó:</strong> <code>fotóAzonosító</code>, <code>képHivatkozás</code>, <code>feltöltésIdőpontja</code></li>
+            <li><strong>Hibabejelentés:</strong> <code>hibabejelentésAzonosító</code>, <code>leírás</code>, <code>állapot</code>, <code>bejelentésIdőpontja</code></li>
+        </ul>
+
+        <h4>6.1.3. Bázisosztályok keresése</h4>
+        <p>
+            A <em>Tulajdonos</em> és <em>Takarító</em> osztályok közös belépési és személyes tulajdonságait a rendszertervezés során szerepkör alapú jogosultságkezeléssel (<em>Felhasználó</em> táblával) valósítjuk meg, ezért az analízis fázisban önálló osztályokként kezeljük őket.
+        </p>
+
+        <h3 id="anal-6-2">6.2. Dinamikus modell</h3>
+        <h4>6.2.1. Szoba státuszának frissítése mobilról</h4>
+        <p>
+            A takarító bejelentkezés után lekérdezi a napi feladatait, elindítja a kiválasztott feladatot (<strong>„Folyamatban”</strong>), majd a munka végeztével fényképet készít a szobáról. Online kapcsolat esetén a fotó feltöltődik, a feladat <strong>„Befejezett”</strong>, a szoba pedig <strong>„Tiszta”</strong> állapotba vált. Internetkimaradás esetén az adatok helyben mentődnek (<strong>„Feltöltésre vár”</strong>), és a kapcsolat helyreállásakor automatikusan szinkronizálódnak.
+        </p>
+
+        <h4>6.2.2. A Takarítási feladat osztály állapotdiagramja</h4>
+        <div class="diagram-box">
+            <img src="kepek/allapot_takaritas.png" alt="Takarítási feladat osztály állapotdiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/allapot_takaritas.png]</strong><br>
+                <em>Helyezd el a Word 89. oldalán található Takarítási feladat állapotdiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">8. ábra: A Takarítási feladat osztály állapotdiagramja</p>
+        </div>
+
+        <h3 id="anal-6-3">6.3. Funkcionális modell</h3>
+        <ul>
+            <li><strong>6.3.1. Napi takarítási feladatok lekérdezése:</strong> A bejelentkezett takarító azonosítója és az aktuális dátum alapján a napi teendők listázása.</li>
+            <li><strong>6.3.2. Takarítási feladat megkezdése:</strong> Státusz átállítása „Folyamatban” értékre és a kezdési időpont rögzítése.</li>
+            <li><strong>6.3.3. Takarítás befejezése és szobaállapot frissítése:</strong> Fénykép mentése, befejezési időpont rögzítése, feladat lezárása és a szoba „Tiszta” állapotba állítása.</li>
+            <li><strong>6.3.4. Hibabejelentések rögzítése:</strong> Szobához és takarítóhoz rendelt hibabejelentés létrehozása a feladat státuszának módosítása nélkül.</li>
+            <li><strong>6.3.5. Internetkapcsolat nélküli adatrögzítés:</strong> Helyi gyorsítótárazás („Feltöltésre vár”), majd automatikus szerveroldali szinkronizáció a hálózat visszatérésekor.</li>
+            <li><strong>6.3.6. Takarítási feladatok tulajdonosi ellenőrzése:</strong> A szobák tisztasági állapotának, az igazoló fotóknak és a hibabejelentéseknek a lekérdezése.</li>
+        </ul>
+
+        <h3 id="anal-6-4">6.4. Operációk azonosítása</h3>
+        <ul>
+            <li><strong>Tulajdonos:</strong> <code>takarításiFeladatokLekérdezése()</code>, <code>szobaÁllapotLekérdezése(szoba)</code>, <code>takarításiFotóMegtekintése(feladat)</code>, <code>hibabejelentésekLekérdezése()</code></li>
+            <li><strong>Takarító:</strong> <code>napiFeladatokLekérdezése(dátum)</code>, <code>takarításMegkezdése(feladat)</code>, <code>takarításBefejezése(feladat, fénykép)</code>, <code>hibaBejelentése(szoba, leírás)</code></li>
+            <li><strong>Takarítási feladat:</strong> <code>állapotLekérdezése()</code>, <code>takarításIndítása(időpont)</code>, <code>takarításBefejezése(időpont)</code>, <code>állapotMódosítása(újÁllapot)</code>, <code>szobaÁllapotFrissítése()</code></li>
+            <li><strong>Takarítási fotó:</strong> <code>fényképMentése(kép)</code>, <code>fényképLekérdezése()</code>, <code>feltöltésRögzítése(időpont)</code></li>
+            <li><strong>Hibabejelentés:</strong> <code>hibabejelentésLétrehozása(szoba, takarító, leírás)</code>, <code>hibabejelentésLekérdezése()</code>, <code>státuszMódosítása(újStátusz)</code>, <code>hibabejelentésLezárása()</code></li>
+        </ul>
+
+        <h3 id="anal-6-5">6.5. Az analízis modell osztálydiagramja</h3>
+        <div class="diagram-box">
+            <img src="kepek/analizis_uzemeltetes.png" alt="Üzemeltetés és takarítás alrendszer analízis osztálydiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/analizis_uzemeltetes.png]</strong><br>
+                <em>Helyezd el a Word 105. oldalán található Üzemeltetés és takarítás részletes osztálydiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">9. ábra: Üzemeltetés és takarítás alrendszer – Analízis osztálydiagram</p>
+        </div>
+
+        <h3 id="anal-6-6">6.6. Az analízis modell osztályainak listája</h3>
+
+        <div class="class-box">
+            <h4>6.6.1. Tulajdonos</h4>
+            <p><strong>Felelőssége:</strong> A vendégház napi működésének felügyelete, a takarítási feladatok, szobaállapotok, igazoló fényképek és hibabejelentések ellenőrzése. <strong>Együttműködők:</strong> Vendégház, Szoba, Takarítási feladat, Takarítási fotó, Hibabejelentés.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>tulajdonosAzonosító</code></td><td>Egész szám</td><td>A tulajdonos egyedi azonosítója.</td></tr>
+                    <tr><td><code>név</code></td><td>Szöveg</td><td>A tulajdonos teljes neve.</td></tr>
+                    <tr><td><code>e-mail</code></td><td>Szöveg</td><td>A tulajdonos kapcsolattartási e-mail-címe.</td></tr>
+                    <tr><td><code>telefonszám</code></td><td>Szöveg</td><td>A tulajdonos telefonszáma.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>takarításiFeladatokLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a vendégházhoz tartozó takarítási feladatokat.</td></tr>
+                    <tr><td><code>szobaÁllapotLekérdezése()</code></td><td><code>szoba</code></td><td>Lekérdezi a kiválasztott szoba aktuális tisztasági állapotát.</td></tr>
+                    <tr><td><code>takarításiFotóMegtekintése()</code></td><td><code>feladat</code></td><td>Megjeleníti a feladathoz feltöltött igazoló fényképet.</td></tr>
+                    <tr><td><code>hibabejelentésekLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a szobákhoz tartozó hibabejelentéseket.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>6.6.2. Takarító</h4>
+            <p><strong>Felelőssége:</strong> A napi takarítási feladatok lekérdezése, elindítása, befejezése és a hibák bejelentése. <strong>Együttműködők:</strong> Takarítási feladat, Hibabejelentés, Szoba.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>takarítóAzonosító</code></td><td>Egész szám</td><td>A takarító egyedi azonosítója.</td></tr>
+                    <tr><td><code>név</code></td><td>Szöveg</td><td>A takarító teljes neve.</td></tr>
+                    <tr><td><code>felhasználónév</code></td><td>Szöveg</td><td>A bejelentkezéshez használt felhasználónév.</td></tr>
+                    <tr><td><code>e-mail</code></td><td>Szöveg</td><td>A takarító kapcsolattartási e-mail-címe.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>napiFeladatokLekérdezése()</code></td><td><code>dátum</code></td><td>Lekérdezi a takarítóhoz rendelt napi feladatokat.</td></tr>
+                    <tr><td><code>takarításMegkezdése()</code></td><td><code>feladat</code></td><td>Elindítja a kiválasztott takarítási feladatot.</td></tr>
+                    <tr><td><code>takarításBefejezése()</code></td><td><code>feladat, fénykép</code></td><td>Lezárja a feladatot és feltölti az elkészült fényképet.</td></tr>
+                    <tr><td><code>hibaBejelentése()</code></td><td><code>szoba, leírás</code></td><td>Hibabejelentést rögzít az adott szobához.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>6.6.3. Takarítási feladat</h4>
+            <p><strong>Felelőssége:</strong> A vendégház szobáihoz kapcsolódó takarítási teendők nyilvántartása, a munkafolyamat állapotainak (Elvégzésre vár, Folyamatban, Feltöltésre vár, Befejezett) követése és a szoba tisztasági állapotának frissítése. <strong>Együttműködők:</strong> Takarító, Szoba, Takarítási fotó.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>feladatAzonosító</code></td><td>Egész szám</td><td>A takarítási feladat egyedi azonosítója.</td></tr>
+                    <tr><td><code>dátum</code></td><td>Dátum</td><td>A takarítás tervezett dátuma.</td></tr>
+                    <tr><td><code>állapot</code></td><td>Felsorolás</td><td>A feladat aktuális státusza (Elvégzésre vár, Folyamatban, Feltöltésre vár, Befejezett).</td></tr>
+                    <tr><td><code>kezdésIdőpontja</code></td><td>Dátum és idő</td><td>A munka megkezdésének pontos időpontja.</td></tr>
+                    <tr><td><code>befejezésIdőpontja</code></td><td>Dátum és idő</td><td>A munka befejezésének pontos időpontja.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>állapotLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a takarítási feladat aktuális állapotát.</td></tr>
+                    <tr><td><code>takarításIndítása()</code></td><td><code>időpont</code></td><td>Rögzíti a kezdési időpontot, és „Folyamatban” állapotra vált.</td></tr>
+                    <tr><td><code>takarításBefejezése()</code></td><td><code>időpont</code></td><td>Rögzíti a befejezés időpontját, és „Befejezett” állapotba lép.</td></tr>
+                    <tr><td><code>állapotMódosítása()</code></td><td><code>újÁllapot</code></td><td>Módosítja a feladat állapotát (pl. offline kapcsolat esetén „Feltöltésre vár”).</td></tr>
+                    <tr><td><code>szobaÁllapotFrissítése()</code></td><td>Nincs</td><td>A kapcsolódó szoba tisztasági állapotát „Tiszta” értékre állítja.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>6.6.4. Takarítási fotó</h4>
+            <p><strong>Felelőssége:</strong> A takarítás befejezése után készített igazoló fényképek elérési útvonalának és feltöltési időpontjának kezelése. <strong>Együttműködők:</strong> Takarítási feladat, Tulajdonos.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>fotóAzonosító</code></td><td>Egész szám</td><td>A fénykép egyedi azonosítója.</td></tr>
+                    <tr><td><code>képHivatkozás</code></td><td>Szöveg</td><td>A tárolt képfájl elérési útvonala vagy URL-je.</td></tr>
+                    <tr><td><code>feltöltésIdőpontja</code></td><td>Dátum és idő</td><td>A fénykép szerverre történő feltöltésének időpontja.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>fényképMentése()</code></td><td><code>kép</code></td><td>Elmenti a feltöltött képfájlt és rögzíti a hivatkozását.</td></tr>
+                    <tr><td><code>fényképLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a tárolt fénykép elérési útvonalát.</td></tr>
+                    <tr><td><code>feltöltésRögzítése()</code></td><td><code>időpont</code></td><td>Rögzíti a sikeres feltöltés időbélyegét.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="class-box">
+            <h4>6.6.5. Hibabejelentés</h4>
+            <p><strong>Felelőssége:</strong> A takarítás során észlelt műszaki meghibásodások és sérülések nyilvántartása, valamint megoldásuk követése. <strong>Együttműködők:</strong> Szoba, Takarító, Tulajdonos.</p>
+            <table>
+                <thead><tr><th>Attribútum</th><th>Típus</th><th>Leírás</th></tr></thead>
+                <tbody>
+                    <tr><td><code>hibabejelentésAzonosító</code></td><td>Egész szám</td><td>A hibabejelentés egyedi azonosítója.</td></tr>
+                    <tr><td><code>leírás</code></td><td>Szöveg</td><td>Az észlelt probléma szöveges leírása.</td></tr>
+                    <tr><td><code>állapot</code></td><td>Felsorolás</td><td>A hiba kezelésének állapota (Új, Javítás alatt, Megoldott).</td></tr>
+                    <tr><td><code>bejelentésIdőpontja</code></td><td>Dátum és idő</td><td>A hiba rögzítésének pontos időpontja.</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <thead><tr><th>Operáció</th><th>Argumentumok</th><th>Működése, feladata</th></tr></thead>
+                <tbody>
+                    <tr><td><code>hibabejelentésLétrehozása()</code></td><td><code>szoba, takarító, leírás</code></td><td>Létrehozza a hibabejelentést és hozzárendeli az érintett szobához.</td></tr>
+                    <tr><td><code>hibabejelentésLekérdezése()</code></td><td>Nincs</td><td>Lekérdezi a hibabejelentés részletes adatait.</td></tr>
+                    <tr><td><code>státuszMódosítása()</code></td><td><code>újStátusz</code></td><td>Módosítja a hiba aktuális javítási állapotát.</td></tr>
+                    <tr><td><code>hibabejelentésLezárása()</code></td><td>Nincs</td><td>A hiba elhárítása után „Megoldott” állapotba helyezi a bejelentést.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 7. MELLÉKLETEK -->
+    <section class="card" id="mellekletek">
+        <h2>7. Mellékletek – Szekvenciadiagramok</h2>
+
+        <h3>1. számú melléklet: Szobafoglalás leadása és automatikus visszaigazolás</h3>
+        <div class="diagram-box">
+            <img src="kepek/szekvencia_foglalas.png" alt="Szobafoglalás szekvenciadiagramja" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/szekvencia_foglalas.png]</strong><br>
+                <em>Helyezd el a Word 100. oldalán található szekvenciadiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">10. ábra: Szobafoglalás leadása és automatikus visszaigazolás (UML szekvenciadiagram)</p>
+        </div>
+
+        <h3>2. számú melléklet: Bankkártyás fizetés és automatikus visszaigazolás</h3>
+        <div class="diagram-box">
+            <img src="kepek/szekvencia_fizetes.png" alt="Fizetés és kommunikáció szekvenciadiagram" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/szekvencia_fizetes.png]</strong><br>
+                <em>Helyezd el a Word 101. oldalán található fizetési szekvenciadiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">11. ábra: Fizetés és kommunikáció alrendszer – Szekvenciadiagram</p>
+        </div>
+
+        <h3>3. számú melléklet: Naptár-szinkronizáció és túlfoglalás blokkolása</h3>
+        <div class="diagram-box">
+            <img src="kepek/szekvencia_naptar.png" alt="Naptár és szinkronizáció szekvenciadiagram" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/szekvencia_naptar.png]</strong><br>
+                <em>Helyezd el a Word 103. oldalán található naptár-szinkronizációs szekvenciadiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">12. ábra: Naptár és szinkronizáció alrendszer – Szekvenciadiagram</p>
+        </div>
+
+        <h3>4. számú melléklet: Szoba státuszának frissítése mobilról</h3>
+        <div class="diagram-box">
+            <img src="kepek/szekvencia_takaritas.png" alt="Üzemeltetés és takarítás szekvenciadiagram" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="diagram-fallback">
+                <strong>[Diagram helye: kepek/szekvencia_takaritas.png]</strong><br>
+                <em>Helyezd el a Word 105. oldalán található takarítási szekvenciadiagramot ezen a néven!</em>
+            </div>
+            <p class="diagram-caption">13. ábra: Üzemeltetés és takarítás alrendszer – Szekvenciadiagram</p>
+        </div>
+    </section>
+
+    <!-- Alsó navigáció -->
+    <div class="footer-nav">
+        <a href="Adatbazis_h4.html" class="nav-btn primary">&larr; Vissza a H4 főoldalra</a>
+        <a href="No-Life_Gamerek_RTERV01.html" class="nav-btn">Tovább a Rendszertervezésre &rarr;</a>
+        <a href="#top" class="nav-btn">Oldal tetejére &uarr;</a>
+    </div>
+
+</div>
+
+</body>
+</html>
