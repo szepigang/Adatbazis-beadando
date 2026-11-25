@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e8f3ea; /* Halványzöld letisztult háttér */
-            color: #111111; /* Fekete felirat a szövegnek */
+            background-color: #e8f3ea;
+            color: #111111;
             line-height: 1.65;
             padding: 25px 15px 45px 15px;
         }
@@ -24,7 +24,6 @@
             margin: 0 auto;
         }
 
-        /* Felső navigációs sáv */
         .navbar {
             background-color: #ffffff;
             border: 1px solid #c5dec9;
@@ -50,7 +49,7 @@
             padding: 8px 14px;
             border-radius: 6px;
             text-decoration: none;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #164a2a;
             background-color: #f2f9f3;
@@ -81,7 +80,6 @@
             font-weight: 700;
         }
 
-        /* Fehér kártyák */
         .card {
             background-color: #ffffff;
             border: 1px solid #c5dec9;
@@ -124,7 +122,6 @@
             color: #164a2a;
         }
 
-        /* Fő H4 aloldal kártyák */
         .h4-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -186,7 +183,6 @@
             font-size: 0.95rem;
         }
 
-        /* Kiegészítő H4 dokumentumok */
         .extra-list {
             list-style: none;
             margin-top: 10px;
@@ -213,7 +209,10 @@
 
         .footer-nav {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-top: 10px;
         }
     </style>
@@ -222,19 +221,18 @@
 
 <div class="container">
 
-    <!-- Felső navigációs sáv -->
     <nav class="navbar">
         <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
         <div class="nav-links">
-            <a href="Adatbazis_h2.html" class="nav-btn">H2 – Projekt terv &amp; Vízió</a>
+            <a href="Adatbazis_h2.html" class="nav-btn">H2 – Projektterv &amp; Vízió</a>
             <a href="Adatbazis_h3.html" class="nav-btn">H3 – SRS</a>
             <a href="Adatbazis_h4.html" class="nav-btn active">H4 – Analízis &amp; Tervezés</a>
+            <a href="Adatbazis_h5.html" class="nav-btn">H5 – Implementáció &amp; Teszt</a>
             <a href="Szotar.html" class="nav-btn">Szótár</a>
             <a href="Munkanaplo.html" class="nav-btn">Munkanapló</a>
         </div>
     </nav>
 
-    <!-- Fejléc -->
     <header class="card">
         <p class="subtitle">H4 Mérföldkő – Objektumorientált analízis és rendszertervezés</p>
         <h1>H4: A tervezési fázis dokumentumai</h1>
@@ -247,7 +245,6 @@
         </p>
     </header>
 
-    <!-- Két kötelező H4 aloldal -->
     <section class="card">
         <h2>Kötelező H4 tervezési dokumentumok</h2>
         <div class="h4-grid">
@@ -264,19 +261,18 @@
                 <span class="file-badge">No-Life_Gamerek_RTERV01.html</span>
                 <span class="h4-card-title">2. Rendszertervezés (v1.0)</span>
                 <span class="h4-card-desc">
-                    Felhasználói felületek terve, PostgreSQL adatbázis-kezelő kiválasztása, szemantikai adatmodell (ER-diagram), 19 táblás relációs adatmodell integritási szabályokkal, Repository osztályok és kivételes folyamatok kezelése.
+                    Felhasználói felületek terve, a PostgreSQL adatbázis-kezelő kiválasztása, szemantikai adatmodell (ER-diagram), 19 táblás relációs adatmodell integritási szabályokkal, adattár- (Repository) osztályok és kivételes folyamatok kezelése.
                 </span>
                 <span class="h4-card-cta">Dokumentum megnyitása &rarr;</span>
             </a>
         </div>
     </section>
 
-    <!-- H4-hez tartozó kiegészítő dokumentumok -->
     <section class="card">
         <h2>Kapcsolódó H4 kiegészítő dokumentumok</h2>
         <ul class="extra-list">
             <li>
-                <a href="Szotar.html">3. Bővített Fogalomtár (Szótár)</a> – Az analízis és rendszertervezés során bevezetett új szakkifejezésekkel kiegészített szójegyzék.
+                <a href="Szotar.html">3. Bővített fogalomtár (Szótár)</a> – Az analízis és rendszertervezés során bevezetett új szakkifejezésekkel kiegészített szójegyzék.
             </li>
             <li>
                 <a href="Adatbazis_h3.html#manual">4. Felhasználói dokumentáció</a> – A specifikációs és tervezési fázisnak megfelelően frissített felhasználói kézikönyv.
@@ -287,9 +283,9 @@
         </ul>
     </section>
 
-    <!-- Alsó navigáció -->
     <div class="footer-nav">
         <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
+        <a href="Adatbazis_h5.html" class="nav-btn">Tovább a H5 dokumentumhoz &rarr;</a>
     </div>
 
 </div>

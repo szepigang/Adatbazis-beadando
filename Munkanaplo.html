@@ -17,18 +17,17 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e8f3ea; /* Halványzöld letisztult háttér */
-            color: #111111; /* Fekete felirat a szövegnek */
+            background-color: #e8f3ea;
+            color: #111111;
             line-height: 1.65;
             padding: 25px 15px 45px 15px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        /* Felső navigációs sáv */
         .navbar {
             background-color: #ffffff;
             border: 1px solid #c5dec9;
@@ -85,7 +84,6 @@
             font-weight: 700;
         }
 
-        /* Fehér kártyák */
         .card {
             background-color: #ffffff;
             border: 1px solid #c5dec9;
@@ -95,7 +93,6 @@
             box-shadow: 0 4px 12px rgba(20, 61, 36, 0.07);
         }
 
-        /* Címsorok: félkövér, sötétzöld, enyhén árnyalt felirat */
         h1 {
             color: #123b22;
             font-size: 1.9rem;
@@ -129,40 +126,25 @@
             color: #164a2a;
         }
 
-        /* Összesítő kártyák */
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 14px;
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #e3efe5;
         }
 
-        .summary-box {
+        .meta-badge {
             background-color: #f3f9f4;
             border: 1px solid #cce2d0;
-            border-left: 5px solid #1b5e36;
-            border-radius: 8px;
-            padding: 14px 16px;
+            padding: 5px 13px;
+            border-radius: 6px;
+            font-size: 0.92rem;
         }
 
-        .summary-label {
-            display: block;
-            font-size: 0.85rem;
-            color: #1f6339;
-            font-weight: 600;
-        }
-
-        .summary-value {
-            display: block;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #123b22;
-            margin-top: 2px;
-        }
-
-        /* Munkanapló táblázat */
-        .table-wrapper {
-            overflow-x: auto;
+        .meta-badge strong {
+            color: #164a2a;
         }
 
         table {
@@ -174,16 +156,15 @@
 
         th, td {
             border: 1px solid #cce2d0;
-            padding: 12px 13px;
+            padding: 11px 14px;
             text-align: left;
             vertical-align: top;
         }
 
         th {
-            background-color: #164a2a;
-            color: #ffffff;
+            background-color: #f1f8f2;
+            color: #123b22;
             font-weight: 700;
-            white-space: nowrap;
         }
 
         tr:nth-child(even) td {
@@ -191,45 +172,31 @@
         }
 
         tr:hover td {
-            background-color: #f1f9f3;
+            background-color: #f2faf3;
         }
 
-        .col-kezdet {
-            width: 15%;
-            white-space: nowrap;
-            font-weight: 600;
-            color: #123b22;
-        }
-
-        .col-ido {
-            width: 11%;
-            text-align: center;
-            font-weight: 700;
-            color: #164a2a;
-        }
-
-        .col-resztvevok {
-            width: 22%;
-        }
-
-        .col-tevekenyseg {
-            width: 27%;
-        }
-
-        .col-eredmeny {
-            width: 25%;
-        }
-
-        .phase-badge {
+        .milestone-badge {
             display: inline-block;
             background-color: #e2f2e5;
             color: #123b22;
             border: 1px solid #b8d8be;
-            font-size: 0.78rem;
+            padding: 2px 9px;
+            border-radius: 5px;
             font-weight: 700;
-            padding: 1px 7px;
-            border-radius: 4px;
-            margin-bottom: 4px;
+            font-size: 0.84rem;
+            white-space: nowrap;
+        }
+
+        .status-done {
+            display: inline-block;
+            background-color: #d4ebd8;
+            color: #123b22;
+            border: 1px solid #8ec298;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
         }
 
         .footer-nav {
@@ -246,162 +213,159 @@
 
 <div class="container" id="top">
 
-    <!-- Felső navigációs sáv -->
     <nav class="navbar">
         <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
         <div class="nav-links">
-            <a href="Adatbazis_h2.html" class="nav-btn">H2 – Projekt terv &amp; Vízió</a>
+            <a href="Adatbazis_h2.html" class="nav-btn">H2 – Projektterv &amp; Vízió</a>
             <a href="Adatbazis_h3.html" class="nav-btn">H3 – SRS</a>
             <a href="Adatbazis_h4.html" class="nav-btn">H4 – Analízis &amp; Tervezés</a>
+            <a href="Adatbazis_h5.html" class="nav-btn">H5 – Implementáció &amp; Teszt</a>
             <a href="Szotar.html" class="nav-btn">Szótár</a>
             <a href="Munkanaplo.html" class="nav-btn active">Munkanapló</a>
         </div>
     </nav>
 
-    <!-- Fejléc -->
     <header class="card">
-        <p class="subtitle">Miskolci Egyetem GÉIK &bull; Szoftvertechnológia / Adatbázis</p>
+        <p class="subtitle">Miskolci Egyetem GÉIK &bull; Szoftvertechnológia (Adatbázis-tervezéssel)</p>
         <h1>Projekt Munkanapló</h1>
         <p>
-            <strong>Projekt címe:</strong> Automatizált vendégház-menedzsment és kommunikációs rendszer<br>
-            <strong>Csapat neve:</strong> No-Life Gamerek &bull; <strong>Gyakorlatvezető:</strong> Sátán Ádám
+            <strong>Projekt címe:</strong> Automatizált vendégház-menedzsment és kommunikációs rendszer (Ácsingozó Vendégház)<br>
+            Jelen munkanapló időrendi sorrendben rögzíti a csapattagok által a H1–H5 mérföldkövek során elvégzett tervezési, dokumentációs, adatbázis-modellezési és fejlesztési feladatokat.
         </p>
-
-        <div class="summary-grid">
-            <div class="summary-box">
-                <span class="summary-label">Csapattagok létszáma</span>
-                <span class="summary-value">5 fő</span>
-            </div>
-            <div class="summary-box">
-                <span class="summary-label">Dokumentált mérföldkövek</span>
-                <span class="summary-value">H1 – H4</span>
-            </div>
-            <div class="summary-box">
-                <span class="summary-label">Rögzített munkaalkalmak</span>
-                <span class="summary-value">11 alkalom</span>
-            </div>
-            <div class="summary-box">
-                <span class="summary-label">Összesített ráfordítás</span>
-                <span class="summary-value">32,5 óra</span>
-            </div>
+        <div class="meta-row">
+            <div class="meta-badge"><strong>Csapat neve:</strong> No-Life Gamerek</div>
+            <div class="meta-badge"><strong>Gyakorlatvezető:</strong> Sátán Ádám</div>
+            <div class="meta-badge"><strong>Időszak:</strong> 2026. szeptember – december</div>
         </div>
     </header>
 
-    <!-- Munkanapló táblázat -->
     <section class="card">
-        <h2>Elvégzett munkák és egyeztetések nyilvántartása</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Kezdet</th>
-                        <th style="text-align: center;">Időtartam (óra)</th>
-                        <th>Résztvevők</th>
-                        <th>Tevékenység</th>
-                        <th>Eredmény</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- H1 fázis -->
-                    <tr>
-                        <td class="col-kezdet">2026. 09. 21. 16:00</td>
-                        <td class="col-ido">2,0</td>
-                        <td class="col-resztvevok">Lemák Marcell, Németh Donát, Szepesi János, Zádori Balázs, Zelei Zsombor</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H1</span> Csapat megalakulása, témaválasztás, a vendégház-menedzsment rendszer alapkoncepciójának és kommunikációs csatornáinak meghatározása.</td>
-                        <td class="col-eredmeny">Véglegesített téma, GitHub repozitórium és közös munkakörnyezet létrehozása.</td>
-                    </tr>
-
-                    <!-- H2 fázis -->
-                    <tr>
-                        <td class="col-kezdet">2026. 10. 02. 17:30</td>
-                        <td class="col-ido">3,0</td>
-                        <td class="col-resztvevok">Lemák Marcell, Szepesi János, Zelei Zsombor</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H2</span> Üzleti probléma megfogalmazása, érintettek és felhasználói profilok (vendég, tulajdonos, takarító) elemzése, RUP ütemterv összeállítása.</td>
-                        <td class="col-eredmeny">Elkészült a Projekt terv és a Vízió dokumentum 1–3. fejezete.</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 10. 10. 15:00</td>
-                        <td class="col-ido">3,5</td>
-                        <td class="col-resztvevok">Németh Donát, Zádori Balázs, Szepesi János</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H2</span> A végtermék szolgáltatásainak priorizálása MoSCoW módszerrel, minőségi elvárások, jogi korlátozások (GDPR, NTAK) és kockázatlista kidolgozása.</td>
-                        <td class="col-eredmeny">Teljes Vízió dokumentum (4–9. fejezetek) és a Szótár első verziójának lezárása.</td>
-                    </tr>
-
-                    <!-- H3 fázis -->
-                    <tr>
-                        <td class="col-kezdet">2026. 10. 24. 16:30</td>
-                        <td class="col-ido">3,0</td>
-                        <td class="col-resztvevok">Lemák Marcell, Németh Donát, Zádori Balázs</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H3</span> Funkcionális és nem-funkcionális követelmények összegyűjtése, rendszer szintű Use Case diagram és a fő használati esetek (foglalás, mobil takarítás, iCal szinkronizáció) megtervezése.</td>
-                        <td class="col-eredmeny">Elkészült az SRS dokumentum és a részletes Use Case táblázatok.</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 04. 18:00</td>
-                        <td class="col-ido">2,5</td>
-                        <td class="col-resztvevok">Szepesi János, Zelei Zsombor</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H3</span> Felhasználói dokumentáció megírása a vendégek, a tulajdonos és a takarító személyzet felületeihez, valamint a Szótár kiemelése önálló dokumentumba.</td>
-                        <td class="col-eredmeny">Elkészült a Felhasználói kézikönyv és a különálló Szótár v1.1 verziója.</td>
-                    </tr>
-
-                    <!-- H4 fázis -->
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 10. 16:00</td>
-                        <td class="col-ido">3,5</td>
-                        <td class="col-resztvevok">Lemák Marcell, Németh Donát, Szepesi János, Zádori Balázs, Zelei Zsombor</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H4</span> Kezdeti osztálydiagram megalkotása, az osztályok azonosítása és a rendszer felosztása négy funkcionális alrendszerre (Foglaláskezelés, Fizetés, Naptár, Üzemeltetés).</td>
-                        <td class="col-eredmeny">Kezdeti osztálydiagram és UML csomagdiagram az alrendszerek kapcsolatairól.</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 14. 14:00</td>
-                        <td class="col-ido">4,0</td>
-                        <td class="col-resztvevok">Lemák Marcell, Zelei Zsombor</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H4</span> A Foglaláskezelés és a Fizetés-kommunikáció alrendszerek statikus, dinamikus és funkcionális modelljének kidolgozása, állapot- és szekvenciadiagramok készítése.</td>
-                        <td class="col-eredmeny">Analízis modell 3. és 4. fejezetének osztálytáblázatai és UML diagramjai.</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 17. 17:00</td>
-                        <td class="col-ido">4,0</td>
-                        <td class="col-resztvevok">Németh Donát, Zádori Balázs</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H4</span> A Naptár-szinkronizáció és az Üzemeltetés-takarítás alrendszerek modellezése, offline takarítói szinkronizáció állapotdiagramjának és operációinak kidolgozása.</td>
-                        <td class="col-eredmeny">Analízis modell 5. és 6. fejezetének teljes kidolgozása és szekvenciadiagramjai.</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 20. 16:30</td>
-                        <td class="col-ido">3,5</td>
-                        <td class="col-resztvevok">Szepesi János, Lemák Marcell, Németh Donát</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H4</span> Rendszertervezés: PostgreSQL adatbázis-kezelő kiválasztása, szemantikai ER-diagram, 19 táblás relációs adatmodell, Repository osztályok és kivételes folyamatok tervezése.</td>
-                        <td class="col-eredmeny">Teljes Rendszertervezési dokumentáció (UI terv, ER-diagram, relációs sémák, hibakezelés).</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 23. 18:00</td>
-                        <td class="col-ido">2,0</td>
-                        <td class="col-resztvevok">Szepesi János, Zádori Balázs</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H4</span> A dokumentációk átültetése szabványos HTML-oldalakra (<code>index.html</code>, <code>No-Life_Gamerek_ANAL01.html</code>, <code>No-Life_Gamerek_RTERV01.html</code>, <code>Szotar.html</code>) és egységesítése.</td>
-                        <td class="col-eredmeny">Navigálható, egységes megjelenésű HTML dokumentációs portál előkészítése GitHub Pages-re.</td>
-                    </tr>
-                    <tr>
-                        <td class="col-kezdet">2026. 11. 24. 20:00</td>
-                        <td class="col-ido">1,5</td>
-                        <td class="col-resztvevok">Lemák Marcell, Németh Donát, Szepesi János, Zádori Balázs, Zelei Zsombor</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H4</span> Közös átnézés, a félbeszakadt osztályleírások pótlása, a szótár kibővítése a H4 fogalmaival és a Munkanapló véglegesítése.</td>
-                        <td class="col-eredmeny">Leadásra kész H4 dokumentációs csomag.</td>
-                    </tr>
-
-                    <!-- Új sor minta (PyCharmban másolható):
-                    <tr>
-                        <td class="col-kezdet">2026. 12. 02. 17:00</td>
-                        <td class="col-ido">3,0</td>
-                        <td class="col-resztvevok">Szepesi János, Lemák Marcell</td>
-                        <td class="col-tevekenyseg"><span class="phase-badge">H5</span> Az elvégzett feladat leírása...</td>
-                        <td class="col-eredmeny">Az elkészült eredmény megnevezése...</td>
-                    </tr>
-                    -->
-                </tbody>
-            </table>
-        </div>
+        <h2>Időrendi tevékenységnapló (H1–H5)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dátum</th>
+                    <th>Mérföldkő</th>
+                    <th>Elvégzett feladat leírása</th>
+                    <th>Felelős(ök)</th>
+                    <th>Állapot</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2026. 09. 14.</td>
+                    <td><span class="milestone-badge">H1</span></td>
+                    <td>A projektcsapat (No-Life Gamerek) megalakulása, a témaválasztás (Ácsingozó Vendégház-menedzsment rendszer) véglegesítése és az agilis munkamegosztás kialakítása.</td>
+                    <td>Teljes csapat</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 09. 21.</td>
+                    <td><span class="milestone-badge">H1</span></td>
+                    <td>Központi GitHub-repozitórium és GitHub Pages webtárhely létrehozása, a főoldal (<code>index.html</code>) alapstruktúrájának és egységes arculatának elkészítése.</td>
+                    <td>Szepesi János, Lemák Marcell</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 10. 04.</td>
+                    <td><span class="milestone-badge">H2</span></td>
+                    <td>Üzleti célok, problémamegfogalmazás, érintettek és felhasználói profilok felmérése; a Projektterv fejezeteinek és a RUP-ütemezésnek a kidolgozása.</td>
+                    <td>Németh Donát, Zelei Zsombor</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 10. 12.</td>
+                    <td><span class="milestone-badge">H2</span></td>
+                    <td>A Víziódokumentum (MoSCoW prioritások, költségbecslés, minőségi elvárások és kockázatlista) véglegesítése és HTML-formátumban történő publikálása (<code>Adatbazis_h2.html</code>).</td>
+                    <td>Zádori Balázs, Szepesi János</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 10. 28.</td>
+                    <td><span class="milestone-badge">H3</span></td>
+                    <td>A rendszer funkcionális és nem-funkcionális követelményeinek részletezése, a használatieset-diagram (Use Case) és a három fő használati eset kidolgozása.</td>
+                    <td>Lemák Marcell, Németh Donát</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 11. 05.</td>
+                    <td><span class="milestone-badge">H3</span></td>
+                    <td>A Felhasználói kézikönyv (vendég, tulajdonos és takarító nézetek leírása) elkészítése, valamint a Fogalomtár (<code>Szotar.html</code>) kiemelése önálló dokumentumba (<code>Adatbazis_h3.html</code>).</td>
+                    <td>Zelei Zsombor, Zádori Balázs</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 11. 14.</td>
+                    <td><span class="milestone-badge">H4</span></td>
+                    <td>Objektumorientált analízis modell (<code>No-Life_Gamerek_ANAL01.html</code>): kezdeti osztálydiagram elkészítése, a rendszer négy alrendszerre bontása, állapot- és szekvenciadiagramok kidolgozása.</td>
+                    <td>Lemák Marcell, Szepesi János, Németh Donát</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 11. 21.</td>
+                    <td><span class="milestone-badge">H4</span></td>
+                    <td>Rendszertervezési dokumentáció (<code>No-Life_Gamerek_RTERV01.html</code>): négyrétegű szerverarchitektúra, három felhasználói képernyő drótváza, 19 táblás 3NF PostgreSQL adatbázismodell és C# Repository interfészek megtervezése.</td>
+                    <td>Szepesi János, Zelei Zsombor, Zádori Balázs</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 11. 25.</td>
+                    <td><span class="milestone-badge">H4–H5</span></td>
+                    <td>Az összes HTML-dokumentum nyelvi, helyesírási és hivatkozási felülvizsgálata, a Munkanapló és a Szótár frissítése, felkészülés a H5 kódváz és tesztelési dokumentáció átadására.</td>
+                    <td>Teljes csapat</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+                <tr>
+                    <td>2026. 12. 04.</td>
+                    <td><span class="milestone-badge">H5</span></td>
+                    <td>C# / ASP.NET Core kódváz (skeleton) implementálása, egység- és integrációs tesztelési terv elkészítése (<code>Adatbazis_h5.html</code>), valamint a végső rendszerbemutató (demó) lebonyolítása.</td>
+                    <td>Teljes csapat</td>
+                    <td><span class="status-done">Kész</span></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
-    <!-- Alsó navigáció -->
+    <section class="card">
+        <h2>Csapattagok összefoglaló szerepvállalása</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Csapattag</th>
+                    <th>Neptun-kód</th>
+                    <th>Főbb hozzájárulási területek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Lemák Marcell</strong></td>
+                    <td>XLF80Z</td>
+                    <td>Használatieset-modellezés, foglaláskezelési és naptárszinkronizációs analízis, szekvenciadiagramok.</td>
+                </tr>
+                <tr>
+                    <td><strong>Németh Donát</strong></td>
+                    <td>QRKG6U</td>
+                    <td>Projektterv, üzleti folyamatok elemzése, állapotdiagramok és tesztelési forgatókönyvek kidolgozása.</td>
+                </tr>
+                <tr>
+                    <td><strong>Zelei Zsombor</strong></td>
+                    <td>EFULOO</td>
+                    <td>Víziódokumentum, felhasználói kézikönyv, UI drótvázak és foglalási munkafolyamatok tervezése.</td>
+                </tr>
+                <tr>
+                    <td><strong>Szepesi János</strong></td>
+                    <td>VKH6O2</td>
+                    <td>PostgreSQL relációs adatbázis-tervezés (3NF), C# / ASP.NET Core architektúra, Repository interfészek és HTML-publikáció.</td>
+                </tr>
+                <tr>
+                    <td><strong>Zádori Balázs</strong></td>
+                    <td>Q16XMD</td>
+                    <td>Követelményspecifikáció (SRS), kockázatelemzés, üzemeltetési és takarítói alrendszer tervezése, fogalomtár.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
     <div class="footer-nav">
         <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
         <a href="#top" class="nav-btn">Ugrás az oldal tetejére &uarr;</a>

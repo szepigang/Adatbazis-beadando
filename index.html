@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e8f3ea; /* Halványzöld letisztult háttér */
-            color: #111111; /* Fekete felirat a szövegnek */
+            background-color: #e8f3ea;
+            color: #111111;
             line-height: 1.6;
             padding: 30px 15px;
         }
@@ -24,7 +24,6 @@
             margin: 0 auto;
         }
 
-        /* Fehér kártyák a feliratoknak és tartalmaknak */
         .card {
             background-color: #ffffff;
             border: 1px solid #c5dec9;
@@ -34,7 +33,6 @@
             box-shadow: 0 4px 12px rgba(20, 61, 36, 0.07);
         }
 
-        /* Címsorok: félkövér, sötétzöld, enyhén árnyalt felirat */
         h1 {
             color: #123b22;
             font-size: 2rem;
@@ -54,7 +52,7 @@
         }
 
         .subtitle {
-            color: #1f6339; /* Sötétzöld kiemelt felirat */
+            color: #1f6339;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 16px;
@@ -81,7 +79,6 @@
             color: #164a2a;
         }
 
-        /* Dokumentum hivatkozások rácsa */
         .doc-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -121,7 +118,6 @@
             color: #222222;
         }
 
-        /* Csapattagok táblázat */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -167,43 +163,41 @@
 
 <div class="container">
 
-    <!-- Fejléc / Projekt adatok -->
     <header class="card">
         <p class="subtitle">Miskolci Egyetem – Gépészmérnöki és Informatikai Kar (GÉIK)</p>
         <h1>Automatizált vendégház-menedzsment és kommunikációs rendszer</h1>
         <p>
             Felhőalapú szálláshely-kezelő és automatizált kommunikációs rendszer tervezési és fejlesztési dokumentációja.
-            A szoftver célja a magánszálláshelyek foglalásainak, külső naptár-szinkronizációjának és a takarítói feladatok nyomon követésének központosítása.
+            A szoftver célja a magánszálláshelyek foglalásainak, a külső naptárak szinkronizációjának és a takarítói feladatok nyomon követésének központosítása.
         </p>
         <div class="meta-info">
             <div class="meta-badge"><strong>Csapat neve:</strong> No-Life Gamerek</div>
             <div class="meta-badge"><strong>Gyakorlatvezető:</strong> Sátán Ádám</div>
-            <div class="meta-badge"><strong>Tantárgy:</strong> Szoftvertechnológia / Adatbázis</div>
+            <div class="meta-badge"><strong>Tantárgy:</strong> Szoftvertechnológia (Adatbázis-tervezéssel)</div>
         </div>
     </header>
 
-    <!-- Dokumentumok / Aloldalak hivatkozásai -->
     <section class="card">
         <h2>Projekt dokumentációk és mérföldkövek</h2>
         <div class="doc-grid">
             <a href="Adatbazis_h2.html" class="doc-link">
-                <span class="doc-title">H2 – Projekt terv és Vízió</span>
-                <span class="doc-desc">Projekt ütemezés, üzleti célok, érintettek, funkcionális és minőségi elvárások.</span>
+                <span class="doc-title">H2 – Projektterv és Vízió</span>
+                <span class="doc-desc">Projektütemezés, üzleti célok, érintettek, funkcionális és minőségi elvárások.</span>
             </a>
 
             <a href="Adatbazis_h3.html" class="doc-link">
-                <span class="doc-title">H3 – Követelmény specifikáció (SRS)</span>
-                <span class="doc-desc">Rendszerfunkciók, Use Case diagram, részletes használati esetek és felhasználói kézikönyv.</span>
+                <span class="doc-title">H3 – Követelményspecifikáció (SRS)</span>
+                <span class="doc-desc">Rendszerfunkciók, használatieset-diagram (Use Case), részletes használati esetek és felhasználói kézikönyv.</span>
             </a>
 
             <a href="Adatbazis_h4.html" class="doc-link">
                 <span class="doc-title">H4 – Analízis és Rendszertervezés</span>
-                <span class="doc-desc">Alrendszerek, UML osztály- és szekvenciadiagramok, ER- és relációs adatmodell.</span>
+                <span class="doc-desc">Alrendszerek, UML osztály- és szekvenciadiagramok, egyed-kapcsolat (ER) és relációs adatmodell.</span>
             </a>
 
-             <a href="Adatbazis_h5.html" class="doc-link">
+            <a href="Adatbazis_h5.html" class="doc-link">
                 <span class="doc-title">H5 – Objektumtervezés, Kódváz és Tesztelés</span>
-                <span class="doc-desc">Vezérlési architektúra, C# / ASP.NET Core skeleton kódváz és részletes tesztelési terv.</span>
+                <span class="doc-desc">Vezérlési architektúra, C# / ASP.NET Core kódváz (skeleton) és részletes tesztelési terv.</span>
             </a>
 
             <a href="Szotar.html" class="doc-link">
@@ -215,11 +209,9 @@
                 <span class="doc-title">Munkanapló</span>
                 <span class="doc-desc">A csapattagok által elvégzett feladatok, egyeztetések és mérföldkövek időrendi naplója.</span>
             </a>
-
         </div>
     </section>
 
-    <!-- Csapattagok táblázata -->
     <section class="card">
         <h2>Csapattagok – No-Life Gamerek</h2>
         <table>
@@ -228,7 +220,7 @@
                     <th>Név</th>
                     <th>Kar</th>
                     <th>Neptun-kód</th>
-                    <th>E-mail cím</th>
+                    <th>E-mail-cím</th>
                 </tr>
             </thead>
             <tbody>
