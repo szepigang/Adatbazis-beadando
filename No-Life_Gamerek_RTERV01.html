@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendszertervezési dokumentáció (RTERV01) | No-Life Gamerek</title>
+    <title>RTERV01 – Rendszertervezés | No-Life Gamerek</title>
     <style>
         * {
             box-sizing: border-box;
@@ -90,14 +90,14 @@
             background-color: #ffffff;
             border: 1px solid #c5dec9;
             border-radius: 10px;
-            padding: 30px 36px;
+            padding: 28px 34px;
             margin-bottom: 24px;
             box-shadow: 0 4px 12px rgba(20, 61, 36, 0.07);
         }
 
         h1 {
             color: #123b22;
-            font-size: 1.92rem;
+            font-size: 1.9rem;
             font-weight: 800;
             text-shadow: 1px 1px 2px rgba(18, 59, 34, 0.15);
             margin-bottom: 8px;
@@ -170,10 +170,14 @@
             font-size: 0.92rem;
         }
 
+        .meta-badge strong {
+            color: #164a2a;
+        }
+
         /* Tartalomjegyzék */
         .toc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 16px;
         }
 
@@ -234,218 +238,119 @@
         }
 
         code {
-            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-family: Consolas, Monaco, monospace;
             background-color: #eef7f0;
             padding: 2px 5px;
             border-radius: 4px;
             color: #123b22;
-            font-size: 0.9em;
+            font-size: 0.89em;
         }
 
         pre {
-            background-color: #16261c;
-            color: #eaf5ed;
-            padding: 16px 20px;
-            border-radius: 8px;
+            background-color: #f4faf5;
+            border: 1px solid #cbe3cf;
+            border-left: 4px solid #1b5e36;
+            border-radius: 6px;
+            padding: 14px 16px;
             overflow-x: auto;
-            font-family: Consolas, Monaco, 'Courier New', monospace;
-            font-size: 0.87rem;
-            line-height: 1.52;
-            margin: 10px 0 20px 0;
-            border: 1px solid #2b4d37;
-        }
-
-        pre .kw { color: #7ee787; font-weight: bold; }
-        pre .type { color: #79c0ff; }
-        pre .cmt { color: #8b949e; font-style: italic; }
-
-        /* DRÓTVÁZAK (MOCKUP / WIREFRAME) STÍLUSOK */
-        .mockup-frame {
-            border: 2px solid #9ec4a6;
-            border-radius: 10px;
-            background-color: #f8fbf9;
-            margin: 16px 0 26px 0;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(18, 59, 34, 0.08);
-        }
-
-        .mockup-browser-bar {
-            background-color: #dcebe0;
-            padding: 8px 14px;
-            border-bottom: 1px solid #b8d6be;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.88rem;
+            line-height: 1.5;
             color: #123b22;
-            font-weight: 600;
+            margin: 12px 0 18px 0;
         }
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            background-color: #7aa885;
-        }
-
-        .mockup-url {
-            background-color: #ffffff;
-            border: 1px solid #b8d6be;
-            border-radius: 4px;
-            padding: 2px 10px;
-            margin-left: 8px;
-            font-family: Consolas, monospace;
-            font-size: 0.8rem;
-            color: #333333;
-            flex: 1;
-        }
-
-        .mockup-body {
+        /* Diagram doboz */
+        .diagram-box {
+            background-color: #f8fcf9;
+            border: 1px solid #cbe3cf;
+            border-radius: 8px;
             padding: 18px;
+            margin: 18px 0 22px 0;
+            text-align: center;
         }
 
-        .wf-topbar {
+        .diagram-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 6px;
+            border: 1px solid #c3dcc8;
+            background-color: #ffffff;
+            box-shadow: 0 3px 10px rgba(20, 61, 36, 0.08);
+        }
+
+        .diagram-caption {
+            margin-top: 12px;
+            margin-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+            color: #164a2a;
+            font-size: 0.95rem;
+        }
+
+        /* Drótvázas képernyőtervek */
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+            margin: 14px 0 10px 0;
+        }
+
+        .wireframe-card {
+            background-color: #f9fcfa;
+            border: 2px dashed #9fc5a6;
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+
+        .wireframe-header {
             background-color: #164a2a;
             color: #ffffff;
-            padding: 10px 16px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-            font-size: 0.9rem;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            margin-bottom: 12px;
         }
 
-        .wf-searchbar {
+        .wf-block {
             background-color: #ffffff;
-            border: 1px dashed #6fa17b;
-            border-radius: 6px;
-            padding: 12px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        .wf-input {
-            border: 1px solid #b8d6be;
-            background-color: #f3f9f4;
-            padding: 6px 10px;
-            border-radius: 4px;
-            font-size: 0.84rem;
+            border: 1px solid #cbe3cf;
+            border-radius: 5px;
+            padding: 9px 11px;
+            margin-bottom: 9px;
+            font-size: 0.88rem;
         }
 
         .wf-btn {
+            display: inline-block;
             background-color: #1b5e36;
             color: #ffffff;
-            padding: 7px 12px;
+            padding: 5px 11px;
             border-radius: 4px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 0.84rem;
-        }
-
-        .wf-btn.secondary {
-            background-color: #eef7f0;
-            color: #123b22;
-            border: 1px solid #9ec4a6;
-        }
-
-        .wf-grid-2 {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            gap: 14px;
-        }
-
-        .wf-panel {
-            background-color: #ffffff;
-            border: 1px solid #c5dec9;
-            border-radius: 6px;
-            padding: 12px 14px;
-            font-size: 0.86rem;
-        }
-
-        .wf-room-item {
-            border: 1px solid #dcebe0;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .wf-kpi-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .wf-kpi {
-            background-color: #ffffff;
-            border: 1px solid #c5dec9;
-            border-left: 4px solid #164a2a;
-            padding: 8px 10px;
-            border-radius: 5px;
             font-size: 0.82rem;
-        }
-
-        .wf-alert {
-            background-color: #fff4e5;
-            border: 1px solid #f0c36d;
-            color: #663c00;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.84rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .mobile-shell {
-            max-width: 380px;
-            margin: 16px auto 26px auto;
-            border: 3px solid #164a2a;
-            border-radius: 22px;
-            background-color: #f8fbf9;
-            overflow: hidden;
-            box-shadow: 0 6px 16px rgba(18, 59, 34, 0.12);
-        }
-
-        .mobile-notch {
-            background-color: #164a2a;
-            color: #ffffff;
-            text-align: center;
-            padding: 8px 12px;
-            font-size: 0.85rem;
             font-weight: 700;
+            margin-top: 4px;
         }
 
-        .mobile-body {
-            padding: 14px;
-            font-size: 0.86rem;
-        }
-
-        .status-pill {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.76rem;
+        .pk-tag {
+            background-color: #d4ebd8;
+            color: #123b22;
+            padding: 1px 5px;
+            border-radius: 4px;
             font-weight: 700;
+            font-size: 0.8em;
         }
 
-        .status-wait { background-color: #fff3cd; color: #7a5200; border: 1px solid #e6c86e; }
-        .status-clean { background-color: #d4ebd8; color: #123b22; border: 1px solid #8ec298; }
-
-        .caption-center {
-            text-align: center;
-            font-size: 0.91rem;
+        .fk-tag {
+            background-color: #e8f4fa;
+            color: #134663;
+            padding: 1px 5px;
+            border-radius: 4px;
             font-weight: 700;
-            color: #164a2a;
-            margin-top: -14px;
-            margin-bottom: 22px;
+            font-size: 0.8em;
         }
 
         .footer-nav {
@@ -456,11 +361,6 @@
             gap: 12px;
             margin-top: 10px;
         }
-
-        @media (max-width: 720px) {
-            .wf-grid-2 { grid-template-columns: 1fr; }
-            .wf-kpi-row { grid-template-columns: repeat(2, 1fr); }
-        }
     </style>
 </head>
 <body>
@@ -469,31 +369,31 @@
 
     <!-- Felső navigációs sáv -->
     <nav class="navbar">
-        <a href="Adatbazis_h4.html" class="nav-btn primary">&larr; Vissza a H4 oldalra</a>
+        <a href="index.html" class="nav-btn primary">&larr; Vissza a főoldalra</a>
         <div class="nav-links">
-            <a href="index.html" class="nav-btn">Főoldal</a>
-            <a href="Adatbazis_h2.html" class="nav-btn">H2</a>
-            <a href="Adatbazis_h3.html" class="nav-btn">H3 – SRS</a>
-            <a href="No-Life_Gamerek_ANAL01.html" class="nav-btn">H4 – Analízis</a>
+            <a href="Szoftech_h2.html" class="nav-btn">H2 – Projektterv &amp; Vízió</a>
+            <a href="Szoftech_h3.html" class="nav-btn">H3 – SRS</a>
+            <a href="Szoftech_h4.html" class="nav-btn">&larr; H4 – Tervezés</a>
             <a href="No-Life_Gamerek_RTERV01.html" class="nav-btn active">H4 – Rendszertervezés</a>
-            <a href="Adatbazis_h5.html" class="nav-btn">H5</a>
+            <a href="Szoftech_h5.html" class="nav-btn">H5 – Implementáció &amp; Teszt</a>
             <a href="Szotar.html" class="nav-btn">Szótár</a>
             <a href="Munkanaplo.html" class="nav-btn">Munkanapló</a>
         </div>
     </nav>
+    </nav>
 
     <!-- Címlap / Fejléc -->
     <header class="card">
-        <p class="subtitle">Miskolci Egyetem GÉIK &bull; Szoftvertechnológia / Adatbázis &bull; H4 Mérföldkő</p>
-        <h1>Rendszertervezési dokumentáció (RTERV01)</h1>
+        <p class="subtitle">Miskolci Egyetem GÉIK &bull; Szoftvertechnológia (Adatbázis-tervezéssel) &bull; Tervezési fázis (RTERV01)</p>
+        <h1>H4: Rendszertervezés</h1>
         <p>
             <strong>Projekt címe:</strong> Automatizált vendégház-menedzsment és kommunikációs rendszer (Ácsingozó Vendégház)<br>
-            Jelen dokumentum a rendszer technológiai felépítését, a három felhasználói nézet drótvázas képernyőterveit, a PostgreSQL relációs adatbázis szerkezetét, az adatelérési réteg (Repository) pontos metódusszignatúráit, valamint a hibakezelési és biztonsági megoldásokat rögzíti.
+            Kapcsolódó dokumentum: <a href="No-Life_Gamerek_ANAL01.html">Analízis modell (No-Life_Gamerek_ANAL01.html)</a>
         </p>
         <div class="meta-row">
             <div class="meta-badge"><strong>Csapat neve:</strong> No-Life Gamerek</div>
             <div class="meta-badge"><strong>Gyakorlatvezető:</strong> Sátán Ádám</div>
-            <div class="meta-badge"><strong>Verzió:</strong> v2.0 (Felhasználói drótvázakkal és adatelérési interfészekkel kiegészítve)</div>
+            <div class="meta-badge"><strong>Dokumentum:</strong> No-Life_Gamerek_RTERV01.html (v1.0)</div>
         </div>
     </header>
 
@@ -503,517 +403,791 @@
         <div class="toc-grid">
             <div class="toc-box">
                 <ul class="toc-list">
-                    <li><a href="#rt-1">1. Rendszerarchitektúra és technológiák</a></li>
-                    <li class="sub"><a href="#rt-1-1">1.1. Négyrétegű szerveroldali felépítés</a></li>
-                    <li class="sub"><a href="#rt-1-2">1.2. Választott eszközök és indoklásuk</a></li>
-                    <li><a href="#rt-2">2. Felhasználói felület terve és képernyőtervek</a></li>
-                    <li class="sub"><a href="#rt-2-1">2.1. Vendégoldali foglalófelület (Drótváz 1)</a></li>
-                    <li class="sub"><a href="#rt-2-2">2.2. Tulajdonosi vezérlőpult (Drótváz 2)</a></li>
-                    <li class="sub"><a href="#rt-2-3">2.3. Takarítói mobilnézet (Drótváz 3)</a></li>
+                    <li><a href="#rterv-1">1. Bevezetés</a></li>
+                    <li><a href="#rterv-2">2. Felhasználói felület</a></li>
+                    <li class="sub"><a href="#rterv-2-1">2.1. Vendégek számára kialakított weboldal</a></li>
+                    <li class="sub"><a href="#rterv-2-2">2.2. Tulajdonosi adminisztrációs felület</a></li>
+                    <li class="sub"><a href="#rterv-2-3">2.3. Takarítók számára kialakított mobilos felület</a></li>
+                    <li class="sub"><a href="#rterv-2-4">2.4. A felhasználói felületek közös tervezési szempontjai</a></li>
+                    <li class="sub"><a href="#rterv-2-5">2.5. Drótvázas képernyőtervek</a></li>
                 </ul>
             </div>
             <div class="toc-box">
                 <ul class="toc-list">
-                    <li><a href="#rt-3">3. Adatbázis- és adatelérési terv</a></li>
-                    <li class="sub"><a href="#rt-3-1">3.1. A 19 táblás relációs adatmodell</a></li>
-                    <li class="sub"><a href="#rt-3-2">3.2. Tranzakciós zárolás és integritás</a></li>
-                    <li class="sub"><a href="#rt-3-3">3.3. Adattár- (Repository) interfészek és metódusszignatúrák</a></li>
-                    <li><a href="#rt-4">4. Kivételes folyamatok és hibakezelés</a></li>
-                    <li><a href="#rt-5">5. Biztonság és üzemeltetési környezet</a></li>
+                    <li><a href="#rterv-3">3. Adatmodellek</a></li>
+                    <li class="sub"><a href="#rterv-3-1">3.1. Adatbázis-kezelő kiválasztása</a></li>
+                    <li class="sub"><a href="#rterv-3-2">3.2. Szemantikai adatmodell</a></li>
+                    <li class="sub"><a href="#rterv-3-3">3.3. Relációs adatmodell</a></li>
+                    <li class="sub"><a href="#rterv-3-4">3.4. Az adatbázis-kezelővel kapcsolatot tartó osztályok</a></li>
+                    <li><a href="#rterv-4">4. A funkcionális modell kiegészítése</a></li>
+                    <li class="sub"><a href="#rterv-4-1">4.1. Párhuzamos foglalások kezelése</a></li>
+                    <li class="sub"><a href="#rterv-4-2">4.2. Sikertelen és késedelmes fizetések kezelése</a></li>
+                    <li class="sub"><a href="#rterv-4-3">4.3. Külső naptárak szinkronizációs hibáinak kezelése</a></li>
+                    <li class="sub"><a href="#rterv-4-4">4.4. Takarítói adatok kapcsolat nélküli kezelése</a></li>
+                    <li class="sub"><a href="#rterv-4-5">4.5. Sikertelen értesítésküldések kezelése</a></li>
+                    <li class="sub"><a href="#rterv-4-6">4.6. Adatbiztonsági és jogosultságkezelési szempontok</a></li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- 1. RENDSZERARCHITEKTÚRA -->
-    <section class="card" id="rt-1">
-        <h2>1. Rendszerarchitektúra és technológiák</h2>
-
-        <h3 id="rt-1-1">1.1. Négyrétegű szerveroldali felépítés</h3>
+    <!-- 1. BEVEZETÉS -->
+    <section class="card" id="rterv-1">
+        <h2>1. Bevezetés</h2>
         <p>
-            Az alkalmazást úgy terveztük meg, hogy az egyes feladatok (felhasználói kérések fogadása, üzleti szabályok ellenőrzése, adatbázis-műveletek, külső portálok elérése) élesen elkülönüljenek egymástól. Ennek köszönhetően az üzleti logika az adatbázis-kezelőtől függetlenül tesztelhető, a külső szolgáltatók pedig könnyen cserélhetők.
+            A rendszertervezési dokumentumunk célja, hogy részletesen bemutassuk a fejlesztendő automatizált vendégház-menedzsment és kommunikációs rendszerünk megvalósításához szükséges technikai és szerkezeti megoldásokat. A dokumentáció elkészítése során a korábbi Vízió dokumentumra, a Szoftver Követelmény Specifikációra, valamint az Analízis modellben meghatározott osztályokra és alrendszerekre támaszkodunk.
         </p>
+        <p>
+            A rendszertervezés során meghatározzuk az alkalmazás felhasználói felületeinek kialakítását, az adatok tárolásának módját, az alkalmazandó adatbázis-kezelő rendszert, valamint az adatbázis és a program üzleti logikája közötti kapcsolatokat.
+        </p>
+        <p>
+            A fejlesztendő rendszer négy fő alrendszerből épül fel: Foglaláskezelés, Fizetés és kommunikáció, Naptár és szinkronizáció, valamint Üzemeltetés és takarítás. Ezek az alrendszerek egymással együttműködve biztosítják a vendégház működéséhez szükséges folyamatok végrehajtását.
+        </p>
+        <p>
+            A rendszer működésének alapját egy központi szerveralkalmazás és egy relációs adatbázis képezi. A felhasználók böngészőn keresztül érhetik el az alkalmazás különböző felületeit, míg a külső szolgáltatásokkal történő adatcsere szabványos kommunikációs interfészek segítségével valósul meg.
+        </p>
+        <p>
+            A tervezés során kiemelt figyelmet fordítunk az adatok biztonságos tárolására, a foglalási ütközések elkerülésére, a rendszer megfelelő teljesítményére, valamint a későbbi bővíthetőség és karbantarthatóság biztosítására.
+        </p>
+    </section>
+
+    <!-- 2. FELHASZNÁLÓI FELÜLET -->
+    <section class="card" id="rterv-2">
+        <h2>2. Felhasználói felület</h2>
+        <p>
+            A felhasználói felületek megtervezése során a korábban elkészített követelményspecifikációban meghatározott felhasználói csoportok igényeiből indulunk ki. A rendszer három fő felületből áll: a vendégek számára elérhető publikus weboldalból, a tulajdonosi adminisztrációs felületből és a takarító személyzet számára kialakított mobilos felületből.
+        </p>
+        <p>
+            A felületek kialakításánál elsődleges szempont az egyszerű kezelhetőség, az átlátható navigáció és a különböző képernyőméretekhez történő alkalmazkodás. A rendszer reszponzív webalkalmazásként működik majd, így számítógépen, tableten és mobiltelefonon egyaránt használható lesz.
+        </p>
+
+        <h3 id="rterv-2-1">2.1. Vendégek számára kialakított weboldal</h3>
+        <p>
+            A vendégek számára kialakított publikus weboldal elsődleges feladata a szabad szobák keresésének, a foglalások leadásának és az online fizetési folyamatnak a biztosítása.
+        </p>
+        <p>
+            A főoldalon a vendég megadhatja az érkezés és távozás dátumát, valamint a vendégek számát. A rendszer ezek alapján lekérdezi az elérhető szobákat, majd azok adatait és árait megjeleníti a felületen.
+        </p>
+        <p>
+            A keresési eredményeknél minden szoba külön megjelenítési egységet kap, amely tartalmazza a szoba nevét vagy számát, befogadóképességét, árát és foglalhatóságát.
+        </p>
+        <p>
+            A megfelelő szoba kiválasztását követően a vendég a foglalási adatlapra kerül, ahol megadhatja a szükséges személyes adatait. Amennyiben rendelkezik kedvezményre jogosító kuponkóddal, azt a fizetési folyamat előtt felhasználhatja.
+        </p>
+        <p>
+            A foglalási adatok ellenőrzése után a vendég kezdeményezheti a bankkártyás fizetést. Sikeres fizetés esetén a rendszer megjeleníti a foglalás visszaigazolását, és automatikus e-mailt küld a megadott címre.
+        </p>
+        <p><strong>A vendégek számára kialakított felület fő részei:</strong></p>
         <ul>
-            <li><strong>Prezentációs és API-réteg (<code>VendeghazApp.Web</code>):</strong> Fogadja a böngészőből érkező kéréseket és a külső fizetési szolgáltató visszajelzéseit (Webhook), ellenőrzi a jogosultságokat, majd átadja a feldolgozást az üzleti rétegnek. Itt futnak az időzített háttérfolyamatok is (iCal-szinkronizáció, lejárt zárolások törlése).</li>
-            <li><strong>Alkalmazási (üzleti) réteg (<code>VendeghazApp.Application</code>):</strong> Megvalósítja a vendégház működési szabályait: ellenőrzi a dátumokat, kiszámítja a kuponos kedvezményeket, kezeli a 15 perces szobazárolást és összehangolja a külső naptárakat.</li>
-            <li><strong>Adatelérési réteg (<code>Repository</code> osztályok):</strong> Elrejti a konkrét SQL és Entity Framework lekérdezéseket az üzleti réteg elől, és egységes metódusokon keresztül biztosítja az adatok mentését, módosítását és lekérdezését.</li>
-            <li><strong>Adattárolási és külső integrációs réteg (<code>VendeghazApp.Infrastructure</code>):</strong> Tartalmazza a PostgreSQL adatbázis-kapcsolatot, az SMTP e-mail-küldőt, az iCal-elemzőt és a Stripe/Barion fizetési klienst.</li>
+            <li>Főoldal és szobakereső</li>
+            <li>Szabad szobák megjelenítése</li>
+            <li>Szobák részletes adatlapja</li>
+            <li>Foglalási űrlap</li>
+            <li>Fizetési és visszaigazolási felület</li>
+            <li>Gyakran ismételt kérdések</li>
         </ul>
+        <p>
+            A weboldal kialakításánál törekszünk arra, hogy a vendégek minél kevesebb lépésben tudják végrehajtani a foglalási folyamatot. A kötelező mezőket egyértelműen jelöljük, a hibásan megadott adatokról pedig megfelelő tájékoztatást biztosítunk.
+        </p>
 
-        <h3 id="rt-1-2">1.2. Választott eszközök és indoklásuk</h3>
+        <h3 id="rterv-2-2">2.2. Tulajdonosi adminisztrációs felület</h3>
+        <p>
+            A tulajdonosi adminisztrációs felület a vendégház napi működésének központi kezelőfelületeként szolgál.
+        </p>
+        <p>
+            A tulajdonos bejelentkezést követően egy összefoglaló irányítópultot ér el, amelyen megtekintheti a foglalások számát, a szobák aktuális állapotát, a folyamatban lévő takarításokat és a rendszer által észlelt hibákat vagy foglalási ütközéseket.
+        </p>
+        <p>
+            A foglaláskezelési felületen a tulajdonos megtekintheti a korábban rögzített foglalásokat, azok időpontjait és státuszait. Szükség esetén módosíthatja vagy törölheti a foglalási adatokat.
+        </p>
+        <p>
+            A naptárnézet segítségével áttekintheti az egyes szobák foglaltságát. A naptárban külön jelöléssel jelennek meg a szabad, foglalt és ütközéssel érintett időszakok.
+        </p>
+        <p>
+            A külső naptárak kezelésére szolgáló felületen a tulajdonos megadhatja a Booking és Airbnb platformokhoz tartozó iCal-hivatkozásokat, valamint ellenőrizheti a szinkronizáció állapotát.
+        </p>
+        <p>
+            A takarítási feladatok kezelése során megtekintheti a szobák tisztasági állapotát, a takarítókhoz rendelt feladatokat és az elkészült szobákról feltöltött fényképeket.
+        </p>
+        <p><strong>A tulajdonosi kezelőfelület fő részei:</strong></p>
+        <ul>
+            <li>Áttekintő irányítópult</li>
+            <li>Foglalások kezelése</li>
+            <li>Központi foglalási naptár</li>
+            <li>Szobák állapotának áttekintése</li>
+            <li>Takarítási feladatok követése</li>
+            <li>Hibabejelentések megtekintése</li>
+            <li>Külső naptárak beállítása</li>
+            <li>Fizetések és bevételek áttekintése</li>
+        </ul>
+        <p>
+            A felület kialakításánál fontos szempont, hogy a rendszer legfontosabb információi egy helyen, könnyen áttekinthető formában jelenjenek meg.
+        </p>
+
+        <h3 id="rterv-2-3">2.3. Takarítók számára kialakított mobilos felület</h3>
+        <p>
+            A takarítói felület kialakítása során elsődleges szempont az egyszerű használhatóság és a mobiltelefonokon történő megfelelő működés.
+        </p>
+        <p>
+            A takarító a bejelentkezést követően megtekintheti az adott napra vonatkozó feladatlistáját. A feladatoknál megjelenik a szoba száma, a takarítás tervezett dátuma és a feladat aktuális állapota.
+        </p>
+        <p>
+            A kiválasztott feladat megnyitását követően a takarító a „Takarítás megkezdése” gomb segítségével jelezheti a munkavégzés elindítását.
+        </p>
+        <p>
+            A takarítás befejezésekor a mobiltelefon kamerájával fényképet készíthet az elkészült szobáról, majd a „Kész vagyok” gomb megnyomásával véglegesítheti a feladatot.
+        </p>
+        <p>
+            A rendszer sikeres adatfeldolgozás után automatikusan „Tiszta” állapotra módosítja a kapcsolódó szoba státuszát, amely a tulajdonosi felületen is megjelenik.
+        </p>
+        <p>
+            Amennyiben a takarító meghibásodást észlel, a felületen található „Hiba bejelentése” funkcióval rögzítheti a problémát.
+        </p>
+        <p><strong>A takarítói felület fő részei:</strong></p>
+        <ul>
+            <li>Bejelentkezési felület</li>
+            <li>Napi feladatlista</li>
+            <li>Takarítási feladat részletes adatlapja</li>
+            <li>Takarítás megkezdése és befejezése</li>
+            <li>Fényképfeltöltés</li>
+            <li>Hibabejelentés</li>
+            <li>Adatszinkronizáció állapotának megjelenítése</li>
+        </ul>
+        <p>
+            A mobilos felületet nagyméretű gombokkal, rövid feliratokkal és egyértelmű visszajelzésekkel tervezzük meg.
+        </p>
+        <p>
+            Az alkalmazás internetkapcsolat hiányában ideiglenesen helyben tárolja a takarítás során rögzített adatokat, majd a kapcsolat helyreállását követően automatikusan szinkronizálja azokat a központi rendszerrel.
+        </p>
+
+        <h3 id="rterv-2-4">2.4. A felhasználói felületek közös tervezési szempontjai</h3>
+        <p>
+            A három felület közös kialakítása során egységes megjelenési és működési alapelveket alkalmazunk.
+        </p>
+        <p>
+            A rendszer magyar és angol nyelven is használható lesz, a felhasználói jogosultságokat pedig szerepkörök alapján különítjük el.
+        </p>
+        <p>
+            A vendégek kizárólag a publikus foglalási funkciókat érhetik el, míg a tulajdonos a belső adminisztrációs műveletekhez rendelkezik hozzáféréssel. A takarítók csak a saját munkavégzésükhöz szükséges adatokat és funkciókat érhetik el.
+        </p>
+        <p>
+            A hibás műveletekről a rendszer érthető hibaüzeneteket jelenít meg, a sikeresen végrehajtott műveletekről pedig megfelelő visszaigazolást biztosít.
+        </p>
+        <p>
+            A felhasználói felületek és a szerveroldali rendszer közötti kommunikáció HTTPS-kapcsolaton keresztül valósul meg.
+        </p>
+
+        <h3 id="rterv-2-5">2.5. Drótvázas képernyőtervek</h3>
+        <div class="wireframe-grid">
+            <!-- Vendég nézet -->
+            <div class="wireframe-card">
+                <div class="wireframe-header">1. Vendégoldali foglalási nézet</div>
+                <div class="wf-block">
+                    <strong>Keresősáv:</strong> [Érkezés dátuma] &bull; [Távozás dátuma] &bull; [Vendégek száma] &rarr; <span class="wf-btn">Keresés</span>
+                </div>
+                <div class="wf-block">
+                    <strong>Szobaválasztó kártyák:</strong> Szobaszám, férőhely, éjszakánkénti ár, kalkulált végösszeg, elérhetőségi jelvény.
+                </div>
+                <div class="wf-block">
+                    <strong>Vendégadatok és Kupon:</strong> Név, E-mail, Telefonszám, Lakcím + [Kuponkód mező &rarr; <em>Érvényesít</em>].
+                </div>
+                <div class="wf-block" style="margin-bottom: 0;">
+                    <strong>Összesítő és fizetés:</strong> 15 perces zárolási visszaszámláló &rarr; <span class="wf-btn">Bankkártyás fizetés</span>
+                </div>
+            </div>
+
+            <!-- Tulajdonos nézet -->
+            <div class="wireframe-card">
+                <div class="wireframe-header">2. Tulajdonosi vezérlőpult</div>
+                <div class="wf-block">
+                    <strong>KPI és Riasztási sáv:</strong> Mai érkezők/távozók, Piszkos/Tiszta szobák aránya, Utolsó iCal-szinkron időpontja, <em>Piros ütközésjelző banner</em>.
+                </div>
+                <div class="wf-block">
+                    <strong>Központi foglalási naptár:</strong> Szobák szerinti idővonal (közvetlen, Booking, Airbnb és zárolt sávokkal) + <span class="wf-btn">+ Kézi foglalás</span>
+                </div>
+                <div class="wf-block" style="margin-bottom: 0;">
+                    <strong>Üzemeltetési panel:</strong> Takarítási fotók előnézete, nyitott hibabejelentések lezárása, ütközések feloldása.
+                </div>
+            </div>
+
+            <!-- Takarító nézet -->
+            <div class="wireframe-card">
+                <div class="wireframe-header">3. Takarítói mobilfelület (PWA)</div>
+                <div class="wf-block">
+                    <strong>Állapotsor:</strong> Bejelentkezett takarító neve + Hálózati jelző (<em>Online</em> / <em>Offline puffer aktív</em>).
+                </div>
+                <div class="wf-block">
+                    <strong>Napi szobalista:</strong> Szobaszám, távozási időpont, feladat státusza (<em>Elvégzésre vár</em> / <em>Folyamatban</em>).
+                </div>
+                <div class="wf-block" style="margin-bottom: 0;">
+                    <strong>Műveleti gombok:</strong> <span class="wf-btn">Takarítás megkezdése</span> &bull; <span class="wf-btn">Hiba bejelentése</span> &bull; <span class="wf-btn">Kész vagyok</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ADATMODELLEK -->
+    <section class="card" id="rterv-3">
+        <h2>3. Adatmodellek</h2>
+        <p>
+            A fejlesztendő vendégház-menedzsment rendszer működéséhez szükséges a foglalási, vendég-, fizetési, naptár- és üzemeltetési adatok tartós tárolása.
+        </p>
+        <p>
+            Az adatmodell kialakításának alapját a korábban elkészített H4 analízismodell osztályai és azok kapcsolatai képezik.
+        </p>
+        <p>
+            A rendszertervezés során meghatározzuk az alkalmazandó adatbázis-kezelő rendszert, elkészítjük a szemantikai és relációs adatmodellt, valamint megtervezzük az adatbázissal kapcsolatot tartó programosztályokat.
+        </p>
+
+        <h3 id="rterv-3-1">3.1. Adatbázis-kezelő kiválasztása</h3>
+        <p>
+            A fejlesztendő alkalmazás adatainak tárolására relációs adatbázis-kezelő rendszert választunk. A relációs adatmodell megfelelő megoldást biztosít a vendégházak, szobák, vendégek, foglalások és egyéb kapcsolódó adatok közötti összefüggések nyilvántartására.
+        </p>
+        <p>
+            A követelményspecifikációban korábban a MySQL és PostgreSQL adatbázis-kezelők szerepeltek lehetséges megoldásként. A rendszertervezési fázisban a PostgreSQL használatát választjuk.
+        </p>
+        <p>
+            A PostgreSQL egy nyílt forráskódú, relációs adatbázis-kezelő rendszer, amely támogatja az SQL nyelvet, a tranzakciókezelést, az idegen kulcsokat, az indexeket és az adatok konzisztenciáját biztosító különböző megszorításokat.
+        </p>
+        <p><strong>A PostgreSQL választása mellett több szempont is szól:</strong></p>
+        <ul>
+            <li>Megbízható tranzakciókezelést biztosít.</li>
+            <li>Támogatja az összetett kapcsolatok és adatintegritási szabályok kezelését.</li>
+            <li>Lehetőséget biztosít a foglalási időszakok ütközésének adatbázisszintű ellenőrzésére.</li>
+            <li>Nyílt forráskódú, így használata nem jár kötelező licencdíjjal.</li>
+            <li>Jól alkalmazható szerveroldali webalkalmazásokhoz.</li>
+            <li>Megfelelően bővíthető a későbbi funkciók megvalósítása során.</li>
+        </ul>
+        <p>
+            A szerveroldali alkalmazás megvalósításához C# nyelvet és ASP.NET Core környezetet tervezünk alkalmazni. Az adatbázis elérését az Entity Framework Core objektum-relációs leképező eszköz és a PostgreSQL-hez tartozó adatbázis-szolgáltató biztosítja.
+        </p>
+        <p>
+            Az objektum-relációs leképezés segítségével az alkalmazás osztályai és az adatbázis táblái között megfelelő kapcsolat alakítható ki, miközben az adatbázisműveletek jelentős része objektumorientált módon kezelhető.
+        </p>
+        <p>
+            Az adatbázisséma módosításait verziózott migrációk segítségével kezeljük. A fejlesztési és éles környezet adatbázisait elkülönítjük, és gondoskodunk az adatok rendszeres biztonsági mentéséről.
+        </p>
+
+        <h3 id="rterv-3-2">3.2. Szemantikai adatmodell</h3>
+        <p>
+            A szemantikai adatmodell elkészítése során a korábban meghatározott analízisosztályokból kiindulva azonosítjuk a rendszerben tárolandó legfontosabb egyedeket és a közöttük fennálló kapcsolatokat.
+        </p>
+        <p>
+            A modell kialakításának célja, hogy az adatbázis szerkezete megfelelően támogassa a foglaláskezelési, fizetési, naptár-szinkronizációs és takarítási folyamatokat.
+        </p>
+        <p>
+            Az adatmodellben a következő fő egyedcsoportokat különböztetjük meg.
+        </p>
+
+        <h4>Foglaláskezeléshez kapcsolódó egyedek</h4>
+        <p>
+            A Vendégház egyed a rendszerben kezelt szálláshely alapvető adatait tartalmazza. Egy vendégházhoz több szoba kapcsolódhat, míg egy szoba egy vendégházhoz tartozik.
+        </p>
+        <p>
+            A Vendég egyed a foglalásokat kezdeményező személyek adatait tartalmazza. Egy vendég több foglalást is létrehozhat.
+        </p>
+        <p>
+            A Foglalás egyed a kiválasztott szobát, az érkezési és távozási időpontokat, a vendégek számát és a foglalás állapotát tartja nyilván.
+        </p>
+
+        <h4>Fizetéshez és kommunikációhoz kapcsolódó egyedek</h4>
+        <p>
+            A Fizetés egyed a foglalásokhoz tartozó fizetési tranzakciókat reprezentálja. A rendszer a sikertelen fizetési próbálkozásokat is nyilvántarthatja, azonban egy foglaláshoz legfeljebb egy véglegesített sikeres fizetést rendelünk.
+        </p>
+        <p>
+            A Kupon egyed a foglalások során alkalmazható kedvezményeket tartalmazza. Egy foglaláshoz legfeljebb egy kupon kapcsolódhat, míg egy kupon több foglalásban is felhasználható lehet.
+        </p>
+        <p>
+            Az Értesítés egyed az automatikusan kiküldött üzeneteket reprezentálja. A rendszer foglalásokhoz kapcsolódó és önálló, például tulajdonosi figyelmeztető értesítéseket is kezel.
+        </p>
+        <p>
+            A Számla egyed a későbbiekben megvalósítandó számlázási funkciókhoz kapcsolódik, ezért a modellben tervezett elemként jelenik meg.
+        </p>
+
+        <h4>Naptárkezeléshez kapcsolódó egyedek</h4>
+        <p>
+            A Foglalási naptár egyed a vendégház központi foglaltsági nyilvántartását reprezentálja.
+        </p>
+        <p>
+            A Külső naptár egyed a Booking, Airbnb és más szállásfoglaló platformokhoz tartozó naptárkapcsolatok adatait tartalmazza.
+        </p>
+        <p>
+            A Foglalási ütközés egyed a különböző platformokon létrejövő, egymással ütköző foglalások kezelését biztosítja.
+        </p>
+        <p>
+            A foglalási ütközések több foglalást is érinthetnek, ezért a kapcsolódó foglalások nyilvántartásához külön kapcsolótáblát alkalmazunk.
+        </p>
+
+        <h4>Üzemeltetéshez és takarításhoz kapcsolódó egyedek</h4>
+        <p>
+            A Tulajdonos egyed a vendégház üzemeltetéséért felelős személy adatait tartalmazza.
+        </p>
+        <p>
+            A Takarító egyed a takarítási feladatokat végrehajtó személyzetet reprezentálja.
+        </p>
+        <p>
+            A Takarítási feladat egyed a szobákhoz tartozó takarítási teendőket, azok dátumát és állapotát tartja nyilván.
+        </p>
+        <p>
+            A Takarítási fotó egyed a sikeresen elvégzett takarításokhoz kapcsolódó fényképeket reprezentálja.
+        </p>
+        <p>
+            A Hibabejelentés egyed a takarítás során észlelt problémák nyilvántartását biztosítja.
+        </p>
+
+        <h4>További technikai egyedek</h4>
+        <p>
+            A részletes adatbázistervezés során szükségesnek tartjuk néhány további technikai egyed bevezetését.
+        </p>
+        <p>
+            A Felhasználó egyed a tulajdonosok és takarítók bejelentkezéséhez, valamint jogosultságainak kezeléséhez szükséges adatokat tartalmazza.
+        </p>
+        <p>
+            A Foglalási zárolás egyed a szobák ideiglenes vagy végleges lefoglalásához kapcsolódó időszakokat tartja nyilván. Bevezetésével adatbázisszinten is megakadályozhatjuk az egymással ütköző aktív foglalási időszakok létrehozását.
+        </p>
+        <p>
+            Az Ütközés–Foglalás kapcsolóegyed segítségével egy foglalási ütközéshez több érintett foglalást rendelhetünk.
+        </p>
+        <p>
+            Ezek a kiegészítő egyedek nem változtatják meg a korábban meghatározott alrendszerek felépítését, hanem az adatok megfelelő tárolását és a rendszer megbízható működését támogatják.
+        </p>
+        <p>
+            A rendszer szemantikai adatmodelljét ER-diagram segítségével szemléltetjük.
+        </p>
+
+        <div class="diagram-box">
+            <img src="A rendszer szemantik adatmodelljét ER-diagram segítségével szemléltetjük..png" alt="Vendégház-menedzsment rendszer – Szemantikai ER-diagram">
+            <p class="diagram-caption">1. ábra: A rendszer szemantikai adatmodellje – ER-diagram (19 tábla)</p>
+        </div>
+
+        <h3 id="rterv-3-3">3.3. Relációs adatmodell</h3>
+        <p>
+            A szemantikai adatmodell alapján elkészítjük a rendszer relációs adatmodelljét. A korábban meghatározott egyedeket adatbázistáblákra, az attribútumokat mezőkre, az egyedek közötti kapcsolatokat pedig idegen kulcsokra és kapcsolótáblákra képezzük le.
+        </p>
+        <p>
+            A táblák mindegyike rendelkezik elsődleges kulccsal, amely biztosítja a rekordok egyértelmű azonosítását.
+        </p>
+        <p>
+            A kapcsolatok megvalósításához idegen kulcsokat használunk, amelyek segítségével megőrizhető az adatok közötti hivatkozási integritás.
+        </p>
+        <p>
+            A rendszer tervezett relációs adatmodellje a következő táblákból áll.
+        </p>
+
         <table>
             <thead>
                 <tr>
-                    <th>Terület</th>
-                    <th>Választott technológia</th>
-                    <th>Műszaki indoklás</th>
+                    <th style="width: 24%;">Tábla</th>
+                    <th style="width: 24%;">Elsődleges kulcs</th>
+                    <th style="width: 52%;">Fontosabb mezők és kapcsolatok</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Szerveroldali keretrendszer</td>
-                    <td><strong>C# / ASP.NET Core 8</strong></td>
-                    <td>Gyors futási teljesítmény, beépített függőségbefecskendezés (Dependency Injection), egyszerűen ütemezhető háttérfeladatok (<code>BackgroundService</code>) és erős típusbiztonság.</td>
+                    <td><code>felhasznalo</code></td>
+                    <td><span class="pk-tag">PK</span> <code>felhasznalo_id</code></td>
+                    <td><code>email</code>, <code>jelszo_hash</code>, <code>szerepkor</code>, <code>aktiv</code></td>
                 </tr>
                 <tr>
-                    <td>Relációs adatbázis</td>
-                    <td><strong>PostgreSQL 16</strong></td>
-                    <td>Megbízható tranzakciókezelés (ACID), amely elengedhetetlen a párhuzamos szobafoglalások ütközésmentes zárolásához.</td>
+                    <td><code>tulajdonos</code></td>
+                    <td><span class="pk-tag">PK</span> <code>tulajdonos_id</code></td>
+                    <td><code>felhasznalo_id</code> <span class="fk-tag">(FK)</span>, <code>nev</code>, <code>telefonszam</code></td>
                 </tr>
                 <tr>
-                    <td>ORM-adatelérés</td>
-                    <td><strong>Entity Framework Core</strong></td>
-                    <td>A C# osztályokból automatikusan karbantartható adatbázisséma, biztonságos, SQL-injekció ellen védett lekérdezések.</td>
+                    <td><code>takarito</code></td>
+                    <td><span class="pk-tag">PK</span> <code>takarito_id</code></td>
+                    <td><code>felhasznalo_id</code> <span class="fk-tag">(FK)</span>, <code>nev</code></td>
                 </tr>
-                <tr>
-                    <td>Felhasználói felület</td>
-                    <td><strong>HTML5, CSS3, JavaScript (IndexedDB)</strong></td>
-                    <td>Külön mobilalkalmazás telepítése nélkül fut minden böngészőben; az IndexedDB révén a takarítói felület hálózat nélkül is képes eltárolni a fényképeket és állapotokat.</td>
-                </tr>
-                <tr>
-                    <td>Külső kapcsolatok</td>
-                    <td><strong>Stripe / Barion API, iCal (.ics), SMTP</strong></td>
-                    <td>Szabványos, dokumentált interfészek az online fizetéshez, a Booking.com és Airbnb naptárszinkronizációhoz és az automatikus levelezéshez.</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- 2. FELHASZNÁLÓI FELÜLET TERVE ÉS KÉPERNYŐTERVEK -->
-    <section class="card" id="rt-2">
-        <h2>2. Felhasználói felület terve és képernyőtervek (Drótvázak)</h2>
-        <p>
-            A felhasználói felületet három különálló munkakörnyezetre osztottuk a jogosultságoknak megfelelően. Az alábbi drótvázak bemutatják az egyes képernyők elrendezését, a fő vezérlőelemeket és az adatok csoportosítását.
-        </p>
-
-        <!-- 2.1 VENDÉG DRÓTVÁZ -->
-        <h3 id="rt-2-1">2.1. Vendégoldali szobakereső és foglalási felület</h3>
-        <p>
-            A vendég felületén a legfontosabb szempont a gyors áttekinthetőség: a látogató a felső sávban megadja az érkezés–távozás dátumát és a létszámot, bal oldalon látja a szabad szobákat, jobb oldalon pedig azonnal követheti a kiválasztott szoba árát, a kuponkedvezményt és a bankkártyás fizetés indítását.
-        </p>
-
-        <div class="mockup-frame">
-            <div class="mockup-browser-bar">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <div class="mockup-url">https://acsingozo-vendeghaz.hu/foglalas</div>
-            </div>
-            <div class="mockup-body">
-                <div class="wf-topbar">
-                    <strong>Ácsingozó Vendégház – Online foglalás</strong>
-                    <span>Kapcsolat &bull; Házirend &bull; Bejelentkezés</span>
-                </div>
-                <div class="wf-searchbar">
-                    <div class="wf-input"><strong>Érkezés:</strong> 2026. 07. 12.</div>
-                    <div class="wf-input"><strong>Távozás:</strong> 2026. 07. 15.</div>
-                    <div class="wf-input"><strong>Vendégek:</strong> 2 felnőtt, 1 gyermek</div>
-                    <div class="wf-btn">Szabad szobák keresése</div>
-                </div>
-                <div class="wf-grid-2">
-                    <div class="wf-panel">
-                        <strong style="display:block; margin-bottom:8px; color:#123b22;">Elérhető szobák (3 éjszaka):</strong>
-                        <div class="wf-room-item">
-                            <div>
-                                <strong>1. Családi Apartman (4 fő)</strong><br>
-                                <span style="font-size:0.8rem; color:#444;">Két légterű, saját terasz, légkondicionált</span>
-                            </div>
-                            <div style="text-align:right;">
-                                <strong>96 000 Ft</strong><br>
-                                <span class="wf-btn" style="display:inline-block; margin-top:4px; padding:4px 10px;">Kiválasztva</span>
-                            </div>
-                        </div>
-                        <div class="wf-room-item">
-                            <div>
-                                <strong>2. Erdei Panoráma Szoba (3 fő)</strong><br>
-                                <span style="font-size:0.8rem; color:#444;">Franciaágy + pótágy, saját fürdőszoba</span>
-                            </div>
-                            <div style="text-align:right;">
-                                <strong>78 000 Ft</strong><br>
-                                <span class="wf-btn secondary" style="display:inline-block; margin-top:4px; padding:4px 10px;">Kiválasztás</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="wf-panel">
-                        <strong style="display:block; margin-bottom:8px; color:#123b22;">Foglalásösszesítő és vendégadatok:</strong>
-                        <div class="wf-input" style="margin-bottom:6px;">Név: Kovács Anna</div>
-                        <div class="wf-input" style="margin-bottom:6px;">E-mail: kovacs.anna@pelda.hu</div>
-                        <div style="display:flex; gap:6px; margin-bottom:8px;">
-                            <div class="wf-input" style="flex:1;">Kupon: NYAR10</div>
-                            <div class="wf-btn secondary">Érvényesít</div>
-                        </div>
-                        <div style="border-top:1px solid #cce2d0; padding-top:6px; margin-bottom:8px;">
-                            Alapár: 96 000 Ft &bull; Kedvezmény: -9 600 Ft<br>
-                            <strong>Fizetendő végösszeg: 86 400 Ft</strong>
-                        </div>
-                        <div class="wf-btn">Tovább a bankkártyás fizetéshez &rarr;</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="caption-center">1. képernyőterv: Vendégoldali szobakereső és foglalási drótváz</div>
-
-        <!-- 2.2 TULAJDONOSI DRÓTVÁZ -->
-        <h3 id="rt-2-2">2.2. Tulajdonosi vezérlőpult és központi foglalási naptár</h3>
-        <p>
-            A tulajdonosi felület tetején négy gyors áttekintő kártya mutatja az aznapi érkezéseket, távozásokat, a takarításra váró szobákat és az iCal-szinkronizáció állapotát. Alatta egy figyelmeztető sáv jelzi, ha külső portálról ütköző foglalás érkezett, a fő táblázatban pedig egy kattintással módosíthatók vagy törölhetők a foglalások.
-        </p>
-
-        <div class="mockup-frame">
-            <div class="mockup-browser-bar">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <div class="mockup-url">https://acsingozo-vendeghaz.hu/admin/vezerlopult</div>
-            </div>
-            <div class="mockup-body">
-                <div class="wf-topbar">
-                    <strong>Tulajdonosi vezérlőpult – Ácsingozó Vendégház</strong>
-                    <span>Naptár &bull; Szobák &bull; Kuponok &bull; iCal-beállítások &bull; Statisztika</span>
-                </div>
-                <div class="wf-kpi-row">
-                    <div class="wf-kpi">Mai érkezők:<br><strong>2 vendég</strong></div>
-                    <div class="wf-kpi">Mai távozók:<br><strong>1 vendég</strong></div>
-                    <div class="wf-kpi">Takarításra vár:<br><strong>1 szoba (2-es)</strong></div>
-                    <div class="wf-kpi">Utolsó iCal-szinkron:<br><strong>2 perce (OK)</strong></div>
-                </div>
-                <div class="wf-alert">
-                    &#9888; Figyelem: 1 új foglalási ütközés észlelve az Airbnb-naptárimport során (1-es szoba, 2026. 08. 03–05.) – [Ütközés megtekintése és feloldása]
-                </div>
-                <div class="wf-panel">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                        <strong style="color:#123b22;">Aktuális foglalások kezelése</strong>
-                        <span class="wf-btn" style="padding:4px 10px;">+ Új kézi foglalás</span>
-                    </div>
-                    <table style="margin:0; font-size:0.82rem;">
-                        <thead>
-                            <tr>
-                                <th>Azonosító</th>
-                                <th>Szoba</th>
-                                <th>Vendég neve</th>
-                                <th>Időszak</th>
-                                <th>Forrás</th>
-                                <th>Státusz</th>
-                                <th>Műveletek</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#FG-104</td>
-                                <td>1. Apartman</td>
-                                <td>Kovács Anna</td>
-                                <td>07.12 – 07.15</td>
-                                <td>Saját weboldal</td>
-                                <td>Kifizetve</td>
-                                <td>[Módosítás] [Törlés]</td>
-                            </tr>
-                            <tr>
-                                <td>#FG-105</td>
-                                <td>2. Panoráma</td>
-                                <td>Nagy Péter</td>
-                                <td>07.13 – 07.16</td>
-                                <td>Booking.com (iCal)</td>
-                                <td>Visszaigazolt</td>
-                                <td>[Módosítás] [Törlés]</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="caption-center">2. képernyőterv: Tulajdonosi vezérlőpult, ütközésjelző és foglaláskezelő drótváz</div>
-
-        <!-- 2.3 TAKARÍTÓI MOBIL DRÓTVÁZ -->
-        <h3 id="rt-2-3">2.3. Takarítói mobilnézet (offline szinkronizációval)</h3>
-        <p>
-            A takarító személyzet okostelefonra tervezett, nagy gombokkal ellátott nézetet kap. A felső sáv mutatja, hogy a készülék éppen csatlakozik-e a szerverhez, vagy helyi gyorsítótárba menti a műveleteket.
-        </p>
-
-        <div class="mobile-shell">
-            <div class="mobile-notch">Takarítói feladatlista &bull; Hálózat: Elérhető</div>
-            <div class="mobile-body">
-                <div style="background:#eef7f0; border:1px solid #b8d8be; padding:8px 10px; border-radius:6px; margin-bottom:10px; font-size:0.8rem;">
-                    <strong>Mai dátum:</strong> 2026. 07. 12. (Vasárnap)<br>
-                    <strong>Függőben lévő helyi mentés:</strong> 0 db
-                </div>
-
-                <div class="wf-panel" style="margin-bottom:10px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                        <strong>2. Erdei Panoráma Szoba</strong>
-                        <span class="status-pill status-wait">Takarításra vár</span>
-                    </div>
-                    <p style="font-size:0.8rem; margin-bottom:8px; text-align:left;">Vendég távozott: 10:00 &bull; Következő érkező: 14:00</p>
-                    <div class="wf-btn" style="margin-bottom:6px;">1. Takarítás indítása</div>
-                    <div class="wf-btn secondary">2. Fotó készítése és készre jelentés</div>
-                </div>
-
-                <div class="wf-panel">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                        <strong>1. Családi Apartman</strong>
-                        <span class="status-pill status-clean">Tiszta</span>
-                    </div>
-                    <p style="font-size:0.8rem; margin-bottom:0; text-align:left;">Befejezve: 11:20 &bull; Ellenőrző fotó feltöltve &#10003;</p>
-                </div>
-            </div>
-        </div>
-        <div class="caption-center">3. képernyőterv: Takarítói mobilnézet drótváza</div>
-    </section>
-
-    <!-- 3. ADATBÁZIS- ÉS ADATELÉRÉSI TERV -->
-    <section class="card" id="rt-3">
-        <h2>3. Adatbázis- és adatelérési terv</h2>
-
-        <h3 id="rt-3-1">3.1. A 19 táblás relációs adatmodell</h3>
-        <p>
-            Az adatbázis harmadik normálformában (3NF) készült PostgreSQL környezetre. Az alábbi táblázat foglalja össze a rendszer 19 tábláját, elsődleges és idegen kulcsait, valamint a tárolt adatok szerepét:
-        </p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tábla neve</th>
-                    <th>Kulcsok (PK / FK)</th>
-                    <th>Fő oszlopok és szerepkör</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td><code>vendeghaz</code></td>
-                    <td>PK: <code>vendeghaz_id</code></td>
-                    <td><code>nev, cim, telefon, email, adoszam</code> – A szálláshely alapadatai.</td>
+                    <td><span class="pk-tag">PK</span> <code>vendeghaz_id</code></td>
+                    <td><code>tulajdonos_id</code> <span class="fk-tag">(FK)</span>, <code>nev</code>, <code>cim</code></td>
                 </tr>
                 <tr>
                     <td><code>szoba</code></td>
-                    <td>PK: <code>szoba_id</code><br>FK: <code>vendeghaz_id</code></td>
-                    <td><code>szobaszam, nev, ar, befogadokepesseg, allapot</code> – A kiadható szobák adatai és aktuális takarítási státusza.</td>
-                </tr>
-                <tr>
-                    <td><code>szoba_kep</code></td>
-                    <td>PK: <code>kep_id</code><br>FK: <code>szoba_id</code></td>
-                    <td><code>fajl_utvonal, sorrend, felirat</code> – A vendégoldalon megjelenő szobafotók.</td>
-                </tr>
-                <tr>
-                    <td><code>felhasznalo</code></td>
-                    <td>PK: <code>felhasznalo_id</code></td>
-                    <td><code>email, jelszo_hash, nev, szerepkor, aktiv</code> – A tulajdonosi és takarítói fiókok hitelesítési adatai.</td>
+                    <td><span class="pk-tag">PK</span> <code>szoba_id</code></td>
+                    <td><code>vendeghaz_id</code> <span class="fk-tag">(FK)</span>, <code>szobaszam</code>, <code>ar</code>, <code>befogadokepesseg</code>, <code>allapot</code></td>
                 </tr>
                 <tr>
                     <td><code>vendeg</code></td>
-                    <td>PK: <code>vendeg_id</code></td>
-                    <td><code>nev, email, telefon, szamlazasi_cim, gdpr_elfogadva</code> – A foglalást leadó vendégek adatai.</td>
-                </tr>
-                <tr>
-                    <td><code>kupon</code></td>
-                    <td>PK: <code>kupon_id</code></td>
-                    <td><code>kod (UNIQUE), kedvezmeny_tipus, ertek, ervenyes_tol, ervenyes_ig, aktiv</code> – Kedvezménykuponok.</td>
+                    <td><span class="pk-tag">PK</span> <code>vendeg_id</code></td>
+                    <td><code>nev</code>, <code>email</code>, <code>telefonszam</code>, <code>lakcim</code></td>
                 </tr>
                 <tr>
                     <td><code>foglalas</code></td>
-                    <td>PK: <code>foglalas_id</code><br>FK: <code>szoba_id, vendeg_id, kupon_id</code></td>
-                    <td><code>erkezes, tavozas, vendegek_szama, vegosszeg, statusz, forras, kulso_azonosito</code> – Központi foglalási nyilvántartás.</td>
-                </tr>
-                <tr>
-                    <td><code>foglalasi_zarolas</code></td>
-                    <td>PK: <code>zarolas_id</code><br>FK: <code>szoba_id, foglalas_id</code></td>
-                    <td><code>datum_tol, datum_ig, tipus (IDEIGLENES/VEGLEGES), lejarat_idopont</code> – Túlfoglalás elleni intervallumzárolás.</td>
+                    <td><span class="pk-tag">PK</span> <code>foglalas_id</code></td>
+                    <td><code>szoba_id</code> <span class="fk-tag">(FK)</span>, <code>vendeg_id</code> <span class="fk-tag">(FK)</span>, <code>kupon_id</code> <span class="fk-tag">(FK)</span>, <code>erkezes</code>, <code>tavozas</code>, <code>vendegek_szama</code>, <code>statusz</code></td>
                 </tr>
                 <tr>
                     <td><code>fizetes</code></td>
-                    <td>PK: <code>fizetes_id</code><br>FK: <code>foglalas_id (UNIQUE)</code></td>
-                    <td><code>tranzakcio_id, szolgaltato, osszeg, statusz, fizetes_ideje</code> – Bankkártyás tranzakciók adatai.</td>
+                    <td><span class="pk-tag">PK</span> <code>fizetes_id</code></td>
+                    <td><code>foglalas_id</code> <span class="fk-tag">(FK)</span>, <code>osszeg</code>, <code>statusz</code>, <code>tranzakcio_azonosito</code>, <code>idopont</code></td>
                 </tr>
                 <tr>
-                    <td><code>szamla</code></td>
-                    <td>PK: <code>szamla_id</code><br>FK: <code>fizetes_id</code></td>
-                    <td><code>szamlaszam, kiallitas_datum, pdf_utvonal</code> – A kifizetett foglalásokhoz kapcsolódó bizonylatok.</td>
-                </tr>
-                <tr>
-                    <td><code>kulso_naptar</code></td>
-                    <td>PK: <code>naptar_id</code><br>FK: <code>szoba_id</code></td>
-                    <td><code>csatorna_nev, import_url, export_token, utolso_szinkron, aktiv</code> – Booking.com és Airbnb iCal-kapcsolatok.</td>
-                </tr>
-                <tr>
-                    <td><code>szinkron_naplo</code></td>
-                    <td>PK: <code>naplo_id</code><br>FK: <code>naptar_id</code></td>
-                    <td><code>futas_ideje, sikeres, uj_esemenyek_szama, hibauzenet</code> – Az iCal-szinkronizációk futási naplója.</td>
-                </tr>
-                <tr>
-                    <td><code>foglalasi_utkozes</code></td>
-                    <td>PK: <code>utkozes_id</code><br>FK: <code>szoba_id</code></td>
-                    <td><code>eszleles_ideje, statusz (ESZLELT/FELOLDOTT), megjegyzes</code> – Két csatornáról érkező átfedő foglalások.</td>
-                </tr>
-                <tr>
-                    <td><code>utkozes_foglalas</code></td>
-                    <td>PK: <code>(utkozes_id, foglalas_id)</code></td>
-                    <td>Kapcsolótábla, amely összeköti az ütközési eseményt az érintett foglalásokkal.</td>
-                </tr>
-                <tr>
-                    <td><code>takaritasi_feladat</code></td>
-                    <td>PK: <code>feladat_id</code><br>FK: <code>szoba_id, felhasznalo_id</code></td>
-                    <td><code>tervezett_datum, statusz, kezdes_ideje, befejezes_ideje, kliens_muvelet_id (UNIQUE)</code> – Takarítási munkák (idempotenciakulccsal).</td>
-                </tr>
-                <tr>
-                    <td><code>takaritasi_foto</code></td>
-                    <td>PK: <code>foto_id</code><br>FK: <code>feladat_id</code></td>
-                    <td><code>kep_utvonal, feltoltes_ideje</code> – A takarítás elvégzését igazoló fényképek.</td>
-                </tr>
-                <tr>
-                    <td><code>ertesites_sablon</code></td>
-                    <td>PK: <code>sablon_id</code></td>
-                    <td><code>tipus, targy, szoveg_torzs</code> – A visszaigazoló és érkezési e-mailek szerkeszthető sablonjai.</td>
+                    <td><code>kupon</code></td>
+                    <td><span class="pk-tag">PK</span> <code>kupon_id</code></td>
+                    <td><code>kuponkod</code>, <code>kedvezmeny_merteke</code>, <code>ervenyesseg_vege</code>, <code>aktiv</code></td>
                 </tr>
                 <tr>
                     <td><code>ertesites</code></td>
-                    <td>PK: <code>ertesites_id</code><br>FK: <code>foglalas_id, sablon_id</code></td>
-                    <td><code>cimzett_email, kuldes_ideje, statusz, hibauzenet</code> – Kiküldött e-mailek naplója.</td>
+                    <td><span class="pk-tag">PK</span> <code>ertesites_id</code></td>
+                    <td><code>foglalas_id</code> <span class="fk-tag">(FK)</span>, <code>tipus</code>, <code>cimzett</code>, <code>kuldes_idopontja</code>, <code>statusz</code></td>
                 </tr>
                 <tr>
-                    <td><code>audit_naplo</code></td>
-                    <td>PK: <code>audit_id</code><br>FK: <code>felhasznalo_id</code></td>
-                    <td><code>muvelet, erintett_tabla, rekord_id, idopont</code> – Tulajdonosi módosítások és törlések visszakövetése.</td>
+                    <td><code>szamla</code></td>
+                    <td><span class="pk-tag">PK</span> <code>szamla_id</code></td>
+                    <td><code>fizetes_id</code> <span class="fk-tag">(FK)</span>, <code>szamlaszam</code>, <code>kiallitas_datuma</code>, <code>osszeg</code>, <code>bizonylat_adatok</code></td>
+                </tr>
+                <tr>
+                    <td><code>foglalasi_naptar</code></td>
+                    <td><span class="pk-tag">PK</span> <code>naptar_id</code></td>
+                    <td><code>vendeghaz_id</code> <span class="fk-tag">(FK)</span>, <code>utolso_frissites</code></td>
+                </tr>
+                <tr>
+                    <td><code>kulso_naptar</code></td>
+                    <td><span class="pk-tag">PK</span> <code>kulso_naptar_id</code></td>
+                    <td><code>naptar_id</code> <span class="fk-tag">(FK)</span>, <code>platform</code>, <code>ical_hivatkozas</code>, <code>utolso_szinkronizacio</code>, <code>statusz</code></td>
+                </tr>
+                <tr>
+                    <td><code>foglalasi_zarolas</code></td>
+                    <td><span class="pk-tag">PK</span> <code>zarolas_id</code></td>
+                    <td><code>szoba_id</code> <span class="fk-tag">(FK)</span>, <code>foglalas_id</code> <span class="fk-tag">(FK)</span>, <code>erkezes</code>, <code>tavozas</code>, <code>allapot</code>, <code>lejarat</code></td>
+                </tr>
+                <tr>
+                    <td><code>foglalasi_utkozes</code></td>
+                    <td><span class="pk-tag">PK</span> <code>utkozes_id</code></td>
+                    <td><code>tulajdonos_id</code> <span class="fk-tag">(FK)</span>, <code>erintett_idoszak</code>, <code>eszleles_idopontja</code>, <code>statusz</code></td>
+                </tr>
+                <tr>
+                    <td><code>utkozes_foglalas</code></td>
+                    <td><span class="pk-tag">PK</span> <span class="fk-tag">FK</span> <code>utkozes_id, foglalas_id</code></td>
+                    <td>Az ütközések és foglalások közötti kapcsolatok</td>
+                </tr>
+                <tr>
+                    <td><code>takaritasi_feladat</code></td>
+                    <td><span class="pk-tag">PK</span> <code>feladat_id</code></td>
+                    <td><code>szoba_id</code> <span class="fk-tag">(FK)</span>, <code>takarito_id</code> <span class="fk-tag">(FK)</span>, <code>datum</code>, <code>allapot</code>, <code>kezdes</code>, <code>befejezes</code></td>
+                </tr>
+                <tr>
+                    <td><code>takaritasi_foto</code></td>
+                    <td><span class="pk-tag">PK</span> <code>foto_id</code></td>
+                    <td><code>feladat_id</code> <span class="fk-tag">(FK)</span>, <code>kep_hivatkozas</code>, <code>feltoltes_idopontja</code></td>
+                </tr>
+                <tr>
+                    <td><code>hibabejelentes</code></td>
+                    <td><span class="pk-tag">PK</span> <code>hiba_id</code></td>
+                    <td><code>szoba_id</code> <span class="fk-tag">(FK)</span>, <code>takarito_id</code> <span class="fk-tag">(FK)</span>, <code>leiras</code>, <code>allapot</code>, <code>bejelentes_idopontja</code></td>
                 </tr>
             </tbody>
         </table>
 
-        <h3 id="rt-3-2">3.2. Tranzakciós zárolás és integritás</h3>
         <p>
-            A párhuzamos foglalások kivédésére a <code>foglalasi_zarolas</code> táblát használjuk. Amikor egy vendég elindítja a fizetést, az adatbázis <code>Serializable</code> elkülönítési (izolációs) szintű tranzakcióban ellenőrzi, hogy létezik-e bármilyen átfedő zárolás az adott szobára (<code>zarolas.datum_tol &lt; keresett_tavozas AND zarolas.datum_ig &gt; keresett_erkezes</code>). Ha nincs átfedés, azonnal beszúr egy 15 perces lejáratú sort.
+            A Számla tábla a később megvalósítandó számlázási funkcióhoz kapcsolódik, ezért létrehozása a fejlesztés aktuális terjedelmétől függ.
         </p>
 
-        <h3 id="rt-3-3">3.3. Adattár- (Repository) interfészek és pontos C# metódusszignatúrák</h3>
+        <h4>A kapcsolatok relációs megvalósítása</h4>
         <p>
-            Az adatelérési réteg öt fő Repository interfészen keresztül szolgálja ki az üzleti logikát. Az alábbiakban az összes metódus pontos szignatúrája, bemeneti paraméterei és visszatérési típusa szerepel:
+            Az egy-a-többhöz kapcsolatokat idegen kulcsok segítségével valósítjuk meg. Például a <code>szoba</code> tábla <code>vendeghaz_id</code> mezője a <code>vendeghaz</code> tábla elsődleges kulcsára hivatkozik.
+        </p>
+        <p>
+            A több-a-többhöz kapcsolatokhoz külön kapcsolótáblát hozunk létre. A Foglalás és Foglalási ütközés közötti kapcsolatot az <code>utkozes_foglalas</code> tábla segítségével valósítjuk meg.
+        </p>
+        <p>
+            Az egy-az-egyhez kapcsolatoknál egyedi megszorításokat alkalmazunk. Ilyen például a sikeres fizetéshez tartozó számla vagy a takarítási feladathoz kapcsolódó igazoló fénykép.
+        </p>
+        <p>
+            A külső platformokról átvett foglalásoknál előfordulhat, hogy nem áll rendelkezésre minden vendégadat. Ezeket a foglalásokat a rendszer megfelelő forrásjelöléssel kezeli, és szükség esetén engedélyezi a vendégazonosító hiányát.
         </p>
 
-        <h4>1. <code>IFoglalasRepository</code> – Foglalások létrehozása, módosítása és lekérdezése</h4>
-        <pre><span class="kw">public interface</span> <span class="type">IFoglalasRepository</span>
-{
-    <span class="cmt">// Lekérdezi az adott azonosítójú foglalást a szoba, vendég, kupon és fizetés adataival együtt</span>
-    <span class="type">Task</span>&lt;<span class="type">Foglalas?</span>&gt; GetByIdAsync(<span class="kw">int</span> foglalasId);
-
-    <span class="cmt">// Kilistázza a tulajdonosi naptárhoz a megadott időszak összes foglalását</span>
-    <span class="type">Task</span>&lt;<span class="type">IReadOnlyList</span>&lt;<span class="type">Foglalas</span>&gt;&gt; GetByIdoszakAsync(<span class="type">DateOnly</span> datumTol, <span class="type">DateOnly</span> datumIg);
-
-    <span class="cmt">// Új foglalást ment el FizetesreVar vagy Kifizetve (kézi rögzítés) státusszal</span>
-    <span class="type">Task</span>&lt;<span class="type">Foglalas</span>&gt; AddAsync(<span class="type">Foglalas</span> ujFoglalas);
-
-    <span class="cmt">// Módosítja egy meglévő foglalás adatait (dátum, szoba, vendéglétszám)</span>
-    <span class="type">Task</span> UpdateAsync(<span class="type">Foglalas</span> modositottFoglalas);
-
-    <span class="cmt">// Státuszváltás (pl. FizetesreVar -> Kifizetve vagy Torolt) tranzakcióazonosítóval</span>
-    <span class="type">Task</span> UpdateStatuszAsync(<span class="kw">int</span> foglalasId, <span class="type">FoglalasStatusz</span> ujStatusz);
-
-    <span class="cmt">// Visszaadja azokat a foglalásokat, amelyeknél 48 órán belül esedékes az érkezés</span>
-    <span class="type">Task</span>&lt;<span class="type">IReadOnlyList</span>&lt;<span class="type">Foglalas</span>&gt;&gt; GetErkezesElottiErtesitendokAsync(<span class="type">DateOnly</span> celDatum);
-}</pre>
-
-        <h4>2. <code>ISzobaRepository</code> – Szabad szobák keresése és szobakezelés</h4>
-        <pre><span class="kw">public interface</span> <span class="type">ISzobaRepository</span>
-{
-    <span class="cmt">// Visszaadja a megadott időszakra és vendéglétszámra szabad szobák listáját</span>
-    <span class="type">Task</span>&lt;<span class="type">IReadOnlyList</span>&lt;<span class="type">Szoba</span>&gt;&gt; GetSzabadSzobakAsync(<span class="type">DateOnly</span> erkezes, <span class="type">DateOnly</span> tavozas, <span class="kw">int</span> vendegekSzama);
-
-    <span class="cmt">// Lekérdezi az összes szobát az adminisztrációs felülethez</span>
-    <span class="type">Task</span>&lt;<span class="type">IReadOnlyList</span>&lt;<span class="type">Szoba</span>&gt;&gt; GetAllAsync();
-
-    <span class="cmt">// Új szoba rögzítése vagy meglévő szoba adatainak (ár, kapacitás) frissítése</span>
-    <span class="type">Task</span> SaveAsync(<span class="type">Szoba</span> szoba);
-
-    <span class="cmt">// Frissíti egy szoba takarítási állapotát (TakaritasraVar, TakaritasAlatt, Tiszta)</span>
-    <span class="type">Task</span> UpdateAllapotAsync(<span class="kw">int</span> szobaId, <span class="type">SzobaAllapot</span> ujAllapot);
-}</pre>
-
-        <h4>3. <code>INaptarRepository</code> – Zárolások, külső iCal-naptárak és ütközések kezelése</h4>
-        <pre><span class="kw">public interface</span> <span class="type">INaptarRepository</span>
-{
-    <span class="cmt">// Atomi tranzakcióban ellenőrzi a szabad helyet, és létrehoz egy lejárati idővel ellátott zárolást</span>
-    <span class="type">Task</span>&lt;<span class="kw">bool</span>&gt; TryIdoszakZarolasaAsync(<span class="kw">int</span> szobaId, <span class="type">DateOnly</span> erkezes, <span class="type">DateOnly</span> tavozas, <span class="type">TimeSpan</span> ervenyesseg);
-
-    <span class="cmt">// Sikeres fizetés után az ideiglenes zárolást véglegesre állítja</span>
-    <span class="type">Task</span> ZarolasVeglegesiteseAsync(<span class="kw">int</span> foglalasId);
-
-    <span class="cmt">// Sikertelen fizetés vagy tulajdonosi törlés esetén felszabadítja a szobát</span>
-    <span class="type">Task</span> ZarolasFeloldasaAsync(<span class="kw">int</span> foglalasId);
-
-    <span class="cmt">// Törli az összes lejárt ideiglenes zárolást, és visszaadja a felszabadított sorok számát</span>
-    <span class="type">Task</span>&lt;<span class="kw">int</span>&gt; LejartZarolasokTorleseAsync(<span class="type">DateTime</span> aktualisIdopont);
-
-    <span class="cmt">// Lekérdezi az összes aktív külső iCal-naptárkapcsolatot</span>
-    <span class="type">Task</span>&lt;<span class="type">IReadOnlyList</span>&lt;<span class="type">KulsoNaptar</span>&gt;&gt; GetAktivKulsoNaptarakAsync();
-
-    <span class="cmt">// Rögzít egy észlelt foglalási ütközést az érintett foglalások azonosítóival</span>
-    <span class="type">Task</span>&lt;<span class="type">FoglalasiUtkozes</span>&gt; CreateUtkozesAsync(<span class="kw">int</span> szobaId, <span class="type">IEnumerable</span>&lt;<span class="kw">int</span>&gt; erintettFoglalasIds);
-}</pre>
-
-        <h4>4. <code>ITakaritasRepository</code> – Napi takarítási feladatok és offline szinkronizáció</h4>
-        <pre><span class="kw">public interface</span> <span class="type">ITakaritasRepository</span>
-{
-    <span class="cmt">// Lekérdezi az adott napra ütemezett takarítási feladatokat</span>
-    <span class="type">Task</span>&lt;<span class="type">IReadOnlyList</span>&lt;<span class="type">TakaritasiFeladat</span>&gt;&gt; GetNapiFeladatokAsync(<span class="type">DateOnly</span> datum);
-
-    <span class="cmt">// Ellenőrzi, hogy az offline kliens művelete (kliensMuveletId) feldolgozásra került-e már</span>
-    <span class="type">Task</span>&lt;<span class="kw">bool</span>&gt; ExistsByKliensMuveletIdAsync(<span class="type">Guid</span> kliensMuveletId);
-
-    <span class="cmt">// Lezárja a takarítási feladatot, elmenti a fotó elérési útját, és Tiszta státuszra állítja a szobát</span>
-    <span class="type">Task</span> CompleteFeladatAsync(<span class="kw">int</span> feladatId, <span class="type">Guid</span> kliensMuveletId, <span class="kw">string?</span> fotoUtvonal, <span class="type">DateTime</span> befejezesIdeje);
-}</pre>
-
-        <h4>5. <code>IKuponRepository</code> – Kedvezménykuponok lekérdezése és kezelése</h4>
-        <pre><span class="kw">public interface</span> <span class="type">IKuponRepository</span>
-{
-    <span class="cmt">// Megkeresi a kupont a megadott szöveges kód alapján (kis- és nagybetűtől függetlenül)</span>
-    <span class="type">Task</span>&lt;<span class="type">Kupon?</span>&gt; GetByKodAsync(<span class="kw">string</span> kuponKod);
-
-    <span class="cmt">// Új kupon mentése vagy meglévő aktiválása/inaktiválása a tulajdonosi felületen</span>
-    <span class="type">Task</span> SaveAsync(<span class="type">Kupon</span> kupon);
-}</pre>
-    </section>
-
-    <!-- 4. KIVÉTELES FOLYAMATOK ÉS HIBAKEZELÉS -->
-    <section class="card" id="rt-4">
-        <h2>4. Kivételes folyamatok és hibakezelés</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Hibahelyzet</th>
-                    <th>Rendszerreakció és helyreállítás</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Párhuzamos foglalás ugyanarra a szobára</strong></td>
-                    <td>Az adatbázis-tranzakció csak az első kérést engedi át; a második vendég figyelmeztető üzenetet kap, hogy a szoba időközben foglalt lett, és visszakerül a keresőoldalra.</td>
-                </tr>
-                <tr>
-                    <td><strong>Félbehagyott vagy elutasított bankkártyás fizetés</strong></td>
-                    <td>Sikertelen Webhook esetén a zárolás azonnal törlődik; bezárt böngésző esetén a háttérfolyamat 15 perc után automatikusan felszabadítja a szobát.</td>
-                </tr>
-                <tr>
-                    <td><strong>Külső iCal-szerver elérhetetlensége</strong></td>
-                    <td>A szinkronizáló modul nem törli a korábban betöltött külső foglalásokat, naplózza a hibát a <code>szinkron_naplo</code> táblába, és a következő 5 perces ciklusban újra próbálkozik.</td>
-                </tr>
-                <tr>
-                    <td><strong>Egyidejű foglalás saját oldalon és külső portálon</strong></td>
-                    <td>A rendszer nem törli egyik foglalást sem önkényesen: rögzíti az esetet a <code>foglalasi_utkozes</code> táblában, és azonnal figyelmezteti a tulajdonost a vezérlőpulton és e-mailben.</td>
-                </tr>
-                <tr>
-                    <td><strong>Takarítói készülék internetkapcsolat nélküli (offline) állapota</strong></td>
-                    <td>A kliensoldali JavaScript a helyi IndexedDB tárolóba menti a műveletet egyedi <code>Guid</code> azonosítóval. Újracsatlakozáskor a szerver a <code>ExistsByKliensMuveletIdAsync</code> metódussal kiszűri az esetleges ismétléseket.</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- 5. BIZTONSÁG ÉS ÜZEMELTETÉS -->
-    <section class="card" id="rt-5">
-        <h2>5. Biztonság és üzemeltetési környezet</h2>
+        <h4>Adatintegritási szabályok</h4>
+        <p>
+            Az adatbázis kialakítása során több olyan megszorítást is meghatározunk, amelyek a rendszer megfelelő működéséhez szükségesek.
+        </p>
         <ul>
-            <li><strong>Jogosultságkezelés:</strong> Az ASP.NET Core sütialapú / tokenes hitelesítése minden védett útvonalon ellenőrzi a felhasználó szerepkörét (<code>Tulajdonos</code> vagy <code>Takarito</code>).</li>
-            <li><strong>Fizetési webhook védelme:</strong> A fizetési szolgáltatótól érkező értesítéseket a szerver titkos aláírókulccsal (HMAC-SHA256) ellenőrzi, így kívülről nem hamisítható sikeres fizetés.</li>
-            <li><strong>Adatmentés:</strong> A PostgreSQL adatbázisról naponta egyszer automatikus biztonsági mentés (<code>pg_dump</code>) készül külön tárhelyre, így hardverhiba esetén is visszaállítható a foglalási naptár.</li>
+            <li>A foglalások érkezési dátuma minden esetben megelőzi a távozási dátumot (<code>CHECK (tavozas &gt; erkezes)</code>).</li>
+            <li>A szobák befogadóképessége pozitív egész szám, az áruk pedig nem lehet negatív (<code>CHECK (ar &gt;= 0)</code>).</li>
+            <li>A kuponok egyedi kuponkóddal rendelkeznek, és alkalmazásuk előtt ellenőrizni kell azok érvényességét.</li>
+            <li>A fizetési tranzakciókat egyedi tranzakcióazonosítóval azonosítjuk. Egy foglaláshoz több fizetési próbálkozás is tartozhat, de egyszerre legfeljebb egy sikeres fizetés szerepelhet.</li>
+            <li>A foglalási időszakok kezelésénél különösen fontos a párhuzamos foglalások elkerülése. Ennek érdekében a <code>foglalasi_zarolas</code> táblában megakadályozzuk, hogy ugyanazon szobára egymást átfedő aktív zárolások jöjjenek létre (PostgreSQL <code>EXCLUDE USING gist (szoba_id WITH =, daterange(erkezes, tavozas) WITH &amp;&amp;)</code>).</li>
+            <li>A foglalási időszakot az érkezés napjától a távozás napjáig tartó, a távozás napját már nem tartalmazó intervallumként kezeljük.</li>
+            <li>A külső naptárakból érkező ütköző foglalások adatait nem töröljük, hanem külön ütközési nyilvántartásba kapcsoljuk. Ezáltal a tulajdonos később ellenőrizheti és rendezheti a konfliktusokat.</li>
         </ul>
+        <p>
+            Az adatbázis tervezése során törekszünk a harmadik normálforma alkalmazására, hogy csökkentsük az adatredundanciát és elkerüljük az adatok módosításából származó ellentmondásokat.
+        </p>
+        <p>
+            A Foglalási naptár foglalt időszakait a kapcsolódó foglalási és zárolási adatok alapján is előállíthatjuk, ezért nem szükséges ugyanazokat az információkat több helyen, egymástól függetlenül tárolni.
+        </p>
+
+        <h3 id="rterv-3-4">3.4. Az adatbázis-kezelővel kapcsolatot tartó osztályok</h3>
+        <p>
+            A rendszer adatbázisának elérését külön adatkezelési rétegen keresztül valósítjuk meg. Ennek célja, hogy az üzleti logikához tartozó osztályok ne közvetlenül hajtsák végre az adatbázis-műveleteket, hanem erre a feladatra kialakított komponenseken keresztül kommunikáljanak az adatbázissal.
+        </p>
+        <p>
+            A megoldás elősegíti a rendszer karbantarthatóságát, tesztelhetőségét és későbbi bővíthetőségét.
+        </p>
+        <p>
+            Az adatbázis-kapcsolat kezeléséhez az Entity Framework Core technológiát alkalmazzuk, amely biztosítja az objektumok és a relációs táblák közötti leképezést.
+        </p>
+
+        <h4>Adatbáziskapcsolatot kezelő osztály</h4>
+        <p>
+            Az <code>ApplicationDbContext</code> osztály felelős az adatbázis-kapcsolat kezeléséért, valamint az adatbázistáblák és az alkalmazás objektumai közötti megfeleltetés biztosításáért.
+        </p>
+        <p>
+            Az osztály nyilvántartja az alkalmazás fő adatkészleteit, és támogatja az adatok lekérdezését, létrehozását, módosítását és törlését.
+        </p>
+
+        <h4>FoglalásRepository osztály</h4>
+        <p>
+            A <code>FoglalásRepository</code> osztály a foglalásokhoz kapcsolódó adatbázis-műveletek végrehajtásáért felelős.
+        </p>
+        <p>
+            Feladata a foglalások lekérdezése, rögzítése, módosítása és törlése, valamint az egyes szobákhoz és vendégekhez tartozó foglalások visszakeresése.
+        </p>
+
+        <h4>SzobaRepository osztály</h4>
+        <p>
+            A <code>SzobaRepository</code> osztály a vendégház szobáinak adatkezelését biztosítja.
+        </p>
+        <p>
+            Feladata a szobák adatainak lekérdezése, módosítása, valamint az elérhetőségi és befogadóképességi feltételek szerinti keresések támogatása.
+        </p>
+
+        <h4>FizetésRepository osztály</h4>
+        <p>
+            A <code>FizetésRepository</code> osztály a fizetések nyilvántartásával kapcsolatos adatbázis-műveletekért felelős.
+        </p>
+        <p>
+            Feladata a fizetési tranzakciók rögzítése, azok státuszainak módosítása, valamint a kapcsolódó fizetési adatok lekérdezése.
+        </p>
+
+        <h4>NaptárRepository osztály</h4>
+        <p>
+            A <code>NaptárRepository</code> osztály a központi foglalási naptárhoz, a külső naptárkapcsolatokhoz és a foglalási zárolásokhoz tartozó adatkezelési műveleteket biztosítja.
+        </p>
+        <p>
+            Feladata a foglaltsági adatok lekérdezése, az időszakok zárolásának támogatása, valamint a külső naptárak szinkronizációs adatainak nyilvántartása.
+        </p>
+
+        <h4>TakarításRepository osztály</h4>
+        <p>
+            A <code>TakarításRepository</code> osztály a takarítási feladatok és a hozzájuk tartozó fényképadatok nyilvántartását biztosítja.
+        </p>
+        <p>
+            Feladata a napi feladatok lekérdezése, a takarítási állapotok frissítése, valamint az elkészült fényképekhez tartozó hivatkozások rögzítése.
+        </p>
+
+        <h4>HibabejelentésRepository osztály</h4>
+        <p>
+            A <code>HibabejelentésRepository</code> osztály a szobákban észlelt meghibásodások adatainak kezeléséért felelős.
+        </p>
+        <p>
+            Feladata a hibabejelentések létrehozása, lekérdezése, módosítása és lezárása.
+        </p>
+
+        <h4>Tranzakciókezelés és üzleti logika</h4>
+        <p>
+            Az adatbázis-műveletek összehangolásáért a szerveroldali szolgáltatásréteg felelős.
+        </p>
+        <p>
+            A <code>FoglalásService</code> például a szobák elérhetőségének ellenőrzését, az ideiglenes zárolások létrehozását és a foglalások véglegesítését koordinálja.
+        </p>
+        <p>
+            Az egymással összefüggő adatbázis-műveleteket tranzakciókon belül hajtjuk végre, hogy hiba esetén ne keletkezzenek részben végrehajtott, ellentmondásos adatváltozások.
+        </p>
+        <p>
+            A külső fizetési szolgáltató válaszára történő várakozás alatt nem tartunk nyitva hosszú adatbázis-tranzakciót. Ehelyett időkorlátos zárolást alkalmazunk, amelyet a sikeres fizetés feldolgozásakor véglegesítünk.
+        </p>
+        <p>
+            Az alkalmazás adatkezelési rétegének kialakítása lehetővé teszi, hogy a későbbiekben újabb adatbázistáblákat és funkciókat vezessünk be anélkül, hogy a teljes üzleti logikát módosítanunk kellene.
+        </p>
+
+        <h4>Kulcsfontosságú Repository interfész-szignatúrák</h4>
+<pre>public interface IFoglalasRepository
+{
+    Task&lt;IEnumerable&lt;Szoba&gt;&gt; GetSzabadSzobakAsync(DateOnly erkezes, DateOnly tavozas, int vendegekSzama);
+    Task&lt;bool&gt; VanAtfedoFoglalasVagyZarolasAsync(long szobaId, DateOnly erkezes, DateOnly tavozas);
+    Task&lt;Foglalas&gt; CreateFoglalasIdeiglenesZarolassalAsync(Foglalas foglalas, TimeSpan zarolasIdotartam);
+    Task UpdateStatuszAsync(long foglalasId, string ujStatusz);
+    Task&lt;IEnumerable&lt;Foglalas&gt;&gt; GetFoglalasokIdoszakbanAsync(DateOnly tol, DateOnly ig);
+}
+
+public interface INaptarRepository
+{
+    Task&lt;IEnumerable&lt;KulsoNaptar&gt;&gt; GetAktivKulsoNaptarakAsync();
+    Task&lt;FoglalasiUtkozes?&gt; EllenorizEsRogzitUtkozestAsync(long szobaId, DateOnly erkezes, DateOnly tavozas, long kulsoFoglalasId);
+    Task UtkozesFeloldasaAsync(long utkozesId, long megtartottFoglalasId);
+    Task UpdateUtolsoFrissitesAsync(long naptarId, DateTime idopontUtc);
+}
+
+public interface ITakaritasRepository
+{
+    Task&lt;IEnumerable&lt;TakaritasiFeladat&gt;&gt; GetNapiFeladatokAsync(long takaritoId, DateOnly datum);
+    Task InditFeladatotAsync(long feladatId);
+    Task BefejezFeladatotFotovalAsync(long feladatId, string kepHivatkozas, string? kliensMuveletId);
+}
+
+public interface IHibabejelentesRepository
+{
+    Task&lt;Hibabejelentes&gt; RogzitHibabejelentestAsync(Hibabejelentes hiba);
+    Task&lt;IEnumerable&lt;Hibabejelentes&gt;&gt; GetNyitottHibabejelentesekAsync();
+    Task LezarHibabejelentestAsync(long hibaId);
+}
+
+public interface IFizetesRepository
+{
+    Task&lt;Fizetes&gt; CreateFizetesAsync(Fizetes fizetes);
+    Task&lt;bool&gt; FeldolgozWebhookEredmenytAsync(string tranzakcioAzonosito, string ujStatusz);
+    Task&lt;Kupon?&gt; GetErvenyesKuponAsync(string kuponkod);
+}</pre>
+    </section>
+
+    <!-- 4. A FUNKCIONÁLIS MODELL KIEGÉSZÍTÉSE -->
+    <section class="card" id="rterv-4">
+        <h2>4. A funkcionális modell kiegészítése</h2>
+        <p>
+            A rendszertervezés során a korábban elkészített funkcionális modelleket kiegészítjük azokkal a kivételes és alternatív folyamatokkal, amelyek a rendszer megbízható működéséhez szükségesek.
+        </p>
+        <p>
+            Különösen fontos a párhuzamos foglalások, a sikertelen fizetések, a külső naptárak szinkronizációs hibái, valamint az internetkapcsolat nélkül működő takarítói felület megfelelő kezelése.
+        </p>
+
+        <h3 id="rterv-4-1">4.1. Párhuzamos foglalások kezelése</h3>
+        <p>
+            A foglalási folyamat során előfordulhat, hogy két vendég közel azonos időpontban próbálja lefoglalni ugyanazt a szobát.
+        </p>
+        <p>
+            Ennek elkerülése érdekében a rendszer a foglalás véglegesítése előtt ismételten ellenőrzi a szoba elérhetőségét.
+        </p>
+        <p>
+            Az ellenőrzést és az ideiglenes zárolás létrehozását egyetlen adatbázis-tranzakcióban hajtjuk végre. A megfelelő megszorítások segítségével biztosítjuk, hogy ugyanarra a szobára egymást átfedő aktív időszakok ne kerülhessenek rögzítésre.
+        </p>
+        <p>
+            Amennyiben a zárolás sikertelen, a rendszer megszakítja a foglalási folyamatot, és tájékoztatja a vendéget arról, hogy a kiválasztott időszak már nem elérhető.
+        </p>
+        <p>
+            Sikeres zárolás esetén a rendszer lehetővé teszi a fizetési folyamat megkezdését.
+        </p>
+        <p>
+            A feldolgozás bemeneti adatai a szoba azonosítója, az érkezési és távozási dátumok, valamint a meglévő foglalási és zárolási adatok.
+        </p>
+        <p>
+            A kimeneti adat a sikeres zárolás vagy a foglalás elutasításáról szóló tájékoztatás.
+        </p>
+
+        <h3 id="rterv-4-2">4.2. Sikertelen és késedelmes fizetések kezelése</h3>
+        <p>
+            A bankkártyás fizetés során előfordulhat, hogy a külső fizetési szolgáltató sikertelen tranzakciót jelez vissza.
+        </p>
+        <p>
+            Ebben az esetben a rendszer rögzíti a fizetési művelet eredményét, majd kezdeményezi a foglalási időszak ideiglenes zárolásának feloldását.
+        </p>
+        <p>
+            A foglalás nem kerül sikeresen kifizetett állapotba, és a vendég hibaüzenetet kap.
+        </p>
+        <p>
+            Előfordulhat az is, hogy a fizetési szolgáltatótól csak az ideiglenes zárolás lejárta után érkezik meg a sikeres tranzakcióról szóló értesítés.
+        </p>
+        <p>
+            Ilyen esetben a rendszer a foglalás véglegesítése előtt újra ellenőrzi az időszak elérhetőségét. Ha a szoba időközben már nem foglalható, a rendszer nem hoz létre ütköző végleges foglalást, hanem külön hibakezelési folyamatot indít.
+        </p>
+        <p>
+            A fizetési eredmények ismételt feldolgozását egyedi tranzakcióazonosító és megfelelő ellenőrzések segítségével akadályozzuk meg.
+        </p>
+
+        <h3 id="rterv-4-3">4.3. Külső naptárak szinkronizációs hibáinak kezelése</h3>
+        <p>
+            A külső naptárak szinkronizációja során előfordulhat, hogy valamelyik platform nem érhető el, vagy a megadott iCal-hivatkozás érvénytelen.
+        </p>
+        <p>
+            A rendszer ilyen esetben rögzíti a szinkronizáció sikertelenségét, és módosítja a kapcsolódó Külső naptár objektum státuszát.
+        </p>
+        <p>
+            A korábban sikeresen lekérdezett foglalási adatokat nem törli, hanem megőrzi azok utolsó ismert állapotát.
+        </p>
+        <p>
+            A következő ütemezett szinkronizáció során ismét megkísérli az adatok frissítését.
+        </p>
+        <p>
+            Amennyiben a külső naptárból érkező foglalás egy már meglévő foglalással ütközik, a rendszer létrehozza a megfelelő Foglalási ütközés objektumot, és értesítést kezdeményez a tulajdonos számára.
+        </p>
+        <p>
+            Az iCal-alapú szinkronizáció nem biztosít minden esetben azonnali adatfrissítést, ezért a külső platformokon létrejövő párhuzamos foglalások lehetőségét nem tudjuk teljesen kizárni.
+        </p>
+        <p>
+            A rendszer célja ezeknek az ütközéseknek a lehető legkorábbi felismerése és a tulajdonos megfelelő tájékoztatása.
+        </p>
+
+        <h3 id="rterv-4-4">4.4. Takarítói adatok kapcsolat nélküli kezelése</h3>
+        <p>
+            A takarítói mobilos felület működésének fontos követelménye, hogy az internetkapcsolat ideiglenes megszakadása esetén is lehetővé tegye az adatok rögzítését.
+        </p>
+        <p>
+            A rendszer ilyen esetben a takarítási feladat állapotváltozásait, a készített fényképeket és az esetleges hibabejelentéseket ideiglenesen a mobiltelefonon tárolja.
+        </p>
+        <p>
+            A kapcsolat helyreállása után a rendszer automatikusan megkísérli a helyben tárolt műveletek továbbítását.
+        </p>
+        <p>
+            A feltöltött adatok feldolgozása során ellenőrizzük, hogy az adott művelet korábban már végrehajtásra került-e, így elkerülhető az ismételt adatküldésből származó duplikáció.
+        </p>
+        <p>
+            A sikeres feldolgozást követően a takarítási feladat állapota „Befejezett” értékre módosul, és a kapcsolódó szoba „Tiszta” állapotba kerül.
+        </p>
+        <p>
+            Amennyiben a szinkronizáció ismét sikertelen, a rendszer megőrzi a helyben tárolt adatokat, és később újra megkísérli azok továbbítását.
+        </p>
+
+        <h3 id="rterv-4-5">4.5. Sikertelen értesítésküldések kezelése</h3>
+        <p>
+            A rendszer automatikus értesítései külső e-mail-küldő szolgáltatáson keresztül kerülnek továbbításra.
+        </p>
+        <p>
+            Amennyiben az értesítés elküldése sikertelen, a rendszer rögzíti a küldési hibát, és módosítja az Értesítés objektum aktuális státuszát.
+        </p>
+        <p>
+            A sikertelen értesítésküldés nem eredményezi a már sikeresen véglegesített foglalás törlését.
+        </p>
+        <p>
+            A rendszer a sikertelen küldéseket külön nyilvántartásban követi, és a későbbiekben újrapróbálhatja az értesítés továbbítását.
+        </p>
+        <p>
+            A hibák naplózása lehetővé teszi, hogy a tulajdonos vagy a rendszer üzemeltetője ellenőrizhesse a sikertelen kommunikációs műveleteket.
+        </p>
+
+        <h3 id="rterv-4-6">4.6. Adatbiztonsági és jogosultságkezelési szempontok</h3>
+        <p>
+            A rendszer kialakítása során kiemelt figyelmet fordítunk a felhasználói adatok biztonságos kezelésére.
+        </p>
+        <p>
+            A belső felületek eléréséhez hitelesítés szükséges, amelyet szerepköralapú jogosultságkezeléssel egészítünk ki.
+        </p>
+        <p>
+            A tulajdonos a teljes vendégházhoz tartozó adminisztrációs funkciókat elérheti, míg a takarítók kizárólag a saját munkavégzésükhöz szükséges műveleteket hajthatják végre.
+        </p>
+        <p>
+            A felhasználói jelszavakat megfelelő, erre a célra kialakított jelszóhash-elési eljárással tároljuk, és nem őrizzük meg őket visszafejthető formában.
+        </p>
+        <p>
+            A rendszer és a felhasználók közötti kommunikáció HTTPS-kapcsolaton keresztül történik.
+        </p>
+        <p>
+            A bankkártyaadatok kezelését külső fizetési szolgáltató végzi, így a saját adatbázisunkban nem tárolunk teljes bankkártyaadatokat.
+        </p>
+        <p>
+            A személyes adatok kezelésénél figyelembe vesszük a GDPR követelményeit és a szálláshelyekre vonatkozó jogszabályi előírásokat.
+        </p>
+        <p>
+            A rendszer rendszeres adatbázis-mentéseket készít, a kritikus hibákat pedig naplózza, hogy az esetleges problémák később visszakereshetők és kivizsgálhatók legyenek.
+        </p>
     </section>
 
     <!-- Alsó navigáció -->
     <div class="footer-nav">
-        <a href="No-Life_Gamerek_ANAL01.html" class="nav-btn">&larr; Előző: Analízis modell (ANAL01)</a>
-        <a href="Adatbazis_h4.html" class="nav-btn primary">Vissza a H4 oldalra</a>
-        <a href="Adatbazis_h5.html" class="nav-btn">Következő: H5 Implementáció &rarr;</a>
+        <a href="Szoftech_h4.html" class="nav-btn">&larr; Vissza: H4 – Tervezés</a>
+        <a href="index.html" class="nav-btn primary">Vissza a főoldalra</a>
+        <a href="#top" class="nav-btn">Ugrás az oldal tetejére &uarr;</a>
     </div>
 
 </div>
